@@ -15,16 +15,13 @@ jobs:
 
       - uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 24
           cache: npm
-          cache-dependency-path: pl-dashboard/package-lock.json
 
       - name: 依存関係インストール
-        working-directory: pl-dashboard
         run: npm ci
 
       - name: UTAGE → Notion 同期実行
-        working-directory: pl-dashboard
         env:
           UTAGE_API_TOKEN: ${{ secrets.UTAGE_API_TOKEN }}
           NOTION_TOKEN: ${{ secrets.NOTION_TOKEN }}
