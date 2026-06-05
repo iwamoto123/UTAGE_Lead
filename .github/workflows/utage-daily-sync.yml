@@ -1,0 +1,35 @@
+name: UTAGE 日次同期
+
+on:
+  schedule:
+    # 毎日 0:03 UTC = 9:03 JST
+    - cron: "3 0 * * *"
+  workflow_dispatch: # 手動実行用
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+          cache-dependency-path: pl-dashboard/package-lock.json
+
+      - name: 依存関係インストール
+        working-directory: pl-dashboard
+        run: npm ci
+
+      - name: UTAGE → Notion 同期実行
+        working-directory: pl-dashboard
+        env:
+          UTAGE_API_TOKEN: ${{ secrets.UTAGE_API_TOKEN }}
+          NOTION_TOKEN: ${{ secrets.NOTION_TOKEN }}
+        run: node scripts/utage-daily-sync.mjs
+
+      - name: 失敗時通知
+        if: failure()
+        run: echo "::error::UTAGE 同期失敗 (詳細はログ確認)"

@@ -1,36 +1,40 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 📊 PL ダッシュボード
 
-## Getting Started
+株式会社武士道の月次PL（売上・人件費・広告費・利益）を事業別／合計で閲覧できる社内ダッシュボード。データソースは Notion DB。
 
-First, run the development server:
+## 起動方法
 
 ```bash
+cd /Users/takeshi/workspace/works/pl-dashboard
+cp .env.local.example .env.local
+# .env.local を開いて NOTION_TOKEN= に実トークンを貼る
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+# http://localhost:3000 にアクセス
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 環境変数
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+| 変数名 | 説明 |
+|---|---|
+| `NOTION_TOKEN` | Notion Integration の Access Token (必須) |
+| `NOTION_DS_MONTHLY_PL` | 月次PL DB の data_source_id（デフォルト設定済み） |
+| `NOTION_DS_WEEKLY_AD` | 週次広告レポート DB の data_source_id |
+| `NOTION_DS_BUSINESS_YEAR` | 事業-年度 DB の data_source_id |
+| `CACHE_TTL_SECONDS` | キャッシュ秒数（デフォルト 600 = 10分） |
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## ページ構成
 
-## Learn More
+- `/` — PL ダッシュボード（事業タブ、期間切替、KPI、月次推移、損益計算書テーブル）
+- `/status` — 入力状況モニター（事業×月のマトリクス、未提出判定）
 
-To learn more about Next.js, take a look at the following resources:
+## キャッシュ運用
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- Notion API は10分キャッシュ（変更可）
+- ヘッダー右上「🔄 リフレッシュ」ボタンで即時更新
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 必要な Notion 側の設定
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Notion で以下3つのDBを開き、右上「...」→「Connections」→「PL Dashboard」を追加:
+- 月次PL（売上・人件費・広告費・利益）
+- 週次広告レポート
+- 事業-年度

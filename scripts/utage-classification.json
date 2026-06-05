@@ -1,0 +1,59 @@
+{
+  "_comment": "UTAGEアカウント/シナリオの流入経路分類。経路: meta_ad / youtube_organic / official_line / textbook_sales / out_of_scope。流入0人のシナリオはコピー扱いで集計外（同期時に動的判定）",
+  "_categories": {
+    "meta_ad": "メタ広告キャンペーン経由のリード（CPA測定対象）",
+    "youtube_organic": "YouTube等からの自然流入",
+    "official_line": "公式LINE（既存顧客向けハブ）",
+    "textbook_sales": "教材販売シナリオ（リード集計対象外）",
+    "out_of_scope": "別事業・予備アカウント・無関係"
+  },
+  "accounts": [
+    { "id": "Tm32etw7epfS", "name": "【メタ広告】医学部塾ローカルメディ九州 高1高2", "category": "meta_ad", "business": "ローカルメディ" },
+    { "id": "NX0ztS9ct3oN", "name": "白谷塾_宮崎教室_延岡教室_メタ広告", "category": "out_of_scope", "business": null, "_note": "シナリオ0件・未使用" },
+    { "id": "Cj6XBnqUWjjU", "name": "ローカルメディ 高校数学の予習講座【新高1 春講座】", "category": "meta_ad", "business": "ローカルメディ" },
+    { "id": "rOYD8sgrLdAP", "name": "白谷塾 本気の春期講習【R8 新高3】", "category": "meta_ad", "business": "白谷塾オンライン" },
+    { "id": "cFwIiZpTXRrQ", "name": "【浪人生用LINE】白谷塾オンライン教室", "category": "meta_ad", "business": "白谷塾オンライン" },
+    { "id": "NpJjwohj4a8s", "name": "2月スタートダッシュプログラム【白谷塾】", "category": "meta_ad", "business": "白谷塾オンライン" },
+    { "id": "xVMnVBF3fzuI", "name": "白谷塾オンライン教室【1月進研模試対策】", "category": "meta_ad", "business": "白谷塾オンライン" },
+    { "id": "DS7H8oI4ZEI0", "name": "【最後の企画】共通テスト短期プログラム", "category": "meta_ad", "business": "白谷塾オンライン" },
+    { "id": "Zp6OhqYDlg9i", "name": "共テ残り100日｜白谷塾オンライン教室", "category": "meta_ad", "business": "白谷塾オンライン" },
+    { "id": "2JFOhbEZJBSs", "name": "9月模試の集中対策プログラム【白谷塾】", "category": "meta_ad", "business": "白谷塾オンライン" },
+    { "id": "Z0kJVSw022ed", "name": "夏期講習【白谷塾オンライン教室R7】", "category": "meta_ad", "business": "白谷塾オンライン" },
+
+    { "id": "A3VabSziUdPO", "name": "【6月】白谷塾オンライン教室【R7】", "category": "youtube_organic", "business": "白谷塾オンライン" },
+    { "id": "TZq4ob5n4GZ1", "name": "地方医学部オンライン塾 ローカルメディ", "category": "youtube_organic", "business": "ローカルメディ" },
+
+    { "id": "75qj4QCIIFrE", "name": "白谷塾オンライン教室【R8公式】", "category": "official_line", "business": "白谷塾オンライン" },
+    { "id": "AejpZj4o5f8v", "name": "白谷塾オンライン教室【R8公式】特典配布", "category": "official_line", "business": "白谷塾オンライン" },
+    { "id": "tG9qRaflLotn", "name": "白谷塾オンライン教室【R7公式】", "category": "official_line", "business": "白谷塾オンライン" },
+    { "id": "l4sfwCJFWYP6", "name": "白谷塾チャンネル", "category": "official_line", "business": "白谷塾オンライン" },
+
+    { "id": "qN7MMxMWLx3n", "name": "国語 R8", "category": "textbook_sales", "business": "白谷塾オンライン" },
+    { "id": "y7hyqMysZhxd", "name": "物理2025", "category": "textbook_sales", "business": "白谷塾オンライン" },
+    { "id": "7oxtilRUXOBi", "name": "情報2025", "category": "textbook_sales", "business": "白谷塾オンライン" },
+
+    { "id": "Tagv60l1P33y", "name": "白谷塾オンライン教室【R7公式】② ※予備のアカウントです", "category": "out_of_scope", "business": null },
+    { "id": "nmr2oWmoVm40", "name": "白谷塾チャンネル②", "category": "out_of_scope", "business": null },
+    { "id": "pQQKDWMWZfLd", "name": "白谷塾宮崎教室【冬季講座】", "category": "out_of_scope", "business": null },
+    { "id": "E6WNSFdvOwUn", "name": "うちふぉと👶🏻💐ニューボーンフォト", "category": "out_of_scope", "business": null },
+    { "id": "WXufzbwUHLSo", "name": "【スマホAI学校】えな先生", "category": "out_of_scope", "business": null },
+    { "id": "e5EqxQLNRlrt", "name": "青雲学舎公式ライン", "category": "out_of_scope", "business": null }
+  ],
+  "_mixed_accounts_note": "以下2アカウントはシナリオ単位で分類（流入元が混在）",
+  "scenario_overrides": [
+    { "account_id": "7qQJ38rzLtbM", "account_name": "熊大超特化塾｜白谷塾オンライン教室", "business": "白谷塾オンライン", "default": "skip_zero_only", "scenarios": [
+      { "id": "XAz7XmBFO3yX", "name": "メタ広告シナリオ", "category": "meta_ad" }
+    ]},
+    { "account_id": "PjocL14v2u6j", "account_name": "【再受験コース】医学部塾ローカルメディ", "business": "ローカルメディ", "default": "skip_zero_only", "scenarios": [
+      { "id": "ss0Y2tqzi9hW", "name": "YouTubeシナリオ 【再受験コース】医学部塾ローカルメディ", "category": "youtube_organic" },
+      { "id": "yyog9fvedOtP", "name": "メタ広告シナリオ 【再受験コース】医学部塾ローカルメディ", "category": "meta_ad" }
+    ]}
+  ],
+  "_dynamic_rule": "scenario_overrides で明示されていないシナリオは、reader_count==0 ならスキップ。reader_count>0 ならログに警告して人手分類待ち（暫定で out_of_scope 扱い）",
+  "scenario_pattern_rules": [
+    { "pattern": "^【メタ広告から】|メタ広告シナリオ|【無料相談 メタ広告】|【お試しキャンペーン】|【お試し】$", "category": "meta_ad" },
+    { "pattern": "YouTubeシナリオ", "category": "youtube_organic" },
+    { "pattern": "Zoom無料相談リマインダ|個別Zoom無料相談|面談予約者シナリオ|【予約完了シナリオ】", "category": "meeting_reservation" },
+    { "pattern": "LINE友達追加用|受講料決済者|【メインのLINEから】|【\\d+月LINEから】|【その他LINEから】|GW企画|早期対策マークの解説動画", "category": "skip" }
+  ]
+}

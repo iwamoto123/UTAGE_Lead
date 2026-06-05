@@ -1,0 +1,153 @@
+{
+  "_note": "UTAGE 各アカウントの累計登録者数 (reader_list_all の meta.total)。1人が複数シナリオに含まれる場合があるため、ユニーク登録数ではなく『シナリオ登録延べ件数』",
+  "_fetched_at": "2026-05-26",
+  "accounts": [
+    {
+      "id": "Tm32etw7epfS",
+      "name": "【メタ広告】医学部塾ローカルメディ九州 高1高2",
+      "category": "メタ広告",
+      "business": "ローカルメディ",
+      "total": 22
+    },
+    {
+      "id": "Cj6XBnqUWjjU",
+      "name": "ローカルメディ 高校数学の予習講座【新高1 春講座】",
+      "category": "メタ広告",
+      "business": "ローカルメディ",
+      "total": 16
+    },
+    {
+      "id": "rOYD8sgrLdAP",
+      "name": "白谷塾 本気の春期講習【R8 新高3】",
+      "category": "メタ広告",
+      "business": "白谷塾オンライン",
+      "total": 14
+    },
+    {
+      "id": "cFwIiZpTXRrQ",
+      "name": "【浪人生用LINE】白谷塾オンライン教室",
+      "category": "メタ広告",
+      "business": "白谷塾オンライン",
+      "total": 258
+    },
+    {
+      "id": "NpJjwohj4a8s",
+      "name": "2月スタートダッシュプログラム【白谷塾】",
+      "category": "メタ広告",
+      "business": "白谷塾オンライン",
+      "total": 18
+    },
+    {
+      "id": "xVMnVBF3fzuI",
+      "name": "白谷塾オンライン教室【1月進研模試対策】",
+      "category": "メタ広告",
+      "business": "白谷塾オンライン",
+      "total": 9
+    },
+    {
+      "id": "DS7H8oI4ZEI0",
+      "name": "【最後の企画】共通テスト短期プログラム",
+      "category": "メタ広告",
+      "business": "白谷塾オンライン",
+      "total": 116
+    },
+    {
+      "id": "Zp6OhqYDlg9i",
+      "name": "共テ残り100日｜白谷塾オンライン教室",
+      "category": "メタ広告",
+      "business": "白谷塾オンライン",
+      "total": 375
+    },
+    {
+      "id": "2JFOhbEZJBSs",
+      "name": "9月模試の集中対策プログラム【白谷塾】",
+      "category": "メタ広告",
+      "business": "白谷塾オンライン",
+      "total": 255
+    },
+    {
+      "id": "Z0kJVSw022ed",
+      "name": "夏期講習【白谷塾オンライン教室R7】",
+      "category": "メタ広告",
+      "business": "白谷塾オンライン",
+      "total": 158
+    },
+    {
+      "id": "7qQJ38rzLtbM",
+      "name": "熊大超特化塾｜白谷塾オンライン教室",
+      "category": "混在",
+      "business": "白谷塾オンライン",
+      "total": 16
+    },
+    {
+      "id": "PjocL14v2u6j",
+      "name": "【再受験コース】医学部塾ローカルメディ",
+      "category": "混在",
+      "business": "ローカルメディ",
+      "total": 125
+    },
+    {
+      "id": "A3VabSziUdPO",
+      "name": "【6月】白谷塾オンライン教室【R7】",
+      "category": "YouTube自然流入",
+      "business": "白谷塾オンライン",
+      "total": 262
+    },
+    {
+      "id": "TZq4ob5n4GZ1",
+      "name": "地方医学部オンライン塾 ローカルメディ",
+      "category": "混在",
+      "business": "ローカルメディ",
+      "total": 195
+    },
+    {
+      "id": "75qj4QCIIFrE",
+      "name": "白谷塾オンライン教室【R8公式】",
+      "category": "公式LINE",
+      "business": "白谷塾オンライン",
+      "total": 653
+    },
+    {
+      "id": "AejpZj4o5f8v",
+      "name": "白谷塾オンライン教室【R8公式】特典配布",
+      "category": "公式LINE",
+      "business": "白谷塾オンライン",
+      "total": 38
+    },
+    {
+      "id": "tG9qRaflLotn",
+      "name": "白谷塾オンライン教室【R7公式】",
+      "category": "公式LINE",
+      "business": "白谷塾オンライン",
+      "total": 7807
+    },
+    {
+      "id": "l4sfwCJFWYP6",
+      "name": "白谷塾チャンネル",
+      "category": "公式LINE",
+      "business": "白谷塾オンライン",
+      "total": 2677
+    },
+    {
+      "id": "qN7MMxMWLx3n",
+      "name": "国語 R8 (教材販売)",
+      "category": "混在",
+      "business": "白谷塾オンライン",
+      "total": 1649
+    },
+    {
+      "id": "y7hyqMysZhxd",
+      "name": "物理2026 (教材販売)",
+      "category": "混在",
+      "business": "白谷塾オンライン",
+      "total": 2001
+    },
+    {
+      "id": "7oxtilRUXOBi",
+      "name": "情報2026 (教材販売)",
+      "category": "混在",
+      "business": "白谷塾オンライン",
+      "total": 2639
+    }
+  ]
+}
