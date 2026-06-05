@@ -62,31 +62,60 @@ const AUTH_VARIANTS = [
 ];
 let workingAuth = null;
 
+// エンドポイントパターン候補
+const ENDPOINT_PATTERNS = [
+  (acc, sce, page) => `/messages/readers?account_id=${acc}&scenario_id=${sce}&page=${page}&per_page=100`,
+  (acc, sce, page) => `/message_reader_list_all?account_id=${acc}&scenario_id=${sce}&page=${page}&per_page=100`,
+  (acc, sce, page) => `/messages/${acc}/readers?scenario_id=${sce}&page=${page}&per_page=100`,
+  (acc, sce, page) => `/messages/readers/all?account_id=${acc}&scenario_id=${sce}&page=${page}&per_page=100`,
+  (acc, sce, page) => `/reader/list_all?account_id=${acc}&scenario_id=${sce}&page=${page}&per_page=100`,
+  (acc, sce, page) => `/readers?account_id=${acc}&scenario_id=${sce}&page=${page}&per_page=100`,
+];
+let workingPattern = null;
+
 async function fetchReaders(accountId, scenarioId) {
   const all = [];
   let page = 1;
   while (true) {
-    const url = `${UTAGE_BASE}/messages/readers?account_id=${accountId}&scenario_id=${scenarioId}&page=${page}&per_page=100`;
-    let res, lastErr;
+    let res, lastErr, matchedUrl;
+    const patterns = workingPattern ? [workingPattern] : ENDPOINT_PATTERNS;
     const variants = workingAuth ? [workingAuth] : AUTH_VARIANTS;
-    for (const v of variants) {
-      const headers = { Accept: "application/json" };
-      v.apply(headers);
-      res = await fetch(url, { headers });
-      if (res.ok) { workingAuth = v; break; }
-      lastErr = `${v.name}: ${res.status}`;
+    outer: for (const pat of patterns) {
+      const url = `${UTAGE_BASE}${pat(accountId, scenarioId, page)}`;
+      matchedUrl = url;
+      for (const v of variants) {
+        const headers = { Accept: "application/json" };
+        v.apply(headers);
+        res = await fetch(url, { headers });
+        if (res.ok) { workingAuth = v; workingPattern = pat; break outer; }
+        lastErr = `${v.name}: ${res.status}`;
+      }
     }
     if (!res.ok) {
       const body = await res.text();
-      throw new Error(`UTAGE API failed (auth tried: ${variants.map(v=>v.name).join(",")}) ${lastErr} url=${url} body=${body.slice(0, 300)}`);
+      throw new Error(`UTAGE API failed (all patterns) ${lastErr} lastUrl=${matchedUrl} body=${body.slice(0, 200)}`);
     }
     const json = await res.json();
     all.push(...(json.data ?? []));
     if ((json.data ?? []).length < 100) break;
     page++;
-    if (page > 50) break; // safety
+    if (page > 50) break;
   }
   return all;
+}
+
+// 起動時にベースURLの疎通確認
+async function probeBase() {
+  console.log(`\n[probe] ${UTAGE_BASE}`);
+  for (const path of ["", "/", "/health", "/docs", "/openapi.json", "/messages/accounts", "/accounts"]) {
+    try {
+      const url = `${UTAGE_BASE}${path}`;
+      const res = await fetch(url, { headers: { Authorization: `Bearer ${UTAGE_TOKEN}`, Accept: "application/json" } });
+      const body = (await res.text()).slice(0, 100);
+      console.log(`  ${res.status} ${url} :: ${body.replace(/\n/g, " ")}`);
+    } catch (e) { console.log(`  ERR ${path}: ${e.message}`); }
+  }
+  console.log("");
 }
 
 // 既存マスター取得 (acc|sce → master_page_id)
@@ -137,6 +166,7 @@ function aggregateDaily(readers, fromDate) {
 
 // main
 (async () => {
+  await probeBase();
   const masters = await loadMasters();
   const { map: existing, latestByAcc } = await loadExisting();
   console.log(`マスター ${masters.size}件 / 既存日次 ${existing.size}件`);
