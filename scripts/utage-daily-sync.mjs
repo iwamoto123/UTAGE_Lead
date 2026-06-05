@@ -16,7 +16,9 @@ import { Client } from "@notionhq/client";
 
 const NOTION = new Client({ auth: process.env.NOTION_TOKEN });
 const UTAGE_TOKEN = process.env.UTAGE_API_TOKEN;
-const UTAGE_BASE = process.env.UTAGE_API_BASE ?? "https://utage-system.com/api/v1";
+const UTAGE_BASE = process.env.UTAGE_API_BASE ?? "https://online.shiratanijuku.com/api/v1";
+console.log(`UTAGE_BASE=${UTAGE_BASE}`);
+console.log(`UTAGE_TOKEN=${UTAGE_TOKEN ? UTAGE_TOKEN.slice(0, 8) + "..." : "(none)"}`);
 const SOURCE_DS = "097f9138-25b4-450c-be98-b116973d59df";
 const DAILY_DS = "ff6be008-cddc-42ef-831f-9b327e056635";
 
@@ -52,15 +54,31 @@ function classifyTzq4(mtn) {
 }
 
 // UTAGE API: シナリオ別リーダー全件取得
+// 試行する認証ヘッダー方式を順次トライ
+const AUTH_VARIANTS = [
+  { name: "Bearer", apply: (h) => { h.Authorization = `Bearer ${UTAGE_TOKEN}`; } },
+  { name: "X-API-Key", apply: (h) => { h["X-API-Key"] = UTAGE_TOKEN; } },
+  { name: "api-key", apply: (h) => { h["api-key"] = UTAGE_TOKEN; } },
+];
+let workingAuth = null;
+
 async function fetchReaders(accountId, scenarioId) {
   const all = [];
   let page = 1;
   while (true) {
     const url = `${UTAGE_BASE}/messages/readers?account_id=${accountId}&scenario_id=${scenarioId}&page=${page}&per_page=100`;
-    const res = await fetch(url, { headers: { Authorization: `Bearer ${UTAGE_TOKEN}`, Accept: "application/json" } });
+    let res, lastErr;
+    const variants = workingAuth ? [workingAuth] : AUTH_VARIANTS;
+    for (const v of variants) {
+      const headers = { Accept: "application/json" };
+      v.apply(headers);
+      res = await fetch(url, { headers });
+      if (res.ok) { workingAuth = v; break; }
+      lastErr = `${v.name}: ${res.status}`;
+    }
     if (!res.ok) {
       const body = await res.text();
-      throw new Error(`UTAGE API ${res.status}: ${url} :: ${body.slice(0, 200)}`);
+      throw new Error(`UTAGE API failed (auth tried: ${variants.map(v=>v.name).join(",")}) ${lastErr} url=${url} body=${body.slice(0, 300)}`);
     }
     const json = await res.json();
     all.push(...(json.data ?? []));
