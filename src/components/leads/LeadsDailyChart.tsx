@@ -182,7 +182,7 @@ export default function LeadsDailyChart({ dailyTotals, dailyByScenario, scenario
                       const h = auxYScale(s.v);
                       yCur -= h;
                       return <rect key={j} x={x} y={yCur} width={barW} height={h} fill={s.color}>
-                        <title>{d} {s.label}: {s.v}</title>
+                        <title>{`${d} ${s.label}: ${s.v}`}</title>
                       </rect>;
                     })}
                     {i % labelStep === 0 && (
