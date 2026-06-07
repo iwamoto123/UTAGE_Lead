@@ -28,6 +28,7 @@ UTAGE の今日までの新規リーダーを Notion に反映してください
    - 7qQJ38rzLtbM: XAz7XmBFO3yX, OQu9St8wqN9R
    - Tm32etw7epfS: fpZvVLcMvLMK, NidcrIoR9Aqi
    - TZq4ob5n4GZ1: 9lF9qbjgG5a8 (通年シナリオは message_tracking_name で TZq4_YT_VIDEO / TZq4_YT_DESC / TZq4_YT_POST / TZq4_SNS_THREADS / TZq4_SNS_X / TZq4_SNS_IG / TZq4_SNS_TIKTOK / TZq4_HP_BLOG / TZq4_HP_UTAGE / TZq4_META_REUSE / TZq4_META_K12 / TZq4_UNK に分類)
+   - n99EYdMfgwxy (総体後無料Zoom相談｜白谷塾オンライン): VJHxg3hQn8qy(メタ広告), zZe1kylB5Nfr(面談予約) — message_tracking_name が「メインの公式LINEから」のリーダーは集計外。null=メタ広告から実流入のみカウント
 3. base_date が Notion 最新日付より新しいレコードのみ抽出、日別カウント
 4. `scripts/upsert-utage-latest.mjs` を参考に upsert script を新規生成して実行 (流入経路マスター pageId を find して 日次リードDB に upsert)
 5. 完了後、結果を 1行サマリ「YYYY-MM-DD UTAGE同期完了: 新規N件 / 更新M件」で出力

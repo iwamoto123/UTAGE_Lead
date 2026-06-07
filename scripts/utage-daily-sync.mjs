@@ -35,6 +35,8 @@ const ACTIVE = [
   { acc: "Tm32etw7epfS", sce: "fpZvVLcMvLMK", label: "九州高1高2/メタ広告" },
   { acc: "Tm32etw7epfS", sce: "NidcrIoR9Aqi", label: "九州高1高2/面談予約" },
   { acc: "TZq4ob5n4GZ1", sce: "9lF9qbjgG5a8", label: "地方医学部/通年", splitByMtn: true },
+  { acc: "n99EYdMfgwxy", sce: "VJHxg3hQn8qy", label: "総体後/メタ広告", excludeInternal: true },
+  { acc: "n99EYdMfgwxy", sce: "zZe1kylB5Nfr", label: "総体後/面談予約" },
 ];
 
 // TZq4 message_tracking_name → 仮想シナリオID マッピング
