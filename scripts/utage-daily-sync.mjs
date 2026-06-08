@@ -48,6 +48,7 @@ function classifyTzq4(mtn) {
   if (mtn.includes("Xプロフィール")) return { sce: "TZq4_SNS_X", label: "SNS: X" };
   if (mtn.includes("Instagramプロフィール")) return { sce: "TZq4_SNS_IG", label: "SNS: Instagram" };
   if (mtn.includes("TikTokのプロフィール")) return { sce: "TZq4_SNS_TIKTOK", label: "SNS: TikTok" };
+  if (mtn.includes("StandFM")) return { sce: "TZq4_STANDFM", label: "SNS: StandFM" };
   if (mtn.includes("ブログ")) return { sce: "TZq4_HP_BLOG", label: "HP/ブログ" };
   if (mtn.includes("音声・記事のページ")) return { sce: "TZq4_HP_UTAGE", label: "HP/UTAGE記事" };
   if (mtn.includes("YouTube概要欄")) return { sce: "TZq4_YT_DESC", label: "YouTube: 概要欄" };
