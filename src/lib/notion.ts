@@ -12,7 +12,8 @@ export const DS = {
   businessYear: process.env.NOTION_DS_BUSINESS_YEAR ?? "929af9ef-8f3b-4665-b38b-ab2f13043311",
   utageSource: process.env.NOTION_DS_UTAGE_SOURCE ?? "097f9138-25b4-450c-be98-b116973d59df",
   utageDailyLead: process.env.NOTION_DS_UTAGE_DAILY_LEAD ?? "ff6be008-cddc-42ef-831f-9b327e056635",
-  campaign: process.env.NOTION_DS_CAMPAIGN ?? "f9a228cd-8485-45ab-bd6b-ba3975cd1478",
+  // 旧「企画」DB(f9a228cd-…)は2026-08にアーカイブされ404を返すため、キャンペーンマスターに変更
+  campaign: process.env.NOTION_DS_CAMPAIGN ?? "8e8bab1e-37de-4739-a814-b5108901523c",
 };
 
 // Notion ページURL（dashed UUID で OK）

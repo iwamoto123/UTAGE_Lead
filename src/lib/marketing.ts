@@ -236,7 +236,7 @@ export const getSourceCampaignEntries = unstable_cache(_fetchSourceCampaignEntri
   tags: ["source-campaign-entries", "utage-daily-leads"],
 });
 
-// 企画DB: page_id → 企画名（配列で返す）
+// キャンペーンマスター: page_id → キャンペーン名（配列で返す）
 async function _fetchCampaignNameEntries(): Promise<[string, string][]> {
   const entries: [string, string][] = [];
   let cursor: string | undefined = undefined;
@@ -248,7 +248,8 @@ async function _fetchCampaignNameEntries(): Promise<[string, string][]> {
         page_size: 100,
       });
       for (const p of res.results) {
-        const name = p.properties["企画名"]?.title?.map((t: any) => t.plain_text).join("")
+        const name = p.properties["キャンペーン名"]?.title?.map((t: any) => t.plain_text).join("")
+          ?? p.properties["企画名"]?.title?.map((t: any) => t.plain_text).join("")
           ?? p.properties["名前"]?.title?.map((t: any) => t.plain_text).join("")
           ?? "";
         if (name) entries.push([p.id, name]);
@@ -257,7 +258,7 @@ async function _fetchCampaignNameEntries(): Promise<[string, string][]> {
     } while (cursor);
   } catch (e: any) {
     if (e?.code === "object_not_found") {
-      console.warn("[marketing] 企画DB に Integration 接続未追加");
+      console.warn("[marketing] キャンペーンマスターDB が見つからない（Integration未接続 or アーカイブ）");
       return entries;
     }
     throw e;
