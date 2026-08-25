@@ -4,6 +4,8 @@ import {
 } from "@/lib/content-kpi";
 import { YoutubeKpiTable, LineKpiTable } from "@/components/content/ContentKpiTables";
 
+// データは unstable_cache で保持し、保存時に revalidateTag で無効化する。
+// ページ自体は都度描画（常に最新のキャッシュを反映させるため）。
 export const dynamic = "force-dynamic";
 
 function Kpi({ label, value }: { label: string; value: string }) {

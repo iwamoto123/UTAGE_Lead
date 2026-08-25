@@ -124,8 +124,8 @@ async function queryAll(dataSourceId: string): Promise<any[]> {
   return out;
 }
 
-/** 2つのKPI DBがインテグレーションから見えるか。見えなければ未共有のIDを返す */
-export async function checkContentKpiAccess(): Promise<string[]> {
+/** 2つのKPI DBがインテグレーションから見えるか。見えなければ未共有の名前を返す */
+async function _checkContentKpiAccess(): Promise<string[]> {
   const missing: string[] = [];
   for (const [name, id] of [["YouTube KPI", CONTENT_DS.youtube], ["LINE配信 KPI", CONTENT_DS.lineBroadcast]] as const) {
     try {
@@ -196,6 +196,10 @@ async function fetchLine(): Promise<LineKpi[]> {
     })
     .sort((a, b) => (b.sentAt ?? "").localeCompare(a.sentAt ?? ""));
 }
+
+/** 共有設定の確認は毎回叩くと2往復ぶん遅くなるためキャッシュする */
+export const checkContentKpiAccess = unstable_cache(
+  _checkContentKpiAccess, ["content-kpi-access"], { revalidate: CACHE_TTL, tags: ["content-kpi"] });
 
 export const getYoutubeKpi = unstable_cache(fetchYoutube, ["content-kpi-youtube"], {
   revalidate: CACHE_TTL,

@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { useLinkStatus } from "next/link";
 import { usePathname } from "next/navigation";
 
 const NAV_ITEMS = [
@@ -15,6 +16,18 @@ const NAV_ITEMS = [
 function isActivePath(pathname: string, href: string): boolean {
   if (href === "/") return pathname === "/";
   return pathname === href || pathname.startsWith(`${href}/`);
+}
+
+/** クリックしたリンクに読み込み中のドットを出す（Link の子孫でのみ動く） */
+function PendingDot() {
+  const { pending } = useLinkStatus();
+  if (!pending) return null;
+  return (
+    <span
+      aria-hidden
+      className="ml-1.5 inline-block h-1.5 w-1.5 animate-ping rounded-full bg-current align-middle"
+    />
+  );
 }
 
 export default function AppNav() {
@@ -37,6 +50,7 @@ export default function AppNav() {
             ].join(" ")}
           >
             {item.label}
+            <PendingDot />
           </Link>
         );
       })}

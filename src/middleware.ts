@@ -6,6 +6,9 @@ const USER = process.env.BASIC_AUTH_USER;
 const PASS = process.env.BASIC_AUTH_PASS;
 
 export function middleware(req: NextRequest) {
+  // Vercel Cron は Basic 認証を通せない。cron ルート自身が CRON_SECRET を検証する。
+  if (req.nextUrl.pathname.startsWith("/api/cron/")) return NextResponse.next();
+
   if (!USER || !PASS) return NextResponse.next();
 
   const auth = req.headers.get("authorization");
