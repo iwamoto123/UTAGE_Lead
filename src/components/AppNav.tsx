@@ -7,6 +7,7 @@ const NAV_ITEMS = [
   { href: "/", label: "月次PL" },
   { href: "/leads", label: "リード獲得" },
   { href: "/weekly-ad", label: "週次広告" },
+  { href: "/content", label: "コンテンツKPI" },
   { href: "/instructors", label: "講師バイト代" },
   { href: "/status", label: "入力状況" },
 ];
