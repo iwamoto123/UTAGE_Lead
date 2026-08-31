@@ -3,6 +3,7 @@ import {
   YT_CHANNELS, LINE_ACCOUNTS, LINE_GENRES, LINE_WRITERS,
 } from "@/lib/content-kpi";
 import { YoutubeKpiTable, LineKpiTable } from "@/components/content/ContentKpiTables";
+import ContentInsights from "@/components/content/ContentInsights";
 
 // データは unstable_cache で保持し、保存時に revalidateTag で無効化する。
 // ページ自体は都度描画（常に最新のキャッシュを反映させるため）。
@@ -31,10 +32,6 @@ export default async function ContentKpiPage() {
   const avgCtr = ctrRows.length
     ? ctrRows.reduce((s, r) => s + (r.thumbCtr ?? 0), 0) / ctrRows.length
     : null;
-  const clickRows = line.filter((r) => r.clickRate !== null);
-  const avgClick = clickRows.length
-    ? clickRows.reduce((s, r) => s + (r.clickRate ?? 0), 0) / clickRows.length
-    : null;
 
   return (
     <div className="space-y-6">
@@ -51,7 +48,6 @@ export default async function ContentKpiPage() {
           <Kpi label="LINE追加 合計" value={ytAdds.toLocaleString()} />
           <Kpi label="CVR（追加÷再生）" accent value={ytCvr ? `${(ytCvr * 100).toFixed(2)}%` : "—"} />
           <Kpi label="サムネCTR 平均" value={avgCtr ? `${(avgCtr * 100).toFixed(1)}%` : "—"} />
-          <Kpi label="LINE クリック率 平均" value={avgClick ? `${(avgClick * 100).toFixed(1)}%` : "—"} />
         </div>
       </header>
 
@@ -68,6 +64,9 @@ export default async function ContentKpiPage() {
       )}
 
       <YoutubeKpiTable rows={yt} channels={YT_CHANNELS} />
+
+      <ContentInsights rows={yt} />
+
       <LineKpiTable rows={line} accounts={LINE_ACCOUNTS} genres={LINE_GENRES} writers={LINE_WRITERS} />
 
       <p className="rounded-xl border-l-[3px] border-[#DF8D33] bg-slate-50 px-3.5 py-2.5 text-[11px] leading-relaxed text-slate-500">

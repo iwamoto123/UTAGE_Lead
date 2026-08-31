@@ -48,6 +48,13 @@ function Select({
   );
 }
 
+/** 秒 → 12:34 表記 */
+function fmtDur(sec: number | null): string {
+  if (sec === null || sec === undefined) return "—";
+  const m = Math.floor(sec / 60), r = Math.round(sec % 60);
+  return `${m}:${String(r).padStart(2, "0")}`;
+}
+
 function pctToView(v: number | null): string {
   return v === null || v === undefined ? "" : String(Math.round(v * 1000) / 10);
 }
@@ -211,14 +218,15 @@ const rowCls = (dirty: boolean) =>
 
 /* ── YouTube ── */
 const YT_COLS: Col[] = [
-  { key: "title", label: "動画タイトル", w: "22%" },
+  { key: "title", label: "動画タイトル", w: "24%" },
   { key: "", label: "リンク", w: "5%" },
   { key: "channel", label: "チャンネル", w: "11%" },
   { key: "publishedAt", label: "公開日", w: "8%" },
   { key: "daysSincePublish", label: "経過", w: "5%", num: true },
   { key: "views", label: "再生数", w: "7%", num: true },
   { key: "thumbCtr", label: "サムネCTR", w: "7%", num: true },
-  { key: "retention", label: "維持率", w: "7%", num: true },
+  { key: "retention", label: "維持率", w: "6%", num: true },
+  { key: "durationSec", label: "尺", w: "5%", num: true, hint: "動画の長さ" },
   { key: "lineAdds", label: "LINE追加", w: "7%", num: true },
   { key: "cvr", label: "CVR", w: "7%", num: true, hint: "LINE追加 ÷ 再生数" },
   { key: "giveaway", label: "特典", w: "10%" },
@@ -316,6 +324,9 @@ export function YoutubeKpiTable({
                     onChange={(e) => edit(r.id, { _ret: e.target.value, retention: pctToStore(e.target.value) })}
                     onBlur={() => commit(r)} />
                 </Cell>
+                <Ro right>
+                  <span className="text-slate-500">{fmtDur(r.durationSec)}</span>
+                </Ro>
                 <Cell>
                   <NumInput value={valueOf(r, "lineAdds") ?? ""}
                     onChange={(e) => edit(r.id, { lineAdds: e.target.value === "" ? null : Number(e.target.value) })}
@@ -357,6 +368,7 @@ export function YoutubeKpiTable({
               onChange={(e) => setNw({ ...nw, thumbCtr: e.target.value })} /></Cell>
             <Cell><PctInput value={nw.retention}
               onChange={(e) => setNw({ ...nw, retention: e.target.value })} /></Cell>
+            <td />
             <Cell><NumInput value={nw.lineAdds}
               onChange={(e) => setNw({ ...nw, lineAdds: e.target.value })} /></Cell>
             <td />

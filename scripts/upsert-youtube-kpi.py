@@ -64,11 +64,13 @@ def build_rows():
     av = json.loads((YC / "all_videos.json").read_text())
     ctr = json.loads((YC / "ctr_summary.json").read_text())
     ret = json.loads((YC / "retention/2026-07-01_2026-08-31.json").read_text())
-    tr = json.loads((SC / "line_tracking.json").read_text())
+    # UTAGEの登録経路データは一時ファイル。無ければ LINE追加数 は触らず、Notion の値をそのまま残す
+    tf = SC / "line_tracking.json"
+    tr = json.loads(tf.read_text()) if tf.exists() else None
 
     retmap = {vid: d for ch in ret.values() for vid, d in ch["videos"].items()}
     adds = {}
-    for src in tr["sources"]:
+    for src in (tr["sources"] if tr else []):
         for name, n in src["rows"]:
             if name.startswith("*"):
                 continue
@@ -77,6 +79,8 @@ def build_rows():
                 adds[k] = (n, name)
 
     def match(title):
+        if tr is None:
+            return (None, None)      # 触らない
         t = norm(title)
         best = (0, "")
         for k, (n, orig) in adds.items():
@@ -104,7 +108,7 @@ def build_rows():
                 "url": f"https://www.youtube.com/watch?v={v['id']}", "views": v["views"],
                 "ctr": c["ctr"] if c else None,
                 "retention": (r["avg_pct"] / 100) if r and r.get("avg_pct") is not None else None,
-                "adds": n, "route": route,
+                "adds": n, "route": route, "dur": sec(v["dur"]),
             })
     rows.sort(key=lambda r: r["date"])
     return rows
@@ -130,7 +134,7 @@ def existing():
 def props(r):
     def num(v):
         return {"number": v if v is not None else None}
-    return {
+    p = {
         "動画タイトル": {"title": [{"type": "text", "text": {"content": r["title"][:2000]}}]},
         "リンク": {"url": r["url"]},
         "チャンネル": {"select": {"name": r["channel"]} if r["channel"] else None},
@@ -138,10 +142,14 @@ def props(r):
         "再生数": num(r["views"]),
         "サムネクリック率": num(round(r["ctr"], 6) if r["ctr"] is not None else None),
         "視聴者維持率": num(round(r["retention"], 6) if r["retention"] is not None else None),
-        "LINE追加数": num(r["adds"]),
+        "尺（秒）": num(r.get("dur")),
         "計測日": {"date": {"start": MEASURED}},
-        "経路キー": {"rich_text": ([{"type": "text", "text": {"content": r["route"][:2000]}}] if r["route"] else [])},
     }
+    if r["adds"] is not None:      # 経路データがあるときだけ上書きする
+        p["LINE追加数"] = num(r["adds"])
+        p["経路キー"] = {"rich_text": ([{"type": "text", "text": {"content": r["route"][:2000]}}]
+                                     if r["route"] else [])}
+    return p
 
 
 def main():

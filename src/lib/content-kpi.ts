@@ -49,6 +49,7 @@ export interface YoutubeKpi {
   giveaway: string;
   lineAdds: number | null;
   views: number | null;
+  durationSec: number | null;
   thumbCtr: number | null;
   retention: number | null;
   cvr: number | null;
@@ -160,6 +161,7 @@ async function fetchYoutube(): Promise<YoutubeKpi[]> {
         giveaway: text(p["追加プレゼントの内容"]),
         lineAdds: num(p["LINE追加数"]),
         views: num(p["再生数"]),
+        durationSec: num(p["尺（秒）"]),
         thumbCtr: num(p["サムネクリック率"]),
         retention: num(p["視聴者維持率"]),
         cvr: num(p["CVR"]),
