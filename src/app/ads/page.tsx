@@ -1,11 +1,12 @@
 import {
-  getMetaDaily, filterByRange, sumRows, byMonth, byCampaign, cpa,
+  getMetaDaily, filterByRange, sumRows, byPeriod, byCampaign, cpa, defaultGranularity,
+  type Granularity,
 } from "@/lib/meta-ads";
 import { getCampaignMaster, getWeeklyAdReports } from "@/lib/weekly-ad";
 import AdPeriodControls, { type AdPeriodKey } from "@/components/ads/AdPeriodControls";
 import AdCampaignTable from "@/components/ads/AdCampaignTable";
 
-type SP = Promise<{ period?: string; from?: string; to?: string }>;
+type SP = Promise<{ period?: string; from?: string; to?: string; grain?: string }>;
 
 export default async function AdsPage({ searchParams }: { searchParams: SP }) {
   const sp = await searchParams;
@@ -33,9 +34,10 @@ export default async function AdsPage({ searchParams }: { searchParams: SP }) {
   const maxDate = dates[dates.length - 1];
   const { from, to } = resolveRange(period, sp.from, sp.to, minDate, maxDate);
 
+  const grain: Granularity = normalizeGrain(sp.grain) ?? defaultGranularity(from, to);
   const rows = filterByRange(daily, from, to);
   const totals = sumRows(rows);
-  const months = byMonth(rows);
+  const buckets = byPeriod(rows, grain);
 
   // LINE登録・成約は週次広告レポート側が正本（手入力の履歴もここに入っている）
   const lineByCampaign = new Map<string, number>();
@@ -53,7 +55,8 @@ export default async function AdsPage({ searchParams }: { searchParams: SP }) {
   const totalLine = [...lineByCampaign.values()].reduce((a, b) => a + b, 0);
   const totalConv = [...convByCampaign.values()].reduce((a, b) => a + b, 0);
   const unmapped = grouped.filter((g) => !g.mapped);
-  const maxMonthSpend = Math.max(...months.map((m) => m.totals.spend), 1);
+  const maxBucketSpend = Math.max(...buckets.map((b) => b.totals.spend), 1);
+  const grainLabel = grain === "day" ? "日次" : grain === "week" ? "週次" : "月次";
 
   return (
     <div className="space-y-5">
@@ -65,7 +68,7 @@ export default async function AdsPage({ searchParams }: { searchParams: SP }) {
               Meta広告マネージャの実績（{minDate}〜{maxDate}）。毎朝8:20に自動更新
             </p>
           </div>
-          <AdPeriodControls active={period} from={from} to={to} minDate={minDate} maxDate={maxDate} />
+          <AdPeriodControls active={period} grain={grain} from={from} to={to} minDate={minDate} maxDate={maxDate} />
         </div>
         <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-2">
           <Kpi label="消化金額" value={`¥${Math.round(totals.spend).toLocaleString()}`} emphasis />
@@ -79,36 +82,43 @@ export default async function AdsPage({ searchParams }: { searchParams: SP }) {
       </header>
 
       <section className="space-y-2">
-        <h2 className="text-sm font-bold text-slate-700">月次推移</h2>
-        <div className="bg-white border border-slate-200 rounded overflow-x-auto">
+        <div className="flex items-baseline gap-2">
+          <h2 className="text-sm font-bold text-slate-700">{grainLabel}推移</h2>
+          <span className="text-[11px] text-slate-500">{buckets.length}件（{from}〜{to}）</span>
+        </div>
+        <div className="bg-white border border-slate-200 rounded overflow-x-auto max-h-[420px] overflow-y-auto">
           <table className="w-full text-xs">
-            <thead>
+            <thead className="sticky top-0">
               <tr className="bg-slate-100 text-slate-600">
-                <th className="text-left px-3 py-2 font-medium">月</th>
+                <th className="text-left px-3 py-2 font-medium">{grainLabel === "月次" ? "月" : grainLabel === "週次" ? "週" : "日付"}</th>
                 <th className="text-right px-2 py-2 font-medium">消化金額</th>
                 <th className="text-left px-2 py-2 font-medium w-1/3">構成</th>
+                <th className="text-right px-2 py-2 font-medium">表示</th>
                 <th className="text-right px-2 py-2 font-medium">クリック</th>
                 <th className="text-right px-2 py-2 font-medium">CTR</th>
                 <th className="text-right px-2 py-2 font-medium">CPC</th>
               </tr>
             </thead>
             <tbody>
-              {months.map((m) => (
-                <tr key={m.month} className="border-t border-slate-200">
-                  <td className="px-3 py-1.5 font-medium">{m.month}</td>
+              {buckets.map((b) => (
+                <tr key={b.key} className="border-t border-slate-200">
+                  <td className="px-3 py-1.5 font-medium whitespace-nowrap">{b.label}</td>
                   <td className="px-2 py-1.5 text-right tabular-nums">
-                    ¥{Math.round(m.totals.spend).toLocaleString()}
+                    ¥{Math.round(b.totals.spend).toLocaleString()}
                   </td>
                   <td className="px-2 py-1.5">
                     <div className="h-2 bg-[#458BC3] rounded-sm"
-                      style={{ width: `${(m.totals.spend / maxMonthSpend) * 100}%` }} />
-                  </td>
-                  <td className="px-2 py-1.5 text-right tabular-nums">{m.totals.clicks.toLocaleString()}</td>
-                  <td className="px-2 py-1.5 text-right tabular-nums">
-                    {m.totals.ctr !== null ? `${(m.totals.ctr * 100).toFixed(2)}%` : "—"}
+                      style={{ width: `${(b.totals.spend / maxBucketSpend) * 100}%` }} />
                   </td>
                   <td className="px-2 py-1.5 text-right tabular-nums text-slate-500">
-                    {fmtYen(m.totals.cpc)}
+                    {b.totals.impressions.toLocaleString()}
+                  </td>
+                  <td className="px-2 py-1.5 text-right tabular-nums">{b.totals.clicks.toLocaleString()}</td>
+                  <td className="px-2 py-1.5 text-right tabular-nums">
+                    {b.totals.ctr !== null ? `${(b.totals.ctr * 100).toFixed(2)}%` : "—"}
+                  </td>
+                  <td className="px-2 py-1.5 text-right tabular-nums text-slate-500">
+                    {fmtYen(b.totals.cpc)}
                   </td>
                 </tr>
               ))}
@@ -160,8 +170,13 @@ function Kpi({ label, value, emphasis }: { label: string; value: string; emphasi
 }
 
 function normalizePeriod(v: string | undefined): AdPeriodKey {
-  const keys: AdPeriodKey[] = ["last30days", "last90days", "thisFY", "all", "custom"];
-  return keys.includes(v as AdPeriodKey) ? (v as AdPeriodKey) : "last90days";
+  const keys: AdPeriodKey[] = ["last7days", "last30days", "last90days", "thisFY", "all", "custom"];
+  return keys.includes(v as AdPeriodKey) ? (v as AdPeriodKey) : "last7days";
+}
+
+/** 指定がなければ期間の長さから決める（defaultGranularity） */
+function normalizeGrain(v: string | undefined): Granularity | null {
+  return v === "day" || v === "week" || v === "month" ? v : null;
 }
 
 /** 年度は4月はじまり。データの最終日を基準にする（今日だと未同期の日で空になるため） */
@@ -176,7 +191,7 @@ function resolveRange(
     const fyStart = `${m >= 4 ? y : y - 1}-04-01`;
     return { from: fyStart < minDate ? minDate : fyStart, to: maxDate };
   }
-  const days = period === "last30days" ? 30 : 90;
+  const days = period === "last7days" ? 7 : period === "last30days" ? 30 : 90;
   const d = new Date(`${maxDate}T00:00:00Z`);
   d.setUTCDate(d.getUTCDate() - (days - 1));
   const from = d.toISOString().slice(0, 10);

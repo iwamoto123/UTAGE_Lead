@@ -97,17 +97,57 @@ export function filterByRange(rows: MetaDailyRow[], from: string, to: string): M
   return rows.filter((r) => r.date >= from && r.date <= to);
 }
 
-/** 月(YYYY-MM)ごとの集計。古い順 */
-export function byMonth(rows: MetaDailyRow[]): { month: string; totals: AdTotals }[] {
+export type Granularity = "day" | "week" | "month";
+
+/** 週の区切りは meta-ads-sync の集計と揃えて水曜はじまり（水〜火） */
+const WEEK_ANCHOR = 3; // JSの getUTCDay: Sun=0 … Wed=3
+
+function weekStart(ymd: string): string {
+  const d = new Date(`${ymd}T00:00:00Z`);
+  const shift = (d.getUTCDay() - WEEK_ANCHOR + 7) % 7;
+  d.setUTCDate(d.getUTCDate() - shift);
+  return d.toISOString().slice(0, 10);
+}
+
+function addDays(ymd: string, n: number): string {
+  const d = new Date(`${ymd}T00:00:00Z`);
+  d.setUTCDate(d.getUTCDate() + n);
+  return d.toISOString().slice(0, 10);
+}
+
+const md = (ymd: string) => `${Number(ymd.slice(5, 7))}/${Number(ymd.slice(8, 10))}`;
+
+export interface PeriodBucket {
+  key: string;      // 並べ替え用
+  label: string;    // 画面表示用
+  totals: AdTotals;
+}
+
+/** 日／週／月ごとの集計。古い順 */
+export function byPeriod(rows: MetaDailyRow[], g: Granularity): PeriodBucket[] {
   const map = new Map<string, MetaDailyRow[]>();
   for (const r of rows) {
-    const m = r.date.slice(0, 7);
-    if (!map.has(m)) map.set(m, []);
-    map.get(m)!.push(r);
+    const key = g === "month" ? r.date.slice(0, 7) : g === "week" ? weekStart(r.date) : r.date;
+    if (!map.has(key)) map.set(key, []);
+    map.get(key)!.push(r);
   }
   return [...map.entries()]
     .sort((a, b) => a[0].localeCompare(b[0]))
-    .map(([month, rs]) => ({ month, totals: sumRows(rs) }));
+    .map(([key, rs]) => ({
+      key,
+      label: g === "month" ? key : g === "week" ? `${md(key)}〜${md(addDays(key, 6))}` : key,
+      totals: sumRows(rs),
+    }));
+}
+
+/** 期間の長さから粒度を決める。日次の表が何百行にもならないようにするため */
+export function defaultGranularity(from: string, to: string): Granularity {
+  const days = Math.round(
+    (Date.parse(`${to}T00:00:00Z`) - Date.parse(`${from}T00:00:00Z`)) / 86400000,
+  ) + 1;
+  if (days <= 31) return "day";
+  if (days <= 120) return "week";
+  return "month";
 }
 
 export interface CampaignRollup {
