@@ -3,6 +3,7 @@
 import { useMemo, useState, useTransition } from "react";
 import { useRouter } from "next/navigation";
 import type { YoutubeKpi, LineKpi } from "@/lib/content-kpi";
+import { youtubeThumbUrl } from "@/lib/youtube-thumb";
 
 type Kind = "youtube" | "line";
 type SortDir = "asc" | "desc";
@@ -216,10 +217,31 @@ function useSaver(kind: Kind) {
 const rowCls = (dirty: boolean) =>
   `border-b border-slate-100 transition-colors ${dirty ? "bg-[#fffdf5]" : "hover:bg-[#f5f9fd]"}`;
 
+/** サムネイル。クリックで動画が開く。URL未入力・ID不明のときはリンクだけ出す */
+function YoutubeThumb({ url, title }: { url: string | null; title: string }) {
+  const src = youtubeThumbUrl(url, "mq");
+  if (!url) return <span className="text-slate-300">—</span>;
+  if (!src) {
+    return (
+      <a href={url} target="_blank" rel="noreferrer"
+        className="text-[#458BC3] hover:underline text-xs" title={url}>開く</a>
+    );
+  }
+  return (
+    <a href={url} target="_blank" rel="noreferrer" title={title || url}
+      className="inline-block hover:opacity-80 transition-opacity">
+      {/* next/image を使うと i.ytimg.com の設定が要るので素の img で出す */}
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img src={src} alt={title || "サムネイル"} loading="lazy" width={96} height={54}
+        className="w-24 h-[54px] object-cover border border-slate-200 bg-slate-100" />
+    </a>
+  );
+}
+
 /* ── YouTube ── */
 const YT_COLS: Col[] = [
   { key: "title", label: "動画タイトル", w: "24%" },
-  { key: "", label: "リンク", w: "5%" },
+  { key: "", label: "サムネ", w: "8%" },
   { key: "channel", label: "チャンネル", w: "11%" },
   { key: "publishedAt", label: "公開日", w: "8%" },
   { key: "daysSincePublish", label: "経過", w: "5%", num: true },
@@ -290,11 +312,8 @@ export function YoutubeKpiTable({
                   <TextInput value={valueOf(r, "title") ?? ""}
                     onChange={(e) => edit(r.id, { title: e.target.value })} onBlur={() => commit(r)} />
                 </Cell>
-                <td className="px-2 py-2 text-center">
-                  {r.url
-                    ? <a href={r.url} target="_blank" rel="noreferrer"
-                        className="text-[#458BC3] hover:underline" title={r.url}>開く</a>
-                    : <span className="text-slate-300">—</span>}
+                <td className="px-2 py-1.5 text-center">
+                  <YoutubeThumb url={r.url} title={valueOf(r, "title") ?? ""} />
                 </td>
                 <Cell>
                   <Select value={valueOf(r, "channel") ?? ""} options={channels} placeholder="—"
