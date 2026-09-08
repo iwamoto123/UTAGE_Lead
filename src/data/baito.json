@@ -145,6 +145,114 @@
       "breakdownText": "担当生徒数 4人\n担当費 40000円\n現地バイト 1時間 1300円\nオンラインバイト 28時間 36400円"
     },
     {
+      "name": "伊地知隼",
+      "ym": "2026-05",
+      "business": "白谷塾オンライン",
+      "total": 43500,
+      "online": 43500,
+      "genchi": 0,
+      "students": 0,
+      "allDone": true,
+      "hasIncomplete": false,
+      "breakdownText": "オンラインチューター 兼 現地バイト"
+    },
+    {
+      "name": "伊地知隼",
+      "ym": "2026-06",
+      "business": "白谷塾オンライン",
+      "total": 31200,
+      "online": 20800,
+      "genchi": 10400,
+      "students": 2,
+      "allDone": true,
+      "hasIncomplete": false,
+      "breakdownText": "兼"
+    },
+    {
+      "name": "伊地知隼",
+      "ym": "2026-07",
+      "business": "白谷塾オンライン",
+      "total": 88400,
+      "online": 55900,
+      "genchi": 32500,
+      "students": 6,
+      "allDone": true,
+      "hasIncomplete": false,
+      "breakdownText": "兼。現地25h32500+オンライン43h55900"
+    },
+    {
+      "name": "伊地知隼",
+      "ym": "2026-08",
+      "business": "白谷塾オンライン",
+      "total": 134000,
+      "online": 108000,
+      "genchi": 26000,
+      "students": 3,
+      "allDone": true,
+      "hasIncomplete": false,
+      "breakdownText": "兼。現地20h26,000。オンライン=担当費30,000＋60h78,000。長嶺克紀/米須清諒=白谷オン、劉美温(英検)=白谷"
+    },
+    {
+      "name": "塩田英資",
+      "ym": "2026-05",
+      "business": "白谷塾オンライン",
+      "total": 1300,
+      "online": 1300,
+      "genchi": 0,
+      "students": 0,
+      "allDone": true,
+      "hasIncomplete": false,
+      "breakdownText": "打ち合わせ"
+    },
+    {
+      "name": "塩田英資",
+      "ym": "2026-06",
+      "business": "ローカルメディ",
+      "total": 22150,
+      "online": 22150,
+      "genchi": 0,
+      "students": 1,
+      "allDone": true,
+      "hasIncomplete": false,
+      "breakdownText": ""
+    },
+    {
+      "name": "塩田英資",
+      "ym": "2026-07",
+      "business": "白谷塾オンライン",
+      "total": 25600,
+      "online": 25600,
+      "genchi": 0,
+      "students": 2,
+      "allDone": true,
+      "hasIncomplete": false,
+      "breakdownText": "LM講師DB所属だが担当生徒 北崎由真=白谷オン。担当費10000+12h15600"
+    },
+    {
+      "name": "塩田英資",
+      "ym": "2026-08",
+      "business": "白谷塾オンライン",
+      "total": 41600,
+      "online": 41600,
+      "genchi": 0,
+      "students": 2,
+      "allDone": true,
+      "hasIncomplete": false,
+      "breakdownText": "担当費20000+16h21600。北崎由真/谷野理絵(英検)=白谷"
+    },
+    {
+      "name": "横山未帆",
+      "ym": "2026-07",
+      "business": "ローカルメディ",
+      "total": 1000,
+      "online": 1000,
+      "genchi": 0,
+      "students": 0,
+      "allDone": true,
+      "hasIncomplete": false,
+      "breakdownText": "LINE打ち合わせ40分。生徒記載なし→講師DB判定"
+    },
+    {
       "name": "家根原宗佑",
       "ym": "2025-10",
       "business": "白谷塾オンライン",
@@ -227,6 +335,54 @@
       "allDone": true,
       "hasIncomplete": false,
       "breakdownText": "担当生徒数2人\n担当費20000円\n現地バイト2.5時間　3250円\nオンラインバイト7時間　9100円"
+    },
+    {
+      "name": "家根原宗佑",
+      "ym": "2026-05",
+      "business": "白谷塾オンライン",
+      "total": 36700,
+      "online": 36700,
+      "genchi": 0,
+      "students": 0,
+      "allDone": true,
+      "hasIncomplete": false,
+      "breakdownText": "オンラインチューター 兼 現地バイト"
+    },
+    {
+      "name": "家根原宗佑",
+      "ym": "2026-06",
+      "business": "白谷塾オンライン",
+      "total": 50305,
+      "online": 42505,
+      "genchi": 7800,
+      "students": 2,
+      "allDone": true,
+      "hasIncomplete": false,
+      "breakdownText": "兼"
+    },
+    {
+      "name": "家根原宗佑",
+      "ym": "2026-07",
+      "business": "白谷塾オンライン",
+      "total": 56330,
+      "online": 45930,
+      "genchi": 10400,
+      "students": 3,
+      "allDone": true,
+      "hasIncomplete": false,
+      "breakdownText": "兼。現地8h10400。オンライン=担当費10000+24h31200+参考書代4730"
+    },
+    {
+      "name": "家根原宗佑",
+      "ym": "2026-08",
+      "business": "白谷塾オンライン",
+      "total": 36000,
+      "online": 30800,
+      "genchi": 5200,
+      "students": 2,
+      "allDone": true,
+      "hasIncomplete": false,
+      "breakdownText": "兼。現地4h5200。オンライン30800を志岐るいか(LM)/芹澤ゆうま(英検→白谷)で折半"
     },
     {
       "name": "梶加衣人",
@@ -361,6 +517,126 @@
       "breakdownText": "担当生徒数1人\n担当費10000円\nオンラインバイト6.5時間8450円"
     },
     {
+      "name": "梶加衣人",
+      "ym": "2026-05",
+      "business": "白谷塾オンライン",
+      "total": 14550,
+      "online": 14550,
+      "genchi": 0,
+      "students": 0,
+      "allDone": true,
+      "hasIncomplete": false,
+      "breakdownText": "オンラインチューターのみ"
+    },
+    {
+      "name": "梶加衣人",
+      "ym": "2026-06",
+      "business": "白谷塾オンライン",
+      "total": 15200,
+      "online": 15200,
+      "genchi": 0,
+      "students": 1,
+      "allDone": true,
+      "hasIncomplete": false,
+      "breakdownText": ""
+    },
+    {
+      "name": "梶加衣人",
+      "ym": "2026-07",
+      "business": "白谷塾オンライン",
+      "total": 24300,
+      "online": 24300,
+      "genchi": 0,
+      "students": 2,
+      "allDone": true,
+      "hasIncomplete": false,
+      "breakdownText": "担当費10000+作業11h14300"
+    },
+    {
+      "name": "梶加衣人",
+      "ym": "2026-08",
+      "business": "白谷塾オンライン",
+      "total": 34950,
+      "online": 34950,
+      "genchi": 0,
+      "students": 2,
+      "allDone": true,
+      "hasIncomplete": false,
+      "breakdownText": "担当費20000+11.5h14950。前田和樹/中島悠翔=白谷オン"
+    },
+    {
+      "name": "岩田泉樹",
+      "ym": "2026-05",
+      "business": "白谷塾オンライン",
+      "total": 24700,
+      "online": 24700,
+      "genchi": 0,
+      "students": 0,
+      "allDone": true,
+      "hasIncomplete": false,
+      "breakdownText": "オンラインチューター 兼 現地バイト"
+    },
+    {
+      "name": "岩田泉樹",
+      "ym": "2026-06",
+      "business": "白谷塾オンライン",
+      "total": 17550,
+      "online": 1950,
+      "genchi": 15600,
+      "students": 1,
+      "allDone": true,
+      "hasIncomplete": false,
+      "breakdownText": "兼(新規/未登録講師)"
+    },
+    {
+      "name": "岩田泉樹",
+      "ym": "2026-07",
+      "business": "ローカルメディ",
+      "total": 13000,
+      "online": 13000,
+      "genchi": 0,
+      "students": 1,
+      "allDone": true,
+      "hasIncomplete": false,
+      "breakdownText": "白谷講師DB所属だが担当生徒 中川陽翔=LM。作業10h13000"
+    },
+    {
+      "name": "岩田泉樹",
+      "ym": "2026-08",
+      "business": "ローカルメディ",
+      "total": 2720,
+      "online": 2720,
+      "genchi": 0,
+      "students": 1,
+      "allDone": true,
+      "hasIncomplete": false,
+      "breakdownText": "2h。中川陽翔=LM"
+    },
+    {
+      "name": "宮本諒人",
+      "ym": "2026-05",
+      "business": "白谷塾オンライン",
+      "total": 6900,
+      "online": 6900,
+      "genchi": 0,
+      "students": 0,
+      "allDone": true,
+      "hasIncomplete": false,
+      "breakdownText": "YouTube撮影、インタビュー"
+    },
+    {
+      "name": "宮本諒人",
+      "ym": "2026-06",
+      "business": "白谷塾オンライン",
+      "total": 3900,
+      "online": 3900,
+      "genchi": 0,
+      "students": 0,
+      "allDone": true,
+      "hasIncomplete": false,
+      "breakdownText": "動画撮影/MTG(新規/未登録講師)"
+    },
+    {
       "name": "弓削カノン",
       "ym": "2025-12",
       "business": "白谷塾オンライン",
@@ -397,6 +673,18 @@
       "breakdownText": "現地バイト 3時間　3900円\nその他(添削など) 26.5時間　34450円"
     },
     {
+      "name": "弓削カノン",
+      "ym": "2026-08",
+      "business": "白谷塾オンライン",
+      "total": 14300,
+      "online": 14300,
+      "genchi": 0,
+      "students": 2,
+      "allDone": true,
+      "hasIncomplete": false,
+      "breakdownText": "11h。劉美温(英検)=白谷。講師DB未登録→要追加"
+    },
+    {
       "name": "桑室泰享",
       "ym": "2026-04",
       "business": "ローカルメディ",
@@ -407,6 +695,54 @@
       "allDone": true,
       "hasIncomplete": false,
       "breakdownText": "担当生徒数 1人＋無料体験3人\n担当費　0円\n面談対応(準備等含)　10時間　15,000円\n生徒対応　3時間　4,500円\n事務作業等　9時間　13,500円"
+    },
+    {
+      "name": "桑室泰享",
+      "ym": "2026-05",
+      "business": "ローカルメディ",
+      "total": 43541,
+      "online": 43541,
+      "genchi": 0,
+      "students": 0,
+      "allDone": true,
+      "hasIncomplete": false,
+      "breakdownText": "オンラインチューターのみ"
+    },
+    {
+      "name": "桑室泰享",
+      "ym": "2026-06",
+      "business": "ローカルメディ",
+      "total": 30000,
+      "online": 30000,
+      "genchi": 0,
+      "students": 3,
+      "allDone": true,
+      "hasIncomplete": false,
+      "breakdownText": ""
+    },
+    {
+      "name": "桑室泰享",
+      "ym": "2026-07",
+      "business": "ローカルメディ",
+      "total": 64500,
+      "online": 64500,
+      "genchi": 0,
+      "students": 4,
+      "allDone": true,
+      "hasIncomplete": false,
+      "breakdownText": "担当費10000+教材執筆20000+面談11h+生徒対応10h+事務2h"
+    },
+    {
+      "name": "桑室泰享",
+      "ym": "2026-08",
+      "business": "ローカルメディ",
+      "total": 32500,
+      "online": 32500,
+      "genchi": 0,
+      "students": 4,
+      "allDone": true,
+      "hasIncomplete": false,
+      "breakdownText": "担当費10000+面談13h19500+生徒対応2h3000。全員LM"
     },
     {
       "name": "兼田万智子",
@@ -541,6 +877,42 @@
       "breakdownText": "オンラインバイト　2.25時間　2925円"
     },
     {
+      "name": "原崇一朗",
+      "ym": "2026-08",
+      "business": "白谷塾オンライン",
+      "total": 1950,
+      "online": 1950,
+      "genchi": 0,
+      "students": 1,
+      "allDone": true,
+      "hasIncomplete": false,
+      "breakdownText": "zoom MTG1.5h。岡田紗也加=白谷"
+    },
+    {
+      "name": "工藤仁一朗",
+      "ym": "2026-08",
+      "business": "白谷塾オンライン",
+      "total": 650,
+      "online": 650,
+      "genchi": 0,
+      "students": 1,
+      "allDone": true,
+      "hasIncomplete": false,
+      "breakdownText": "0.5h。髙宮世蓮=白谷オン(体験)"
+    },
+    {
+      "name": "甲斐康成",
+      "ym": "2026-08",
+      "business": "白谷塾オンライン",
+      "total": 14300,
+      "online": 3900,
+      "genchi": 10400,
+      "students": 0,
+      "allDone": true,
+      "hasIncomplete": false,
+      "breakdownText": "兼・新人。現地8h10400。オンライン=面接+初回説明3h3900。担当生徒なし→講師DB要追加"
+    },
+    {
       "name": "香村彩奈",
       "ym": "2025-06",
       "business": "白谷塾オンライン",
@@ -575,6 +947,30 @@
       "allDone": true,
       "hasIncomplete": false,
       "breakdownText": "担当生徒数 1人\n担当費 3,000円\nオンラインバイト時間 2時間"
+    },
+    {
+      "name": "黒木ひかり",
+      "ym": "2026-07",
+      "business": "白谷塾オンライン",
+      "total": 7150,
+      "online": 7150,
+      "genchi": 0,
+      "students": 1,
+      "allDone": true,
+      "hasIncomplete": false,
+      "breakdownText": "講師DB未登録。担当生徒 古川徳明=白谷オン → 要 講師DB追加"
+    },
+    {
+      "name": "黒木ひかり",
+      "ym": "2026-08",
+      "business": "宮崎教室",
+      "total": 3900,
+      "online": 0,
+      "genchi": 3900,
+      "students": 0,
+      "allDone": true,
+      "hasIncomplete": false,
+      "breakdownText": "現地のみ。書類送付作業3h"
     },
     {
       "name": "佐野心音",
@@ -719,6 +1115,54 @@
       "allDone": true,
       "hasIncomplete": false,
       "breakdownText": "担当生徒数　1人\n担当費　10000円\nオンラインバイト　１時間"
+    },
+    {
+      "name": "佐野心音",
+      "ym": "2026-05",
+      "business": "白谷塾オンライン",
+      "total": 11300,
+      "online": 11300,
+      "genchi": 0,
+      "students": 0,
+      "allDone": true,
+      "hasIncomplete": false,
+      "breakdownText": "オンラインチューターのみ"
+    },
+    {
+      "name": "佐野心音",
+      "ym": "2026-06",
+      "business": "白谷塾オンライン",
+      "total": 20695,
+      "online": 20695,
+      "genchi": 0,
+      "students": 1,
+      "allDone": true,
+      "hasIncomplete": false,
+      "breakdownText": ""
+    },
+    {
+      "name": "佐野心音",
+      "ym": "2026-07",
+      "business": "白谷塾オンライン",
+      "total": 31345,
+      "online": 31345,
+      "genchi": 0,
+      "students": 1,
+      "allDone": true,
+      "hasIncomplete": false,
+      "breakdownText": "内訳金額の記載なし(合計のみ)"
+    },
+    {
+      "name": "佐野心音",
+      "ym": "2026-08",
+      "business": "白谷塾オンライン",
+      "total": 34830,
+      "online": 34830,
+      "genchi": 0,
+      "students": 1,
+      "allDone": true,
+      "hasIncomplete": false,
+      "breakdownText": "19h10m。現地欄に同じ時間が誤記入されているがオンライン分。石田莉羽=白谷オン"
     },
     {
       "name": "山中詩織",
@@ -877,6 +1321,54 @@
       "breakdownText": "担当生徒数 1人\n担当費 10000円\n現地バイト 7時間 9100円\nオンラインバイト 8時間 10400円\nその他 0時間 0円"
     },
     {
+      "name": "山内碧泉",
+      "ym": "2026-05",
+      "business": "白谷塾オンライン",
+      "total": 34700,
+      "online": 34700,
+      "genchi": 0,
+      "students": 0,
+      "allDone": true,
+      "hasIncomplete": false,
+      "breakdownText": "オンラインチューター 兼 現地バイト"
+    },
+    {
+      "name": "山内碧泉",
+      "ym": "2026-06",
+      "business": "白谷塾オンライン",
+      "total": 43150,
+      "online": 34050,
+      "genchi": 9100,
+      "students": 1,
+      "allDone": true,
+      "hasIncomplete": false,
+      "breakdownText": "兼(現地5200+その他3900)"
+    },
+    {
+      "name": "山内碧泉",
+      "ym": "2026-07",
+      "business": "白谷塾オンライン",
+      "total": 36000,
+      "online": 32100,
+      "genchi": 3900,
+      "students": 3,
+      "allDone": true,
+      "hasIncomplete": false,
+      "breakdownText": "兼。現地3h3900。オンライン=担当費10000+17h22100"
+    },
+    {
+      "name": "山内碧泉",
+      "ym": "2026-08",
+      "business": "白谷塾オンライン",
+      "total": 16500,
+      "online": 16500,
+      "genchi": 0,
+      "students": 3,
+      "allDone": true,
+      "hasIncomplete": false,
+      "breakdownText": "5h6500+担当費10000。小牧悠/野手聡一郎=白谷、志岐瑠香=LM → 2:1で按分。今月は現地0"
+    },
+    {
       "name": "酒井未羽",
       "ym": "2025-08",
       "business": "白谷塾オンライン",
@@ -971,6 +1463,18 @@
       "allDone": false,
       "hasIncomplete": true,
       "breakdownText": "担当生徒1人\nオンラインバイト10時間"
+    },
+    {
+      "name": "酒井未羽",
+      "ym": "2026-05",
+      "business": "白谷塾オンライン",
+      "total": 13000,
+      "online": 13000,
+      "genchi": 0,
+      "students": 0,
+      "allDone": true,
+      "hasIncomplete": false,
+      "breakdownText": "オンラインチューターのみ"
     },
     {
       "name": "首藤顕心",
@@ -1165,6 +1669,42 @@
       "breakdownText": "担当生徒数\t\t1\t人\t\t\n担当費\t\t10000\t円\t\t\n現地バイト\t\t0\t時間\t0\t円\nオンラインバイト\t\t6.5\t時間\t8450\t円\nその他（準備添削等）\t\t3.5\t時間\t4550\t円\nその他（教材費）\t\t\t\t0\t円"
     },
     {
+      "name": "松下飛海",
+      "ym": "2026-05",
+      "business": "白谷塾オンライン",
+      "total": 30150,
+      "online": 30150,
+      "genchi": 0,
+      "students": 0,
+      "allDone": true,
+      "hasIncomplete": false,
+      "breakdownText": "オンラインチューターのみ"
+    },
+    {
+      "name": "松下飛海",
+      "ym": "2026-07",
+      "business": "白谷塾オンライン",
+      "total": 30189,
+      "online": 30189,
+      "genchi": 0,
+      "students": 2,
+      "allDone": true,
+      "hasIncomplete": false,
+      "breakdownText": "担当費20000+5.5h7150+準備1.5h1950+教材費1089"
+    },
+    {
+      "name": "松下飛海",
+      "ym": "2026-08",
+      "business": "白谷塾オンライン",
+      "total": 23000,
+      "online": 23000,
+      "genchi": 0,
+      "students": 1,
+      "allDone": true,
+      "hasIncomplete": false,
+      "breakdownText": "担当費10000+5.5h7150+準備4.5h5850。岡本裕=白谷オン"
+    },
+    {
       "name": "水元小春",
       "ym": "2025-05",
       "business": "白谷塾オンライン",
@@ -1283,6 +1823,150 @@
       "allDone": true,
       "hasIncomplete": false,
       "breakdownText": "担当生徒数1人\n担当費1万円\nオンラインバイト3時間3900円"
+    },
+    {
+      "name": "水元小春",
+      "ym": "2026-05",
+      "business": "宮崎教室",
+      "total": 3900,
+      "online": 0,
+      "genchi": 3900,
+      "students": 0,
+      "allDone": true,
+      "hasIncomplete": false,
+      "breakdownText": "現地バイトのみ"
+    },
+    {
+      "name": "水元心春",
+      "ym": "2026-08",
+      "business": "白谷塾オンライン",
+      "total": 10370,
+      "online": 7770,
+      "genchi": 2600,
+      "students": 1,
+      "allDone": true,
+      "hasIncomplete": false,
+      "breakdownText": "チラシ配り2,600は宮崎。担当費14日分4,520＋オンライン2,600＋端数。担当生徒「にこさん」が両DBに見当たらず白谷暫定"
+    },
+    {
+      "name": "清水元貴",
+      "ym": "2026-06",
+      "business": "ローカルメディ",
+      "total": 1875,
+      "online": 1875,
+      "genchi": 0,
+      "students": 1,
+      "allDone": true,
+      "hasIncomplete": false,
+      "breakdownText": ""
+    },
+    {
+      "name": "清水元貴",
+      "ym": "2026-07",
+      "business": "ローカルメディ",
+      "total": 17446,
+      "online": 17446,
+      "genchi": 0,
+      "students": 5,
+      "allDone": true,
+      "hasIncomplete": false,
+      "breakdownText": "作業11.1h14430+教材費3016"
+    },
+    {
+      "name": "清水元貴",
+      "ym": "2026-08",
+      "business": "ローカルメディ",
+      "total": 15781,
+      "online": 15781,
+      "genchi": 0,
+      "students": 3,
+      "allDone": true,
+      "hasIncomplete": false,
+      "breakdownText": "6h46m8796+教材費6985。体験生3名→LM(7月踏襲)"
+    },
+    {
+      "name": "清水省吾",
+      "ym": "2026-08",
+      "business": "宮崎教室",
+      "total": 1950,
+      "online": 0,
+      "genchi": 1950,
+      "students": 0,
+      "allDone": true,
+      "hasIncomplete": false,
+      "breakdownText": "打ち合わせ1.5h。現地欄記入のため宮崎計上"
+    },
+    {
+      "name": "善野真太郎",
+      "ym": "2026-07",
+      "business": "白谷塾オンライン",
+      "total": 3250,
+      "online": 3250,
+      "genchi": 0,
+      "students": 1,
+      "allDone": true,
+      "hasIncomplete": false,
+      "breakdownText": "LM講師DB所属だが担当生徒 髙木憩=白谷オン"
+    },
+    {
+      "name": "善野真太郎",
+      "ym": "2026-08",
+      "business": "白谷塾オンライン",
+      "total": 20400,
+      "online": 20400,
+      "genchi": 0,
+      "students": 2,
+      "allDone": true,
+      "hasIncomplete": false,
+      "breakdownText": "担当費10000+8h10400。高木憩/中山蒼衣=白谷"
+    },
+    {
+      "name": "村田裕紀",
+      "ym": "2026-06",
+      "business": "ローカルメディ",
+      "total": 35500,
+      "online": 35500,
+      "genchi": 0,
+      "students": 1,
+      "allDone": true,
+      "hasIncomplete": false,
+      "breakdownText": "村田ひろき(26500)は同一人物の再提出→除外"
+    },
+    {
+      "name": "村田裕紀",
+      "ym": "2026-07",
+      "business": "ローカルメディ",
+      "total": 55750,
+      "online": 55750,
+      "genchi": 0,
+      "students": 1,
+      "allDone": true,
+      "hasIncomplete": false,
+      "breakdownText": "面談5.5h8250+作業25h37500+担当費10000"
+    },
+    {
+      "name": "村田裕紀",
+      "ym": "2026-08",
+      "business": "ローカルメディ",
+      "total": 53500,
+      "online": 53500,
+      "genchi": 0,
+      "students": 1,
+      "allDone": true,
+      "hasIncomplete": false,
+      "breakdownText": "新規面談2人3000+27h40500+担当費10000。岩崎まりな=LM"
+    },
+    {
+      "name": "帯刀勇人",
+      "ym": "2026-08",
+      "business": "白谷塾オンライン",
+      "total": 1950,
+      "online": 1950,
+      "genchi": 0,
+      "students": 1,
+      "allDone": true,
+      "hasIncomplete": false,
+      "breakdownText": "打ち合わせ30分+計画面談1h。高井夏稀=体験生・事業未確定→白谷暫定"
     },
     {
       "name": "大許真菜",
@@ -1429,6 +2113,54 @@
       "breakdownText": "担当生徒数3人\n担当費　30000円\nオンラインバイト28時間半 37050円"
     },
     {
+      "name": "大許真菜",
+      "ym": "2026-05",
+      "business": "白谷塾オンライン",
+      "total": 69650,
+      "online": 69650,
+      "genchi": 0,
+      "students": 0,
+      "allDone": true,
+      "hasIncomplete": false,
+      "breakdownText": "オンラインチューター 兼 現地バイト"
+    },
+    {
+      "name": "大許真菜",
+      "ym": "2026-06",
+      "business": "白谷塾オンライン",
+      "total": 74200,
+      "online": 74200,
+      "genchi": 0,
+      "students": 3,
+      "allDone": true,
+      "hasIncomplete": false,
+      "breakdownText": "兼だが現地0"
+    },
+    {
+      "name": "大許真菜",
+      "ym": "2026-07",
+      "business": "白谷塾オンライン",
+      "total": 78750,
+      "online": 78750,
+      "genchi": 0,
+      "students": 3,
+      "allDone": true,
+      "hasIncomplete": false,
+      "breakdownText": "兼だが現地0。担当費30000+37.5h48750"
+    },
+    {
+      "name": "大許真菜",
+      "ym": "2026-08",
+      "business": "白谷塾オンライン",
+      "total": 76800,
+      "online": 76800,
+      "genchi": 0,
+      "students": 3,
+      "allDone": true,
+      "hasIncomplete": false,
+      "breakdownText": "担当費30000+36h46800。高瀬朋香/加納早彩/秋山蒼空=白谷オン。兼だが現地0"
+    },
+    {
       "name": "竹内壮吾",
       "ym": "2025-05",
       "business": "白谷塾オンライン",
@@ -1559,6 +2291,18 @@
       "allDone": true,
       "hasIncomplete": false,
       "breakdownText": "担当生徒0人\n現地バイト3時間3900円"
+    },
+    {
+      "name": "竹内壮吾",
+      "ym": "2026-08",
+      "business": "白谷塾オンライン",
+      "total": 12600,
+      "online": 12600,
+      "genchi": 0,
+      "students": 1,
+      "allDone": true,
+      "hasIncomplete": false,
+      "breakdownText": "担当費10000+2h2600。猪本剛大=体験生・事業未確定→白谷暫定"
     },
     {
       "name": "中山みさ",
@@ -1705,6 +2449,78 @@
       "breakdownText": "授業・掃除・SNS作業等　20,800円"
     },
     {
+      "name": "中山みさ",
+      "ym": "2026-05",
+      "business": "宮崎教室",
+      "total": 31850,
+      "online": 0,
+      "genchi": 31850,
+      "students": 0,
+      "allDone": true,
+      "hasIncomplete": false,
+      "breakdownText": "現地バイトのみ"
+    },
+    {
+      "name": "中山みさ",
+      "ym": "2026-06",
+      "business": "宮崎教室",
+      "total": 47450,
+      "online": 0,
+      "genchi": 47450,
+      "students": 0,
+      "allDone": true,
+      "hasIncomplete": false,
+      "breakdownText": "2重提出→1回計上"
+    },
+    {
+      "name": "中山みさ",
+      "ym": "2026-07",
+      "business": "宮崎教室",
+      "total": 50700,
+      "online": 0,
+      "genchi": 50700,
+      "students": 0,
+      "allDone": true,
+      "hasIncomplete": false,
+      "breakdownText": "現地のみ(SNS作業/書類スキャン/授業/印刷)"
+    },
+    {
+      "name": "中山みさ",
+      "ym": "2026-08",
+      "business": "宮崎教室",
+      "total": 16250,
+      "online": 0,
+      "genchi": 16250,
+      "students": 0,
+      "allDone": true,
+      "hasIncomplete": false,
+      "breakdownText": "現地のみ。掃除・事務12.5h"
+    },
+    {
+      "name": "中野修治",
+      "ym": "2026-07",
+      "business": "ローカルメディ",
+      "total": 5850,
+      "online": 5850,
+      "genchi": 0,
+      "students": 3,
+      "allDone": true,
+      "hasIncomplete": false,
+      "breakdownText": "作業4.5h5850"
+    },
+    {
+      "name": "中野修治",
+      "ym": "2026-08",
+      "business": "ローカルメディ",
+      "total": 18200,
+      "online": 18200,
+      "genchi": 0,
+      "students": 2,
+      "allDone": true,
+      "hasIncomplete": false,
+      "breakdownText": "14h。長嶺剛史/相場紫帆=LM"
+    },
+    {
       "name": "堤香代子",
       "ym": "2026-04",
       "business": "ローカルメディ",
@@ -1715,6 +2531,42 @@
       "allDone": true,
       "hasIncomplete": false,
       "breakdownText": "初回面談1時間　1300"
+    },
+    {
+      "name": "堤香代子",
+      "ym": "2026-05",
+      "business": "宮崎教室",
+      "total": 7200,
+      "online": 0,
+      "genchi": 7200,
+      "students": 0,
+      "allDone": true,
+      "hasIncomplete": false,
+      "breakdownText": "撮影バイト"
+    },
+    {
+      "name": "堤香代子",
+      "ym": "2026-07",
+      "business": "白谷塾オンライン",
+      "total": 7982,
+      "online": 7982,
+      "genchi": 0,
+      "students": 2,
+      "allDone": true,
+      "hasIncomplete": false,
+      "breakdownText": "LM講師DB所属だが担当生徒 大高はるむ/藤谷華音=白谷オン。作業3h10m4116+添削866+講師紹介3000"
+    },
+    {
+      "name": "堤香代子",
+      "ym": "2026-08",
+      "business": "白谷塾オンライン",
+      "total": 37745,
+      "online": 37745,
+      "genchi": 0,
+      "students": 2,
+      "allDone": true,
+      "hasIncomplete": false,
+      "breakdownText": "担当費20000+11.65h15145+添削2h2600。大高陽夢/山下彌耶乃(英検)=白谷"
     },
     {
       "name": "田代汀",
@@ -1861,6 +2713,54 @@
       "breakdownText": "現地バイト　57時間　74,100\n掃除　21時間　27,300"
     },
     {
+      "name": "田代汀",
+      "ym": "2026-05",
+      "business": "宮崎教室",
+      "total": 106600,
+      "online": 0,
+      "genchi": 106600,
+      "students": 0,
+      "allDone": true,
+      "hasIncomplete": false,
+      "breakdownText": "現地バイトのみ"
+    },
+    {
+      "name": "田代汀",
+      "ym": "2026-06",
+      "business": "宮崎教室",
+      "total": 80600,
+      "online": 0,
+      "genchi": 80600,
+      "students": 0,
+      "allDone": true,
+      "hasIncomplete": false,
+      "breakdownText": "現地のみ"
+    },
+    {
+      "name": "田代汀",
+      "ym": "2026-07",
+      "business": "宮崎教室",
+      "total": 89850,
+      "online": 0,
+      "genchi": 89850,
+      "students": 0,
+      "allDone": true,
+      "hasIncomplete": false,
+      "breakdownText": "現地64.5h83850+編集バイト6000"
+    },
+    {
+      "name": "田代汀",
+      "ym": "2026-08",
+      "business": "宮崎教室",
+      "total": 97700,
+      "online": 0,
+      "genchi": 97700,
+      "students": 0,
+      "allDone": true,
+      "hasIncomplete": false,
+      "breakdownText": "現地51h66,300＋編集バイト31,400(5分以内×8本8,000/15分6h7,800/39分15h15,600)。7月同様すべて宮崎計上"
+    },
+    {
       "name": "湯淺祥平",
       "ym": "2025-05",
       "business": "白谷塾オンライン",
@@ -2005,6 +2905,54 @@
       "breakdownText": "担当生徒数 1人\n担当費 10000円\n現地バイト 18.5時間 24050円\nオンラインバイト 8時間 10400円"
     },
     {
+      "name": "湯淺祥平",
+      "ym": "2026-05",
+      "business": "白谷塾オンライン",
+      "total": 30800,
+      "online": 30800,
+      "genchi": 0,
+      "students": 0,
+      "allDone": true,
+      "hasIncomplete": false,
+      "breakdownText": "オンラインチューターのみ"
+    },
+    {
+      "name": "湯淺祥平",
+      "ym": "2026-06",
+      "business": "白谷塾オンライン",
+      "total": 53550,
+      "online": 34700,
+      "genchi": 18850,
+      "students": 1,
+      "allDone": true,
+      "hasIncomplete": false,
+      "breakdownText": "兼"
+    },
+    {
+      "name": "湯淺祥平",
+      "ym": "2026-07",
+      "business": "白谷塾オンライン",
+      "total": 54550,
+      "online": 11000,
+      "genchi": 43550,
+      "students": 1,
+      "allDone": true,
+      "hasIncomplete": false,
+      "breakdownText": "兼。現地指導19h24700+現地14.5h18850。オンラインは担当費のみ"
+    },
+    {
+      "name": "湯淺祥平",
+      "ym": "2026-08",
+      "business": "白谷塾オンライン",
+      "total": 44800,
+      "online": 44800,
+      "genchi": 0,
+      "students": 3,
+      "allDone": true,
+      "hasIncomplete": false,
+      "breakdownText": "担当費+26h33800。川口朔=白谷オン。今月は現地0"
+    },
+    {
       "name": "藤岡来実",
       "ym": "2025-05",
       "business": "白谷塾オンライン",
@@ -2075,6 +3023,54 @@
       "allDone": true,
       "hasIncomplete": false,
       "breakdownText": "担当生徒1名　担当費10000円　オンラインバイト51.25時間　その他教材費22302円"
+    },
+    {
+      "name": "藤山航",
+      "ym": "2026-05",
+      "business": "ローカルメディ",
+      "total": 127470,
+      "online": 127470,
+      "genchi": 0,
+      "students": 0,
+      "allDone": true,
+      "hasIncomplete": false,
+      "breakdownText": "担当生徒8名 体験中4人　担当費あり3人　担当費なし1人\n0"
+    },
+    {
+      "name": "藤山航",
+      "ym": "2026-06",
+      "business": "ローカルメディ",
+      "total": 116888,
+      "online": 116888,
+      "genchi": 0,
+      "students": 6,
+      "allDone": true,
+      "hasIncomplete": false,
+      "breakdownText": ""
+    },
+    {
+      "name": "藤山航",
+      "ym": "2026-07",
+      "business": "ローカルメディ",
+      "total": 97375,
+      "online": 97375,
+      "genchi": 0,
+      "students": 5,
+      "allDone": true,
+      "hasIncomplete": false,
+      "breakdownText": "担当費40000+38.25h57375"
+    },
+    {
+      "name": "藤山航",
+      "ym": "2026-08",
+      "business": "ローカルメディ",
+      "total": 64500,
+      "online": 64500,
+      "genchi": 0,
+      "students": 3,
+      "allDone": true,
+      "hasIncomplete": false,
+      "breakdownText": "担当費30000+23h34500。大沢はるき/猪股千紘/藤光真奈=LM"
     },
     {
       "name": "徳永日向子",
@@ -2195,6 +3191,66 @@
       "allDone": false,
       "hasIncomplete": true,
       "breakdownText": "2/30 10:30~11:30 初回面談 1h 2000円"
+    },
+    {
+      "name": "内田悠太",
+      "ym": "2026-07",
+      "business": "白谷塾オンライン",
+      "total": 18500,
+      "online": 18500,
+      "genchi": 0,
+      "students": 3,
+      "allDone": true,
+      "hasIncomplete": false,
+      "breakdownText": "担当費10000+4h15m。生徒 髙木あずさ/田中杏=白谷オン"
+    },
+    {
+      "name": "内田悠太",
+      "ym": "2026-08",
+      "business": "白谷塾オンライン",
+      "total": 28000,
+      "online": 28000,
+      "genchi": 0,
+      "students": 3,
+      "allDone": true,
+      "hasIncomplete": false,
+      "breakdownText": "担当費10000+9h18000。高木あずさ/山名凜香=白谷オン"
+    },
+    {
+      "name": "片岡駿晴",
+      "ym": "2026-06",
+      "business": "ローカルメディ",
+      "total": 15600,
+      "online": 15600,
+      "genchi": 0,
+      "students": 1,
+      "allDone": true,
+      "hasIncomplete": false,
+      "breakdownText": ""
+    },
+    {
+      "name": "片岡駿晴",
+      "ym": "2026-07",
+      "business": "ローカルメディ",
+      "total": 9100,
+      "online": 9100,
+      "genchi": 0,
+      "students": 1,
+      "allDone": true,
+      "hasIncomplete": false,
+      "breakdownText": "作業3900+指導5200。生徒 永岡璃子=LM"
+    },
+    {
+      "name": "片岡駿晴",
+      "ym": "2026-08",
+      "business": "ローカルメディ",
+      "total": 10400,
+      "online": 10400,
+      "genchi": 0,
+      "students": 1,
+      "allDone": true,
+      "hasIncomplete": false,
+      "breakdownText": "8h。永岡璃子=LM"
     },
     {
       "name": "門脇孔明",
@@ -2341,6 +3397,126 @@
       "breakdownText": "担当生徒2人\n担当費10000円\nオンラインバイト16時間20800円\n"
     },
     {
+      "name": "門脇孔明",
+      "ym": "2026-05",
+      "business": "白谷塾オンライン",
+      "total": 33000,
+      "online": 33000,
+      "genchi": 0,
+      "students": 0,
+      "allDone": true,
+      "hasIncomplete": false,
+      "breakdownText": "オンラインチューターのみ"
+    },
+    {
+      "name": "門脇孔明",
+      "ym": "2026-06",
+      "business": "白谷塾オンライン",
+      "total": 34300,
+      "online": 34300,
+      "genchi": 0,
+      "students": 2,
+      "allDone": true,
+      "hasIncomplete": false,
+      "breakdownText": ""
+    },
+    {
+      "name": "門脇孔明",
+      "ym": "2026-07",
+      "business": "白谷塾オンライン",
+      "total": 33000,
+      "online": 33000,
+      "genchi": 0,
+      "students": 2,
+      "allDone": true,
+      "hasIncomplete": false,
+      "breakdownText": "担当費20000+オンライン授業10h13000"
+    },
+    {
+      "name": "門脇孔明",
+      "ym": "2026-08",
+      "business": "白谷塾オンライン",
+      "total": 38200,
+      "online": 38200,
+      "genchi": 0,
+      "students": 2,
+      "allDone": true,
+      "hasIncomplete": false,
+      "breakdownText": "担当費20000+14h18200。藤村百音/結城景太(英検)=白谷"
+    },
+    {
+      "name": "矢田部勘介",
+      "ym": "2026-05",
+      "business": "白谷塾オンライン",
+      "total": 1300,
+      "online": 1300,
+      "genchi": 0,
+      "students": 1,
+      "allDone": true,
+      "hasIncomplete": false,
+      "breakdownText": "体験中の担当生徒数1人、オンライン作業費1時間1300円\n0"
+    },
+    {
+      "name": "矢田部勘介",
+      "ym": "2026-06",
+      "business": "ローカルメディ",
+      "total": 28225,
+      "online": 28225,
+      "genchi": 0,
+      "students": 1,
+      "allDone": true,
+      "hasIncomplete": false,
+      "breakdownText": ""
+    },
+    {
+      "name": "矢田部勘介",
+      "ym": "2026-07",
+      "business": "ローカルメディ",
+      "total": 26875,
+      "online": 26875,
+      "genchi": 0,
+      "students": 2,
+      "allDone": true,
+      "hasIncomplete": false,
+      "breakdownText": "内訳金額の記載なし(合計のみ)"
+    },
+    {
+      "name": "矢田部勘介",
+      "ym": "2026-08",
+      "business": "ローカルメディ",
+      "total": 33400,
+      "online": 33400,
+      "genchi": 0,
+      "students": 2,
+      "allDone": true,
+      "hasIncomplete": false,
+      "breakdownText": "内訳金額の記載なし(合計のみ)。永岡璃子/一将冴=LM"
+    },
+    {
+      "name": "柳沼寿明",
+      "ym": "2026-07",
+      "business": "ローカルメディ",
+      "total": 7083,
+      "online": 7083,
+      "genchi": 0,
+      "students": 0,
+      "allDone": true,
+      "hasIncomplete": false,
+      "breakdownText": "授業方法説明50分1083+紹介費2人6000。生徒記載なし→講師DB判定"
+    },
+    {
+      "name": "柳沼寿明",
+      "ym": "2026-08",
+      "business": "白谷塾オンライン",
+      "total": 52021,
+      "online": 52021,
+      "genchi": 0,
+      "students": 3,
+      "allDone": true,
+      "hasIncomplete": false,
+      "breakdownText": "担当費30000+10h2m13021+紹介費9000。結城/柾/谷端(英検)=白谷"
+    },
+    {
       "name": "有川悠斗",
       "ym": "2025-06",
       "business": "白谷塾オンライン",
@@ -2461,138 +3637,6 @@
       "breakdownText": "現地バイト６時間7800円"
     },
     {
-      "name": "門脇孔明",
-      "ym": "2026-05",
-      "business": "白谷塾オンライン",
-      "total": 33000,
-      "online": 33000,
-      "genchi": 0,
-      "students": 0,
-      "allDone": true,
-      "hasIncomplete": false,
-      "breakdownText": "オンラインチューターのみ"
-    },
-    {
-      "name": "堤香代子",
-      "ym": "2026-05",
-      "business": "宮崎教室",
-      "total": 7200,
-      "online": 0,
-      "genchi": 7200,
-      "students": 0,
-      "allDone": true,
-      "hasIncomplete": false,
-      "breakdownText": "撮影バイト"
-    },
-    {
-      "name": "宮本諒人",
-      "ym": "2026-05",
-      "business": "白谷塾オンライン",
-      "total": 6900,
-      "online": 6900,
-      "genchi": 0,
-      "students": 0,
-      "allDone": true,
-      "hasIncomplete": false,
-      "breakdownText": "YouTube撮影、インタビュー"
-    },
-    {
-      "name": "水元小春",
-      "ym": "2026-05",
-      "business": "宮崎教室",
-      "total": 3900,
-      "online": 0,
-      "genchi": 3900,
-      "students": 0,
-      "allDone": true,
-      "hasIncomplete": false,
-      "breakdownText": "現地バイトのみ"
-    },
-    {
-      "name": "桑室泰享",
-      "ym": "2026-05",
-      "business": "ローカルメディ",
-      "total": 43541,
-      "online": 43541,
-      "genchi": 0,
-      "students": 0,
-      "allDone": true,
-      "hasIncomplete": false,
-      "breakdownText": "オンラインチューターのみ"
-    },
-    {
-      "name": "佐野心音",
-      "ym": "2026-05",
-      "business": "白谷塾オンライン",
-      "total": 11300,
-      "online": 11300,
-      "genchi": 0,
-      "students": 0,
-      "allDone": true,
-      "hasIncomplete": false,
-      "breakdownText": "オンラインチューターのみ"
-    },
-    {
-      "name": "松下飛海",
-      "ym": "2026-05",
-      "business": "白谷塾オンライン",
-      "total": 30150,
-      "online": 30150,
-      "genchi": 0,
-      "students": 0,
-      "allDone": true,
-      "hasIncomplete": false,
-      "breakdownText": "オンラインチューターのみ"
-    },
-    {
-      "name": "家根原宗佑",
-      "ym": "2026-05",
-      "business": "白谷塾オンライン",
-      "total": 36700,
-      "online": 36700,
-      "genchi": 0,
-      "students": 0,
-      "allDone": true,
-      "hasIncomplete": false,
-      "breakdownText": "オンラインチューター 兼 現地バイト"
-    },
-    {
-      "name": "矢田部勘介",
-      "ym": "2026-05",
-      "business": "白谷塾オンライン",
-      "total": 1300,
-      "online": 1300,
-      "genchi": 0,
-      "students": 1,
-      "allDone": true,
-      "hasIncomplete": false,
-      "breakdownText": "体験中の担当生徒数1人、オンライン作業費1時間1300円\n0"
-    },
-    {
-      "name": "梶加衣人",
-      "ym": "2026-05",
-      "business": "白谷塾オンライン",
-      "total": 14550,
-      "online": 14550,
-      "genchi": 0,
-      "students": 0,
-      "allDone": true,
-      "hasIncomplete": false,
-      "breakdownText": "オンラインチューターのみ"
-    },
-    {
-      "name": "湯淺祥平",
-      "ym": "2026-05",
-      "business": "白谷塾オンライン",
-      "total": 30800,
-      "online": 30800,
-      "genchi": 0,
-      "students": 0,
-      "allDone": true,
-      "hasIncomplete": false,
-      "breakdownText": "オンラインチューターのみ"
-    },
-    {
       "name": "有川悠斗",
       "ym": "2026-05",
       "business": "宮崎教室",
@@ -2605,112 +3649,64 @@
       "breakdownText": "現地バイトのみ"
     },
     {
-      "name": "田代汀",
-      "ym": "2026-05",
-      "business": "宮崎教室",
-      "total": 106600,
+      "name": "有川悠斗",
+      "ym": "2026-06",
+      "business": "白谷塾オンライン",
+      "total": 7800,
       "online": 0,
-      "genchi": 106600,
+      "genchi": 7800,
       "students": 0,
       "allDone": true,
       "hasIncomplete": false,
-      "breakdownText": "現地バイトのみ"
+      "breakdownText": "現地のみ"
     },
     {
-      "name": "藤山航",
-      "ym": "2026-05",
-      "business": "ローカルメディ",
-      "total": 127470,
-      "online": 127470,
-      "genchi": 0,
-      "students": 0,
-      "allDone": true,
-      "hasIncomplete": false,
-      "breakdownText": "担当生徒8名 体験中4人　担当費あり3人　担当費なし1人\n0"
-    },
-    {
-      "name": "山内碧泉",
-      "ym": "2026-05",
+      "name": "有川悠斗",
+      "ym": "2026-07",
       "business": "白谷塾オンライン",
-      "total": 34700,
-      "online": 34700,
-      "genchi": 0,
-      "students": 0,
-      "allDone": true,
-      "hasIncomplete": false,
-      "breakdownText": "オンラインチューター 兼 現地バイト"
-    },
-    {
-      "name": "塩田英資",
-      "ym": "2026-05",
-      "business": "白谷塾オンライン",
-      "total": 1300,
-      "online": 1300,
-      "genchi": 0,
-      "students": 0,
-      "allDone": true,
-      "hasIncomplete": false,
-      "breakdownText": "打ち合わせ"
-    },
-    {
-      "name": "大許真菜",
-      "ym": "2026-05",
-      "business": "白谷塾オンライン",
-      "total": 69650,
-      "online": 69650,
-      "genchi": 0,
-      "students": 0,
-      "allDone": true,
-      "hasIncomplete": false,
-      "breakdownText": "オンラインチューター 兼 現地バイト"
-    },
-    {
-      "name": "酒井未羽",
-      "ym": "2026-05",
-      "business": "白谷塾オンライン",
-      "total": 13000,
-      "online": 13000,
-      "genchi": 0,
-      "students": 0,
-      "allDone": true,
-      "hasIncomplete": false,
-      "breakdownText": "オンラインチューターのみ"
-    },
-    {
-      "name": "中山みさ",
-      "ym": "2026-05",
-      "business": "宮崎教室",
-      "total": 31850,
+      "total": 3900,
       "online": 0,
-      "genchi": 31850,
+      "genchi": 3900,
       "students": 0,
       "allDone": true,
       "hasIncomplete": false,
-      "breakdownText": "現地バイトのみ"
+      "breakdownText": "現地のみ 3h"
     },
     {
-      "name": "岩田泉樹",
-      "ym": "2026-05",
-      "business": "白谷塾オンライン",
-      "total": 24700,
-      "online": 24700,
-      "genchi": 0,
+      "name": "有川悠斗",
+      "ym": "2026-08",
+      "business": "宮崎教室",
+      "total": 15600,
+      "online": 0,
+      "genchi": 15600,
       "students": 0,
       "allDone": true,
       "hasIncomplete": false,
-      "breakdownText": "オンラインチューター 兼 現地バイト"
+      "breakdownText": "現地のみ12h"
     },
     {
-      "name": "伊地知隼",
-      "ym": "2026-05",
+      "name": "林舞玲",
+      "ym": "2026-07",
       "business": "白谷塾オンライン",
-      "total": 43500,
-      "online": 43500,
+      "total": 3900,
+      "online": 3900,
       "genchi": 0,
-      "students": 0,
+      "students": 1,
       "allDone": true,
       "hasIncomplete": false,
-      "breakdownText": "オンラインチューター 兼 現地バイト"
+      "breakdownText": "LM講師DB所属だが担当生徒 荻原宗義=白谷オン"
+    },
+    {
+      "name": "林舞玲",
+      "ym": "2026-08",
+      "business": "白谷塾オンライン",
+      "total": 15200,
+      "online": 15200,
+      "genchi": 0,
+      "students": 1,
+      "allDone": true,
+      "hasIncomplete": false,
+      "breakdownText": "担当費10000+4h5200。萩原宗義=英検→白谷"
     }
   ],
   "businessMonth": [
@@ -2845,9 +3841,9 @@
       "total": 314500
     },
     {
-      "business": "白谷塾オンライン",
+      "business": "ローカルメディ",
       "ym": "2026-05",
-      "total": 351550
+      "total": 171011
     },
     {
       "business": "宮崎教室",
@@ -2855,9 +3851,54 @@
       "total": 153450
     },
     {
-      "business": "ローカルメディ",
+      "business": "白谷塾オンライン",
       "ym": "2026-05",
-      "total": 171011
+      "total": 351550
+    },
+    {
+      "business": "ローカルメディ",
+      "ym": "2026-06",
+      "total": 250238
+    },
+    {
+      "business": "宮崎教室",
+      "ym": "2026-06",
+      "total": 197600
+    },
+    {
+      "business": "白谷塾オンライン",
+      "ym": "2026-06",
+      "total": 282300
+    },
+    {
+      "business": "ローカルメディ",
+      "ym": "2026-07",
+      "total": 297979
+    },
+    {
+      "business": "宮崎教室",
+      "ym": "2026-07",
+      "total": 234800
+    },
+    {
+      "business": "白谷塾オンライン",
+      "ym": "2026-07",
+      "total": 408896
+    },
+    {
+      "business": "ローカルメディ",
+      "ym": "2026-08",
+      "total": 251901
+    },
+    {
+      "business": "宮崎教室",
+      "ym": "2026-08",
+      "total": 179600
+    },
+    {
+      "business": "白谷塾オンライン",
+      "ym": "2026-08",
+      "total": 625066
     }
   ],
   "skipped": [
