@@ -3,7 +3,7 @@ import { NextRequest, NextResponse } from "next/server";
 export const dynamic = "force-dynamic";
 export const maxDuration = 60;
 
-const PAGES = ["/", "/leads", "/content", "/weekly-ad", "/instructors", "/status"];
+const PAGES = ["/", "/leads", "/ads", "/content", "/weekly-ad", "/instructors", "/status"];
 
 /**
  * 毎日決まった時刻に Vercel Cron から叩かれる（2本目・/api/cron/refresh の3分後）。

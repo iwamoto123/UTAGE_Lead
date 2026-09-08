@@ -21,7 +21,7 @@ export async function GET(req: NextRequest) {
 
   refreshPL();
   refreshContentKpi();
-  for (const tag of ["weekly-ad-reports", "campaign-master", "source-campaign-entries", "campaign-name-entries"]) {
+  for (const tag of ["weekly-ad-reports", "campaign-master", "source-campaign-entries", "campaign-name-entries", "meta-daily"]) {
     revalidateTag(tag, { expire: 0 });
   }
 
