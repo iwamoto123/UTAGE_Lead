@@ -21,6 +21,10 @@ const STALE_CHECK_DAYS = 7;
 /** 面談後検討中でこの日数以上動きがなければ放置とみなす */
 const CONSIDER_STALE_DAYS = 7;
 
+/** 日報が止まったと見なす日数。体験中は様子を見る余地がないので塾生より1日短い（CLAUDE.md） */
+const REPORT_GAP_TRIAL = 2;
+const REPORT_GAP_ENROLLED = 3;
+
 /**
  * Notionは、インテグレーションが参照権限を持たない先のリレーションを
  * 「プロパティは返すが中身は空」で返す。英検コース講師DBが未接続のままだと、
@@ -62,6 +66,10 @@ export interface Student {
   weekFocus: string;
   goal: string;
   todo: string;
+  /** line-monitorがNotionへ書き戻した日報の状況 */
+  reportStatus: string;
+  /** 日報（生徒側の発言）の最終提出日 */
+  reportLastDate: string | null;
   /** 体験開始日（なければ最終面談日）からの経過日数 */
   daysElapsed: number | null;
   trialDays: number;
@@ -177,7 +185,20 @@ export function buildAlerts(s: Omit<Student, "alerts" | "score">, today: Date): 
     a.push({ level: "orange", label: `面談から${s.daysElapsed}日フォローなし`, weight: 70 });
   }
 
-  // 7. 最終確認日の滞留
+  // 7. 日報が止まっている（line-monitorがNotionへ書き戻した内容を見る）
+  if (enrolled && s.reportLastDate) {
+    const gap = daysBetween(s.reportLastDate, today);
+    const limit = s.stage === "体験中" ? REPORT_GAP_TRIAL : REPORT_GAP_ENROLLED;
+    if (gap >= limit) {
+      a.push({
+        level: s.stage === "体験中" ? "red" : "orange",
+        label: `日報が${gap}日止まっています（最終 ${s.reportLastDate.slice(5)}）`,
+        weight: s.stage === "体験中" ? 88 : 72,
+      });
+    }
+  }
+
+  // 8. 最終確認日の滞留
   if (enrolled) {
     if (!s.lastCheck) {
       a.push({ level: "orange", label: "最終確認日が未記録", weight: 62 });
@@ -189,12 +210,12 @@ export function buildAlerts(s: Omit<Student, "alerts" | "score">, today: Date): 
     }
   }
 
-  // 8. 方針カードが空
+  // 9. 方針カードが空
   if (enrolled && !s.hasPolicy) {
     a.push({ level: "yellow", label: "方針カードが未記入", weight: 40 });
   }
 
-  // 9. 担当の有無が判定できない（英検コース講師DBが未接続）
+  // 10. 担当の有無が判定できない（英検コース講師DBが未接続）
   if (enrolled && s.teacherUnknown && s.teachers.length === 0) {
     a.push({ level: "yellow", label: "担当を確認できません（英検コース講師DBをNotionで接続してください）", weight: 45 });
   }
@@ -261,6 +282,8 @@ export function toCore(
     weekFocus: text(p["今週の重点"]),
     goal: text(p["今の目標"]),
     todo: text(p["対応しなければならないこと"]),
+    reportStatus: text(p["日報の状況"]).trim(),
+    reportLastDate: dateStart(p["日報最終提出日"]),
     daysElapsed: base ? daysBetween(base, today) : null,
     trialDays: trialDaysFor(courses),
   };
@@ -290,6 +313,8 @@ function mergeCore(primary: StudentCore, secondary: StudentCore): StudentCore {
     goal: primary.goal || secondary.goal,
     todo: primary.todo || secondary.todo,
     aspiration: primary.aspiration || secondary.aspiration,
+    reportStatus: primary.reportStatus || secondary.reportStatus,
+    reportLastDate: pickDate(primary.reportLastDate, secondary.reportLastDate),
     business: primary.business !== "その他" ? primary.business : secondary.business,
     courses: Array.from(new Set([...primary.courses, ...secondary.courses])),
     teachers: Array.from(new Set([...primary.teachers, ...secondary.teachers])),

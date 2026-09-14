@@ -153,7 +153,14 @@ function Row({ s }: { s: Student }) {
       </td>
 
       <td className="px-3 py-2.5 text-xs text-slate-600">
-        {s.weekFocus ? s.weekFocus.replace(/\n/g, " ").slice(0, 60) : <span className="text-slate-400">—</span>}
+        {s.reportStatus ? (
+          <div className="text-slate-700">{s.reportStatus}</div>
+        ) : (
+          <div className="text-slate-400">日報の記録なし</div>
+        )}
+        {s.weekFocus && (
+          <div className="mt-1 text-slate-500">重点: {s.weekFocus.replace(/\n/g, " ").slice(0, 50)}</div>
+        )}
       </td>
 
       <td className="px-3 py-2.5 text-xs text-slate-500">{s.business}</td>
@@ -232,7 +239,7 @@ export default function StudentsView({ students }: { students: Student[] }) {
               <th className="px-3 py-2 font-medium">手を打つ理由</th>
               <th className="px-3 py-2 font-medium">起点</th>
               <th className="px-3 py-2 font-medium">最終確認</th>
-              <th className="px-3 py-2 font-medium">今週の重点</th>
+              <th className="px-3 py-2 font-medium">日報・今週の重点</th>
               <th className="px-3 py-2 font-medium">事業</th>
             </tr>
           </thead>
