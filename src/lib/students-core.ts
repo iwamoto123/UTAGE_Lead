@@ -370,3 +370,79 @@ export function assembleStudents(
       return a.name.localeCompare(b.name, "ja");
     });
 }
+
+/* ---------------- 講師キャパ ---------------- */
+
+export const TEACHER_GROUPS = ["オンライン", "ローカルメディ", "英検"] as const;
+export type TeacherGroup = (typeof TEACHER_GROUPS)[number];
+
+export interface Teacher {
+  id: string;
+  url: string;
+  name: string;
+  group: TeacherGroup;
+  status: string | null;
+  capacity: string;
+  subjects: string;
+  confirmedDate: string | null;
+  assignedCount: number;
+  assignedNames: string[];
+}
+
+/** 見送りは一覧に出さない。休止は残して「今は増やせない」と分かるようにする */
+export function toTeacher(page: NotionPage, group: TeacherGroup): Teacher | null {
+  const p = page.properties;
+  const name = text(p["講師名"]) || text(p["名前"]) || text(p["氏名"]);
+  if (!name) return null;
+  const status = selectName(p["ステータス"]);
+  if (status === "見送り") return null;
+  return {
+    id: page.id,
+    url: notionPageUrl(page.id),
+    name,
+    group,
+    status,
+    capacity: text(p["対応可能キャパ"]).trim(),
+    subjects: text(p["二次添削可能科目"]).trim(),
+    confirmedDate: dateStart(p["キャパ確認日"]),
+    assignedCount: 0,
+    assignedNames: [],
+  };
+}
+
+/**
+ * 体験中・塾生の担当人数を講師へ載せる。
+ * 検討中はまだ任せていないので数えない。
+ */
+export function attachTeacherAssignments(teachers: Teacher[], students: Student[]): Teacher[] {
+  const byName = new Map<string, Teacher[]>();
+  const out = teachers.map((t) => ({ ...t, assignedCount: 0, assignedNames: [] as string[] }));
+  for (const t of out) {
+    const list = byName.get(t.name) ?? [];
+    list.push(t);
+    byName.set(t.name, list);
+  }
+
+  for (const s of students) {
+    if (s.stage !== "体験中" && s.stage !== "塾生") continue;
+    for (const n of s.teachers) {
+      const hits = byName.get(n);
+      if (!hits) continue;
+      for (const t of hits) {
+        if (t.assignedNames.includes(s.name)) continue;
+        t.assignedNames.push(s.name);
+        t.assignedCount = t.assignedNames.length;
+      }
+    }
+  }
+
+  return out.sort((a, b) => {
+    const ar = a.capacity ? 0 : 1;
+    const br = b.capacity ? 0 : 1;
+    if (ar !== br) return ar - br;
+    if (b.assignedCount !== a.assignedCount) return b.assignedCount - a.assignedCount;
+    const g = TEACHER_GROUPS.indexOf(a.group) - TEACHER_GROUPS.indexOf(b.group);
+    if (g !== 0) return g;
+    return a.name.localeCompare(b.name, "ja");
+  });
+}

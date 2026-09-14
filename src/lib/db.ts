@@ -91,6 +91,7 @@ export function refreshPL() {
   revalidateTag("monthly-pl", { expire: 0 });
   revalidateTag("funnel-data", { expire: 0 });
   revalidateTag("utage-daily-leads", { expire: 0 });
+  revalidateTag("students", { expire: 0 });
 }
 
 export function summarize(records: MonthlyPL[]): PLSummary {

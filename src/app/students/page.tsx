@@ -1,4 +1,4 @@
-import { getStudents } from "@/lib/students";
+import { getStudentsPageData } from "@/lib/students";
 import StudentsView from "@/components/students/StudentsView";
 
 export const revalidate = 600;
@@ -8,7 +8,7 @@ const LINE_MONITOR_URL =
   process.env.LINE_MONITOR_URL ?? "https://line-monitor.iwamototake2155.workers.dev/dashboard";
 
 export default async function StudentsPage() {
-  const students = await getStudents();
+  const { students, teachers, eikenAvailable } = await getStudentsPageData();
 
   return (
     <div className="space-y-5">
@@ -34,7 +34,7 @@ export default async function StudentsPage() {
         </div>
       </div>
 
-      <StudentsView students={students} />
+      <StudentsView students={students} teachers={teachers} eikenAvailable={eikenAvailable} />
     </div>
   );
 }

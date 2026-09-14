@@ -1,7 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import type { Student, AlertLevel } from "@/lib/students-core";
+import type { Student, AlertLevel, Teacher } from "@/lib/students-core";
 
 /**
  * 絞り込みはブラウザ側だけで行う。
@@ -29,6 +29,14 @@ const STAGE_STYLE: Record<string, string> = {
   塾生: "bg-emerald-50 text-emerald-700 border-emerald-200",
   検討中: "bg-slate-100 text-slate-600 border-slate-300",
 };
+
+const GROUP_STYLE: Record<string, string> = {
+  オンライン: "bg-blue-50 text-blue-700 border-blue-200",
+  ローカルメディ: "bg-emerald-50 text-emerald-700 border-emerald-200",
+  英検: "bg-violet-50 text-violet-700 border-violet-200",
+};
+
+const CAP_FILTERS = ["いま使う人", "回答あり", "未回答", "全員"] as const;
 
 function Chip({ children, className = "" }: { children: React.ReactNode; className?: string }) {
   return (
@@ -168,7 +176,132 @@ function Row({ s }: { s: Student }) {
   );
 }
 
-export default function StudentsView({ students }: { students: Student[] }) {
+function shortName(name: string): string {
+  return name.replace(/（[^）]*）/g, "").replace(/\([^)]*\)/g, "").replace(/\s+/g, " ").trim();
+}
+
+function TeacherCapacityPanel({
+  teachers,
+  eikenAvailable,
+}: {
+  teachers: Teacher[];
+  eikenAvailable: boolean;
+}) {
+  const [capFilter, setCapFilter] = useState<string>("いま使う人");
+  const answered = teachers.filter((t) => t.capacity).length;
+  const pending = teachers.length - answered;
+
+  const shown = useMemo(
+    () =>
+      teachers.filter((t) => {
+        if (capFilter === "回答あり") return Boolean(t.capacity);
+        if (capFilter === "未回答") return !t.capacity;
+        if (capFilter === "いま使う人") return Boolean(t.capacity) || t.assignedCount > 0;
+        return true;
+      }),
+    [teachers, capFilter]
+  );
+
+  return (
+    <div className="rounded border border-slate-200 bg-white">
+      <div className="flex flex-wrap items-center gap-2 border-b border-slate-200 px-4 py-3">
+        <div>
+          <div className="text-sm font-semibold text-slate-800">講師の対応キャパ</div>
+          <p className="mt-0.5 text-xs text-slate-500">
+            新しい生徒を任せるときの一覧です。正本は Notion の講師DBです。
+            {!eikenAvailable && " 英検コース講師DBが未接続のため、英検の講師は出ていません。"}
+          </p>
+        </div>
+        <div className="ml-auto flex flex-wrap items-center gap-2">
+          <Toggle items={CAP_FILTERS} current={capFilter} onChange={setCapFilter} />
+          <span className="text-xs text-slate-400">
+            表示 {shown.length} ／ 回答 {answered} ／ 未回答 {pending}
+          </span>
+        </div>
+      </div>
+
+      <div className="overflow-x-auto">
+        <table className="w-full min-w-[860px] text-left">
+          <thead className="border-b border-slate-200 bg-slate-50 text-xs text-slate-500">
+            <tr>
+              <th className="px-3 py-2 font-medium">講師</th>
+              <th className="px-3 py-2 font-medium">所属</th>
+              <th className="px-3 py-2 font-medium">担当中</th>
+              <th className="px-3 py-2 font-medium">これから対応できる人数</th>
+              <th className="px-3 py-2 font-medium">二次添削・得意</th>
+              <th className="px-3 py-2 font-medium">確認日</th>
+            </tr>
+          </thead>
+          <tbody>
+            {shown.map((t) => (
+              <tr key={t.id} className="border-b border-slate-100 align-top hover:bg-slate-50">
+                <td className="px-3 py-2.5">
+                  <a
+                    href={t.url}
+                    target="_blank"
+                    rel="noreferrer"
+                    title={t.name}
+                    className="font-medium text-slate-900 hover:text-[#458BC3] hover:underline"
+                  >
+                    {shortName(t.name)}
+                  </a>
+                  {t.status && t.status !== "稼働中" && (
+                    <div className="mt-1">
+                      <Chip className="bg-slate-100 text-slate-500 border-slate-200">{t.status}</Chip>
+                    </div>
+                  )}
+                </td>
+                <td className="px-3 py-2.5">
+                  <Chip className={GROUP_STYLE[t.group] ?? "bg-slate-100 text-slate-600 border-slate-300"}>
+                    {t.group}
+                  </Chip>
+                </td>
+                <td className="px-3 py-2.5 text-sm text-slate-700">
+                  <div className="tabular-nums">{t.assignedCount}人</div>
+                  {t.assignedNames.length > 0 && (
+                    <div className="mt-0.5 text-xs text-slate-400">
+                      {t.assignedNames.map(shortName).join("・")}
+                    </div>
+                  )}
+                </td>
+                <td className="px-3 py-2.5 text-sm">
+                  {t.capacity ? (
+                    <span className="text-slate-700">{t.capacity}</span>
+                  ) : (
+                    <span className="text-amber-700">未回答</span>
+                  )}
+                </td>
+                <td className="px-3 py-2.5 text-xs text-slate-600">
+                  {t.subjects || <span className="text-slate-400">—</span>}
+                </td>
+                <td className="whitespace-nowrap px-3 py-2.5 text-sm text-slate-600">
+                  {t.confirmedDate ? t.confirmedDate.slice(5) : <span className="text-slate-400">—</span>}
+                </td>
+              </tr>
+            ))}
+            {shown.length === 0 && (
+              <tr>
+                <td colSpan={6} className="px-3 py-8 text-center text-sm text-slate-400">
+                  該当する講師はいません
+                </td>
+              </tr>
+            )}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  );
+}
+
+export default function StudentsView({
+  students,
+  teachers,
+  eikenAvailable,
+}: {
+  students: Student[];
+  teachers: Teacher[];
+  eikenAvailable: boolean;
+}) {
   const [stage, setStage] = useState<string>("すべて");
   const [business, setBusiness] = useState<string>("すべて");
 
@@ -219,10 +352,12 @@ export default function StudentsView({ students }: { students: Student[] }) {
             ))}
           </div>
           <p className="mt-2 text-xs text-rose-700">
-            担当が決まらないと勉強計画面談が組めません。講師を決めてNotionの担当講師に入れてください。
+            担当が決まらないと勉強計画面談が組めません。下のキャパ表を見て、Notionの担当講師に入れてください。
           </p>
         </div>
       )}
+
+      <TeacherCapacityPanel teachers={teachers} eikenAvailable={eikenAvailable} />
 
       <div className="flex flex-wrap items-center gap-2">
         <Toggle items={STAGES} current={stage} onChange={setStage} />

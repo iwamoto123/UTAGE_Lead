@@ -1,13 +1,22 @@
 import { unstable_cache } from "next/cache";
 import { notion } from "./notion";
-import { assembleStudents, text, type NotionPage, type Student } from "./students-core";
+import {
+  assembleStudents,
+  attachTeacherAssignments,
+  text,
+  toTeacher,
+  type NotionPage,
+  type Student,
+  type Teacher,
+  type TeacherGroup,
+} from "./students-core";
 
 /**
  * 生徒ダッシュボードのデータ取得。
  * 判定ロジックは students-core.ts 側にある（devサーバーなしで確認できるように分けてある）。
  */
 
-export type { Student, StudentAlert, AlertLevel, Stage } from "./students-core";
+export type { Student, StudentAlert, AlertLevel, Stage, Teacher, TeacherGroup } from "./students-core";
 
 const CACHE_TTL = parseInt(process.env.CACHE_TTL_SECONDS ?? "600", 10);
 
@@ -34,45 +43,74 @@ export async function queryAll(dataSourceId: string): Promise<NotionPage[]> {
   return out;
 }
 
+const TEACHER_DS: { id: string; group: TeacherGroup }[] = [
+  { id: STUDENT_DS.teacherOnline, group: "オンライン" },
+  { id: STUDENT_DS.teacherLocalmedi, group: "ローカルメディ" },
+  { id: STUDENT_DS.teacherEiken, group: "英検" },
+];
+
 /**
- * 講師DBのページID → 氏名。
+ * 講師DBのページID → 氏名、とキャパ用の講師一覧。
  *
  * Notionは参照権限のないDBへのリレーションを「プロパティは返すが中身は空」で返す。
  * 英検コース講師DBを読めたかどうかも一緒に返し、読めないときは
  * 英検コース生を「担当未設定」と誤判定しないようにする。
  */
+export async function fetchTeachers(): Promise<{
+  names: Map<string, string>;
+  eikenAvailable: boolean;
+  teachers: Teacher[];
+}> {
+  const names = new Map<string, string>();
+  const teachers: Teacher[] = [];
+  let eikenAvailable = true;
+
+  for (const { id, group } of TEACHER_DS) {
+    try {
+      for (const page of await queryAll(id)) {
+        const name =
+          text(page.properties["講師名"]) || text(page.properties["名前"]) || text(page.properties["氏名"]);
+        if (name) names.set(page.id, name);
+        const teacher = toTeacher(page, group);
+        if (teacher) teachers.push(teacher);
+      }
+    } catch {
+      // Notionでこのインテグレーションに接続されていないDB
+      if (group === "英検") eikenAvailable = false;
+    }
+  }
+  return { names, eikenAvailable, teachers };
+}
+
 export async function fetchTeacherNames(): Promise<{
   names: Map<string, string>;
   eikenAvailable: boolean;
 }> {
-  const names = new Map<string, string>();
-  let eikenAvailable = true;
-
-  for (const ds of [STUDENT_DS.teacherOnline, STUDENT_DS.teacherLocalmedi, STUDENT_DS.teacherEiken]) {
-    try {
-      for (const page of await queryAll(ds)) {
-        const name =
-          text(page.properties["講師名"]) || text(page.properties["名前"]) || text(page.properties["氏名"]);
-        if (name) names.set(page.id, name);
-      }
-    } catch {
-      // Notionでこのインテグレーションに接続されていないDB
-      if (ds === STUDENT_DS.teacherEiken) eikenAvailable = false;
-    }
-  }
+  const { names, eikenAvailable } = await fetchTeachers();
   return { names, eikenAvailable };
 }
 
-async function _fetchStudents(): Promise<Student[]> {
-  const [teachers, taiken, jukusei] = await Promise.all([
-    fetchTeacherNames(),
+export type StudentsPageData = { students: Student[]; teachers: Teacher[]; eikenAvailable: boolean };
+
+async function _fetchStudentsPage(): Promise<StudentsPageData> {
+  const [pack, taiken, jukusei] = await Promise.all([
+    fetchTeachers(),
     queryAll(STUDENT_DS.taiken),
     queryAll(STUDENT_DS.jukusei),
   ]);
-  return assembleStudents(taiken, jukusei, teachers.names, new Date(), teachers.eikenAvailable);
+  const students = assembleStudents(taiken, jukusei, pack.names, new Date(), pack.eikenAvailable);
+  return {
+    students,
+    teachers: attachTeacherAssignments(pack.teachers, students),
+    eikenAvailable: pack.eikenAvailable,
+  };
 }
 
-export const getStudents = unstable_cache(_fetchStudents, ["students"], {
+export const getStudentsPageData = unstable_cache(_fetchStudentsPage, ["students"], {
   revalidate: CACHE_TTL,
   tags: ["students"],
 });
+
+export async function getStudents(): Promise<Student[]> {
+  return (await getStudentsPageData()).students;
+}
