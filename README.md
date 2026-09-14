@@ -26,6 +26,22 @@ npm run dev
 
 - `/` — PL ダッシュボード（事業タブ、期間切替、KPI、月次推移、損益計算書テーブル）
 - `/status` — 入力状況モニター（事業×月のマトリクス、未提出判定）
+- `/students` — 生徒ダッシュボード（手を打つ理由の順に並ぶ。担当講師が未設定の生徒が最上段）
+
+## 動作確認（devサーバーは起動しない）
+
+Turbopackのdevサーバーはメモリを使い切って Mac が落ちるため、確認はCLIで行う。
+
+```bash
+npx tsc --noEmit                 # 型
+npx eslint src/lib/students.ts   # 書式
+npm run check:students           # 生徒ダッシュボードの中身（Notionから読むだけ）
+npm run check:students -- --all  # 全員表示
+```
+
+画面の見た目はVercelのプレビューデプロイで確認する。どうしてもローカルで起動する場合は
+`npm run dev`（webpack＋ソースマップ無効＋ヒープ2GB上限）。Turbopack版は `npm run dev:turbo`。
+作業後は `.next`（600MB前後まで育つ）を削除しておく。
 
 ## キャッシュ運用
 

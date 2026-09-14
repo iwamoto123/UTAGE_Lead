@@ -3,10 +3,12 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "NODE_OPTIONS='--max-old-space-size=2048' next dev --webpack --disable-source-maps",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "dev:turbo": "NODE_OPTIONS='--max-old-space-size=3072' next dev --disable-source-maps",
+    "check:students": "npx --yes tsx@4 scripts/check-students.ts"
   },
   "dependencies": {
     "@notionhq/client": "^5.22.0",

@@ -6,6 +6,7 @@ import { usePathname } from "next/navigation";
 
 const NAV_ITEMS = [
   { href: "/", label: "月次PL" },
+  { href: "/students", label: "生徒" },
   { href: "/leads", label: "リード獲得" },
   { href: "/ads", label: "広告レポート" },
   { href: "/weekly-ad", label: "週次広告" },
