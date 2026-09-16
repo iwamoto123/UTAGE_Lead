@@ -43,6 +43,26 @@ npm run check:students -- --all  # 全員表示
 `npm run dev`（webpack＋ソースマップ無効＋ヒープ2GB上限）。Turbopack版は `npm run dev:turbo`。
 作業後は `.next`（600MB前後まで育つ）を削除しておく。
 
+## コンテンツKPI（`/content`）の数値の入れ方
+
+| 項目 | 入れ方 |
+|---|---|
+| 再生数・サムネCTR・視聴者維持率・尺 | `python3 scripts/upsert-youtube-kpi.py`（youtube-ctr の取得結果から） |
+| LINE追加数 | `python3 scripts/sync-youtube-line-adds.py --write`（UTAGEの登録経路ラベルから数え直す） |
+| 経路キー | 人が入れる。UTAGE「登録経路」画面のラベル名をそのままコピーする |
+
+LINE追加数は**経路キーの完全一致**でしか数えない。動画タイトルとラベル名のあいまい一致で
+入れていたころ、数IAの行に数IIBCのラベルが入って同じ登録者を2本ぶん数えていた（2026-09-16に修正）。
+
+```bash
+python3 scripts/sync-youtube-line-adds.py                   # 差分を見る
+python3 scripts/sync-youtube-line-adds.py --write           # 反映する
+python3 scripts/sync-youtube-line-adds.py --refresh-labels  # ラベル一覧を取り直す（10分ほど）
+```
+
+経路キーが空の行・UTAGEに無いラベルの行は書き換えず、最後に候補付きで一覧に出る。
+新しい動画を出したらUTAGEでラベルを作り、その名前を経路キーに貼ってから実行する。
+
 ## キャッシュ運用
 
 - Notion API は10分キャッシュ（変更可）

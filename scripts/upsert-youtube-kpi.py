@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""YouTube動画別KPI（再生数・サムネCTR・視聴者維持率・LINE追加数）を Notion の
+"""YouTube動画別KPI（再生数・サムネCTR・視聴者維持率）を Notion の
 「YouTube KPI」DBに流し込む。動画タイトル＋公開日で突き合わせて更新／新規作成する。
 
   python3 scripts/upsert-youtube-kpi.py [--dry]
@@ -8,15 +8,16 @@
   youtube-ctr/all_videos.json                     動画・再生数
   youtube-ctr/ctr_summary.json                    サムネCTR（Reporting API）
   youtube-ctr/retention/<期間>.json               視聴者維持率（Analytics API）
-  scratchpad の line_tracking.json                UTAGE 登録経路別のLINE追加数
+
+LINE追加数と経路キーはここでは触らない。動画タイトルとUTAGEのラベル名のあいまい一致で
+入れていたころ、数IAの行に数IIBCのラベルが入って同じ登録者を2本ぶん数えていた。
+いまは scripts/sync-youtube-line-adds.py が経路キーの完全一致で数え直す。
 """
-import json, os, re, sys, unicodedata, urllib.request
-from difflib import SequenceMatcher
+import json, re, sys, urllib.request
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
 YC = ROOT / "youtube-ctr"
-SC = Path("/private/tmp/claude-501/-Users-takeshi-workspace-works/cea57ebc-562f-4b24-aee4-9344ab807c30/scratchpad/yt")
 DS = "4456ac78-5543-43a9-8078-a74f61705bed"
 MEASURED = "2026-08-31"
 DRY = "--dry" in sys.argv
@@ -45,15 +46,6 @@ def api(method, path, body=None):
         return json.load(r)
 
 
-def norm(s):
-    s = unicodedata.normalize("NFKC", s)
-    for _ in range(2):
-        s = re.sub(r"^\s*(たけ|白|たけちゃん)\s*", "", s)
-        s = re.sub(r"^\s*\d{1,2}/\d{1,2}\s*[（(]?[月火水木金土日]?[）)]?\s*", "", s)
-    s = re.sub(r"[\s　]", "", s)
-    return re.sub(r"[!！?？。、,.・…“”\"'’‘\-—ー~〜:：/]", "", s).lower()
-
-
 def sec(d):
     m = re.match(r"(?:(\d+)h)?(?:(\d+)m)?(?:(\d+)s)?", d or "")
     h, mi, s = (int(x) if x else 0 for x in m.groups())
@@ -64,32 +56,7 @@ def build_rows():
     av = json.loads((YC / "all_videos.json").read_text())
     ctr = json.loads((YC / "ctr_summary.json").read_text())
     ret = json.loads((YC / "retention/2026-07-01_2026-08-31.json").read_text())
-    # UTAGEの登録経路データは一時ファイル。無ければ LINE追加数 は触らず、Notion の値をそのまま残す
-    tf = SC / "line_tracking.json"
-    tr = json.loads(tf.read_text()) if tf.exists() else None
-
     retmap = {vid: d for ch in ret.values() for vid, d in ch["videos"].items()}
-    adds = {}
-    for src in (tr["sources"] if tr else []):
-        for name, n in src["rows"]:
-            if name.startswith("*"):
-                continue
-            k = norm(name)
-            if n >= adds.get(k, (0, ""))[0]:
-                adds[k] = (n, name)
-
-    def match(title):
-        if tr is None:
-            return (None, None)      # 触らない
-        t = norm(title)
-        best = (0, "")
-        for k, (n, orig) in adds.items():
-            if not k:
-                continue
-            a, b = (t, k) if len(t) <= len(k) else (k, t)
-            if ((len(a) >= 12 and a in b) or SequenceMatcher(None, t, k).ratio() >= 0.72) and n >= best[0]:
-                best = (n, orig)
-        return best
 
     rows, seen = [], set()
     for ch in av.values():
@@ -102,13 +69,12 @@ def build_rows():
             seen.add(key)
             c = ctr.get(v["id"])
             r = retmap.get(v["id"])
-            n, route = match(v["title"])
             rows.append({
                 "title": v["title"], "date": v["date"], "channel": CHANNEL.get(ch["channel"]),
                 "url": f"https://www.youtube.com/watch?v={v['id']}", "views": v["views"],
                 "ctr": c["ctr"] if c else None,
                 "retention": (r["avg_pct"] / 100) if r and r.get("avg_pct") is not None else None,
-                "adds": n, "route": route, "dur": sec(v["dur"]),
+                "dur": sec(v["dur"]),
             })
     rows.sort(key=lambda r: r["date"])
     return rows
@@ -145,10 +111,6 @@ def props(r):
         "尺（秒）": num(r.get("dur")),
         "計測日": {"date": {"start": MEASURED}},
     }
-    if r["adds"] is not None:      # 経路データがあるときだけ上書きする
-        p["LINE追加数"] = num(r["adds"])
-        p["経路キー"] = {"rich_text": ([{"type": "text", "text": {"content": r["route"][:2000]}}]
-                                     if r["route"] else [])}
     return p
 
 
