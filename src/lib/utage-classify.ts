@@ -12,9 +12,15 @@ export const ACCOUNT_CATEGORIES: Record<string, { category: RouteCategory; busin
   "NpJjwohj4a8s": { category: "メタ広告", business: "白谷塾オンライン" },
   "xVMnVBF3fzuI": { category: "メタ広告", business: "白谷塾オンライン" },
   "DS7H8oI4ZEI0": { category: "メタ広告", business: "白谷塾オンライン" },
-  "Zp6OhqYDlg9i": { category: "メタ広告", business: "白谷塾オンライン" },
-  "2JFOhbEZJBSs": { category: "メタ広告", business: "白谷塾オンライン" },
+  "Zp6OhqYDlg9i": { category: "メタ広告", business: "白谷塾オンライン", note: "R7の共テ100日" },
+  "2JFOhbEZJBSs": { category: "メタ広告", business: "白谷塾オンライン", note: "R7の9月模試" },
   "Z0kJVSw022ed": { category: "メタ広告", business: "白谷塾オンライン" },
+  // R8のキャンペーン・短期プログラム（LPごとにシナリオを分けているのでシナリオ単位で分類する）
+  "Y9hmrW7DxeTE": { category: "メタ広告", business: "白谷塾オンライン", note: "共テ残り100日 R8" },
+  "3V4vQCQKqrfp": { category: "メタ広告", business: "白谷塾オンライン", note: "9月模試 集中対策 R8" },
+  "OXFDHR6CQmSB": { category: "メタ広告", business: "白谷塾オンライン", note: "英検逆転コース R8" },
+  "FyE8DWj4hDGJ": { category: "メタ広告", business: "白谷塾オンライン", note: "夏期講習 R8" },
+  "n99EYdMfgwxy": { category: "メタ広告", business: "白谷塾オンライン", note: "総体後無料Zoom相談" },
   // 混在（シナリオ単位で分類）
   "7qQJ38rzLtbM": { category: "メタ広告", business: "白谷塾オンライン", note: "混在: シナリオ単位で分類" },
   "PjocL14v2u6j": { category: "メタ広告", business: "ローカルメディ", note: "混在: シナリオ単位で分類" },

@@ -26,6 +26,11 @@ export const LEAD_ACCOUNT_SECTIONS: LeadAccountSection[] = [
   {
     title: "R8 白谷塾オンライン教室 キャンペーン・短期講習",
     accounts: [
+      { id: "Y9hmrW7DxeTE", name: "共テ残り100日プログラム｜R8 白谷塾", routeLabel: "メタ広告/公式LINE", expectedRoutes: ["メタ広告", "公式LINE"] },
+      { id: "3V4vQCQKqrfp", name: "【R8】9月模試 集中対策プログラム｜白谷塾", routeLabel: "メタ広告/公式LINE", expectedRoutes: ["メタ広告", "公式LINE"] },
+      { id: "OXFDHR6CQmSB", name: "英検逆転コース【白谷塾オンライン教室】", routeLabel: "メタ広告/YouTube", expectedRoutes: ["メタ広告", "YouTube自然流入", "公式LINE"] },
+      { id: "FyE8DWj4hDGJ", name: "夏期講習【白谷塾オンライン教室R8】", routeLabel: "メタ広告/公式LINE", expectedRoutes: ["メタ広告", "公式LINE"] },
+      { id: "n99EYdMfgwxy", name: "総体後無料Zoom相談｜白谷塾オンライン", routeLabel: "メタ広告のみ", expectedRoutes: ["メタ広告"] },
       { id: "xVMnVBF3fzuI", name: "白谷塾オンライン教室【1月進研模試対策】", routeLabel: "メタ広告のみ", expectedRoutes: ["メタ広告"] },
       { id: "NpJjwohj4a8s", name: "2月スタートダッシュプログラム【白谷塾】", routeLabel: "メタ広告のみ", expectedRoutes: ["メタ広告"] },
       { id: "cFwIiZpTXRrQ", name: "【浪人生用LINE】白谷塾オンライン教室", routeLabel: "メタ広告のみ", expectedRoutes: ["メタ広告"] },
