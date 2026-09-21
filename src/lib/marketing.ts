@@ -95,7 +95,8 @@ async function fetchConsultations(): Promise<ConsultationRow[]> {
     const campaignName = campaignRel.length > 0
       ? (campaignMap.get(campaignRel[0].id)?.name ?? "")
       : "";
-    const trialStatuses = ["体験中", "塾生", "元塾生"];
+    // 短期プログラム実施中も体験到達として数える（2026-09にステータスを分離した）
+    const trialStatuses = ["体験中", "塾生", "元塾生", "9月のプログラム実施中", "残り100日プログラム実施中"];
     const trialResults = ["体験後入塾", "体験後お断り", "他の塾も体験後に最終決定"];
     const resultIsTrial = trialStatuses.includes(status) || trialResults.includes(result);
     return {

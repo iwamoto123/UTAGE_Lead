@@ -2,6 +2,7 @@
 
 import { useMemo, useState } from "react";
 import type { Student, AlertLevel, Teacher } from "@/lib/students-core";
+import { needsContinuationWatch, TRIAL_DAYS_PROGRAM } from "@/lib/students-core";
 
 /**
  * 絞り込みはブラウザ側だけで行う。
@@ -115,6 +116,9 @@ function Row({ s }: { s: Student }) {
               {c}
             </Chip>
           ))}
+          {s.trialDays === TRIAL_DAYS_PROGRAM && (
+            <Chip className="border-[#DF8D33] bg-orange-50 text-[#b86a14]">短期プログラム・指導3週間</Chip>
+          )}
         </div>
       </td>
 
@@ -154,6 +158,16 @@ function Row({ s }: { s: Student }) {
               : "—"}
         </div>
         <div className="text-xs text-slate-400">{s.daysElapsed !== null ? `${s.daysElapsed}日経過` : "日付なし"}</div>
+        {s.trialDays === TRIAL_DAYS_PROGRAM && (
+          <div className={`mt-0.5 text-xs ${needsContinuationWatch(s) ? "font-semibold text-rose-700" : "text-[#b86a14]"}`}>
+            {s.continuationOn
+              ? `指導期間 3週間 ／ 継続確認 ${s.continuationOn.slice(5)}`
+              : "指導期間 3週間 ／ 継続確認の起点なし"}
+            {s.trialStart && s.daysElapsed !== null && s.daysElapsed < s.trialDays
+              ? ` あと${s.trialDays - s.daysElapsed}日`
+              : ""}
+          </div>
+        )}
       </td>
 
       <td className="whitespace-nowrap px-3 py-2.5 text-sm text-slate-600">
@@ -321,13 +335,22 @@ export default function StudentsView({
     () => students.filter((s) => s.alerts.some((a) => a.label.startsWith("今日が"))),
     [students]
   );
+  const continuation = useMemo(
+    () => students.filter((s) => needsContinuationWatch(s)),
+    [students]
+  );
   const red = useMemo(() => students.filter((s) => s.alerts[0]?.level === "red"), [students]);
 
   return (
     <div className="space-y-5">
-      <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
+      <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-5">
         <Stat label="担当が決まっていない" value={noTeacher.length} tone={noTeacher.length > 0 ? "red" : "ok"} />
         <Stat label="今日が継続確認・節目" value={milestone.length} tone={milestone.length > 0 ? "orange" : "ok"} />
+        <Stat
+          label="短期プログラムの継続確認"
+          value={continuation.length}
+          tone={continuation.length > 0 ? "red" : "ok"}
+        />
         <Stat label="要対応（赤）" value={red.length} tone={red.length > 0 ? "red" : "ok"} />
         <Stat label="体験中・塾生・検討中" value={students.length} tone="plain" />
       </div>
@@ -353,6 +376,72 @@ export default function StudentsView({
           </div>
           <p className="mt-2 text-xs text-rose-700">
             担当が決まらないと勉強計画面談が組めません。下のキャパ表を見て、Notionの担当講師に入れてください。
+          </p>
+        </div>
+      )}
+
+      {milestone.length > 0 && (
+        <div className="rounded border border-amber-300 bg-amber-50 px-4 py-3">
+          <div className="text-sm font-semibold text-amber-900">今日が継続確認・節目の生徒</div>
+          <div className="mt-1.5 flex flex-wrap gap-2">
+            {milestone.map((s) => {
+              const todayAlert = s.alerts.find((a) => a.label.startsWith("今日が"));
+              return (
+                <a
+                  key={s.id}
+                  href={s.url}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="rounded border border-amber-400 bg-white px-2 py-1 text-sm text-amber-900 hover:bg-amber-100"
+                >
+                  {s.name}
+                  <span className="ml-1 text-xs text-amber-600">
+                    {todayAlert?.label.replace(/^今日が/, "") ?? `${s.daysElapsed ?? "?"}日目`}
+                  </span>
+                </a>
+              );
+            })}
+          </div>
+          <p className="mt-2 text-xs text-amber-800">
+            今日手を打つ相手です。継続確認なら結果をNotionに入れ、節目なら日報と個別指導の日程を見てください。
+          </p>
+        </div>
+      )}
+
+      {continuation.length > 0 && (
+        <div className="rounded border border-rose-200 bg-rose-50 px-4 py-3">
+          <div className="text-sm font-semibold text-rose-800">
+            短期プログラムの継続確認が必要です（指導開始日から3週間）
+          </div>
+          <div className="mt-1.5 flex flex-wrap gap-2">
+            {continuation.map((s) => {
+              const left =
+                s.trialStart && s.daysElapsed !== null ? s.trialDays - s.daysElapsed : null;
+              const due = s.continuationOn ? s.continuationOn.slice(5) : "起点なし";
+              const when =
+                left === null
+                  ? "指導開始日なし"
+                  : left > 0
+                    ? `あと${left}日・${due}`
+                    : left === 0
+                      ? `今日・${due}`
+                      : `${-left}日超過・${due}`;
+              return (
+                <a
+                  key={s.id}
+                  href={s.url}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="rounded border border-rose-300 bg-white px-2 py-1 text-sm text-rose-700 hover:bg-rose-100"
+                >
+                  {s.name}
+                  <span className="ml-1 text-xs text-rose-400">{when}</span>
+                </a>
+              );
+            })}
+          </div>
+          <p className="mt-2 text-xs text-rose-700">
+            短期プログラム（9月・共テ残り100日）は、指導開始日（体験開始日）から3週間が指導期間です。その日に継続を確認し、結果が入るまで赤のまま残ります。
           </p>
         </div>
       )}

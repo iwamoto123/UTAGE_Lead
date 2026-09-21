@@ -37,13 +37,14 @@ async function main() {
     process.exit(1);
   }
 
-  const { assembleStudents, attachTeacherAssignments } = await import("../src/lib/students-core.ts");
-  const { queryAll, fetchTeachers, STUDENT_DS } = await import("../src/lib/students.ts");
+  const { assembleStudents, attachTeacherAssignments, needsContinuationWatch } = await import("../src/lib/students-core.ts");
+  const { queryAll, fetchTeachers, fetchCampaignNames, STUDENT_DS } = await import("../src/lib/students.ts");
 
-  const [pack, taiken, jukusei] = await Promise.all([
+  const [pack, taiken, jukusei, campaigns] = await Promise.all([
     fetchTeachers(),
     queryAll(STUDENT_DS.taiken),
     queryAll(STUDENT_DS.jukusei),
+    fetchCampaignNames(),
   ]);
 
   if (!pack.eikenAvailable) {
@@ -51,23 +52,26 @@ async function main() {
   }
 
   const today = new Date();
-  const students = assembleStudents(taiken, jukusei, pack.names, today, pack.eikenAvailable);
+  const students = assembleStudents(taiken, jukusei, pack.names, today, pack.eikenAvailable, campaigns);
   const teachers = attachTeacherAssignments(pack.teachers, students);
 
   const noTeacher = students.filter((s) => s.alerts.some((a) => a.label.startsWith("担当講師が未設定")));
   const milestone = students.filter((s) => s.alerts.some((a) => a.label.startsWith("今日が")));
+  const continuation = students.filter((s) => needsContinuationWatch(s));
   const red = students.filter((s) => s.alerts[0]?.level === "red");
 
   const jst = new Date(today.getTime() + 9 * 3600_000).toISOString().slice(0, 10);
   console.log(`\n生徒ダッシュボード（${jst} 時点）`);
-  console.log(`  対象 ${students.length}名 ／ 担当未設定 ${noTeacher.length} ／ 今日が節目 ${milestone.length} ／ 赤 ${red.length}`);
+  console.log(`  対象 ${students.length}名 ／ 担当未設定 ${noTeacher.length} ／ 今日が節目 ${milestone.length} ／ 短期プログラムの継続確認 ${continuation.length} ／ 赤 ${red.length}`);
   console.log(`  講師 ${teachers.length}名 ／ キャパ回答 ${teachers.filter((t) => t.capacity).length} ／ 未回答 ${teachers.filter((t) => !t.capacity).length}\n`);
 
   const limit = process.argv.includes("--all") ? students.length : 20;
   for (const s of students.slice(0, limit)) {
     const teacher = s.teachers.length ? s.teachers.join("・") : s.teacherUnknown ? "確認できません" : "未設定";
     const days = s.daysElapsed !== null ? `${s.daysElapsed}日` : "—";
-    console.log(`${s.name.padEnd(8, "　")} ${s.stage.padEnd(4)} ${days.padStart(5)}  担当:${teacher}`);
+    const program = s.trialDays === 21 && s.continuationOn ? `  継続確認:${s.continuationOn}` : s.trialDays === 21 ? "  継続確認:起点なし" : "";
+    const tanki = s.trialDays === 21 ? "  短期3週間" : "";
+    console.log(`${s.name.padEnd(8, "　")} ${s.stage.padEnd(4)} ${days.padStart(5)}  担当:${teacher}${tanki}${program}`);
     for (const a of s.alerts) {
       console.log(`    ${COLOR[a.level]}● ${a.label}${RESET}`);
     }

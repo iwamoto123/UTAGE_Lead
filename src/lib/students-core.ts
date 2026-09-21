@@ -7,13 +7,45 @@ import { idToBusiness, notionPageUrl } from "./notion";
  * そのまま呼び出して結果を確かめられる（devサーバーを起動しなくてよい）。
  */
 
-/** 無料体験の日数。再受験・編入は2週間、ほかは1週間（CLAUDE.md「無料体験の期間」） */
-export const TRIAL_DAYS_LONG = 14;
+/** 無料体験・プログラム指導の日数（CLAUDE.md「無料体験の期間」） */
+export const TRIAL_DAYS_PROGRAM = 21; // 短期プログラム（9月・共テ残り100日）の指導期間
+export const TRIAL_DAYS_LONG = 14; // 再受験・編入
 export const TRIAL_DAYS_SHORT = 7;
 
-/** 節目チェックの日（体験開始日からの経過日数） */
+/** 節目チェックの日（体験開始日／指導開始日からの経過日数） */
 const MILESTONES_SHORT = [1, 3, 5, 7];
 const MILESTONES_LONG = [1, 3, 7, 10, 14];
+const MILESTONES_PROGRAM = [1, 3, 7, 14, 21];
+
+/**
+ * 短期プログラムの指導中を表すステータス（CLAUDE.md「ステータスと結果の読み方」）。
+ * 2026-09にNotionの「体験中」から分離した。段階としては体験中と同じ扱いにする。
+ */
+export const PROGRAM_STATUSES = ["9月のプログラム実施中", "残り100日プログラム実施中"] as const;
+
+export function isProgramStatus(status: string): boolean {
+  return (PROGRAM_STATUSES as readonly string[]).includes(status);
+}
+
+/** 流入企画が短期プログラム（9月／共テ残り100日など、指導期間3週間）か */
+export function campaignIsThreeWeek(name: string): boolean {
+  return (
+    /100日/.test(name) ||
+    /100日前/.test(name) ||
+    /9月の模試/.test(name) ||
+    /9月模試/.test(name) ||
+    /9月のプログラム/.test(name) ||
+    /短期プログラム/.test(name) ||
+    /短期集中/.test(name)
+  );
+}
+
+/** 暦日に日数を足す（JSTの日付文字列 YYYY-MM-DD） */
+export function addCalendarDays(from: string, days: number): string {
+  const [y, m, d] = from.slice(0, 10).split("-").map(Number);
+  const dt = new Date(Date.UTC(y, m - 1, d + days));
+  return dt.toISOString().slice(0, 10);
+}
 
 /** 在籍中の生徒で最終確認日がこの日数以上前なら滞留とみなす */
 const STALE_CHECK_DAYS = 7;
@@ -73,6 +105,10 @@ export interface Student {
   /** 体験開始日（なければ最終面談日）からの経過日数 */
   daysElapsed: number | null;
   trialDays: number;
+  /** 流入企画・流入キャンペーンの名前 */
+  campaigns: string[];
+  /** 体験開始日＋体験日数。未記録なら null */
+  continuationOn: string | null;
   alerts: StudentAlert[];
   score: number;
 }
@@ -126,16 +162,44 @@ export function daysBetween(from: string, to: Date): number {
   return Math.round((t - f) / 86400000);
 }
 
-function trialDaysFor(courses: string[]): number {
+export function trialDaysFor(courses: string[], campaigns: string[] = [], status = ""): number {
+  const shortProgram =
+    isProgramStatus(status) ||
+    campaigns.some(campaignIsThreeWeek) ||
+    courses.some((c) => /短期/.test(c) || /プログラム/.test(c));
+  if (shortProgram) return TRIAL_DAYS_PROGRAM;
   const long = courses.some((c) => c.includes("再受験") || c.includes("編入"));
   return long ? TRIAL_DAYS_LONG : TRIAL_DAYS_SHORT;
 }
 
-function stageOf(status: string, result: string | null, source: Student["source"]): Stage {
+function milestonesFor(trialDays: number): number[] {
+  if (trialDays === TRIAL_DAYS_PROGRAM) return MILESTONES_PROGRAM;
+  if (trialDays === TRIAL_DAYS_LONG) return MILESTONES_LONG;
+  return MILESTONES_SHORT;
+}
+
+function continuationDate(trialStart: string | null, lastInterview: string | null, trialDays: number): string | null {
+  const base = trialStart ?? lastInterview;
+  return base ? addCalendarDays(base, trialDays) : null;
+}
+
+/** 短期プログラムで、継続確認が今日・近い・過ぎている・起点がない */
+export function needsContinuationWatch(s: {
+  stage: Stage;
+  trialDays: number;
+  trialStart: string | null;
+  daysElapsed: number | null;
+}): boolean {
+  if (s.stage !== "体験中" || s.trialDays !== TRIAL_DAYS_PROGRAM) return false;
+  if (s.daysElapsed === null) return true;
+  return s.daysElapsed >= s.trialDays - 3;
+}
+
+export function stageOf(status: string, result: string | null, source: Student["source"]): Stage {
   // 結果に入力があれば結果が正（CLAUDE.md「ステータスと結果の読み方」）
   if (result) return result === "体験後入塾" ? "塾生" : "その他";
   if (status === "塾生") return "塾生";
-  if (status === "体験中") return "体験中";
+  if (status === "体験中" || isProgramStatus(status)) return "体験中";
   if (status === "面談後検討中") return "検討中";
   void source;
   return "その他";
@@ -153,9 +217,10 @@ export function buildAlerts(s: Omit<Student, "alerts" | "score">, today: Date): 
 
   // 2. 体験期間を過ぎたのに結果が入っていない
   if (s.stage === "体験中" && s.daysElapsed !== null && s.daysElapsed > s.trialDays) {
+    const program = s.trialDays === TRIAL_DAYS_PROGRAM ? "短期プログラム／指導期間3週間／" : "";
     a.push({
       level: "red",
-      label: `体験期間を${s.daysElapsed - s.trialDays}日超過（${s.trialDays}日間／結果が未入力）`,
+      label: `体験期間を${s.daysElapsed - s.trialDays}日超過（${program}${s.trialDays}日間／継続確認が未了）`,
       weight: 95,
     });
   }
@@ -165,11 +230,28 @@ export function buildAlerts(s: Omit<Student, "alerts" | "score">, today: Date): 
     a.push({ level: "red", label: "状態：要対応", weight: 90 });
   }
 
-  // 4. 今日が継続確認の日／節目チェックの日
+  // 4. 今日が継続確認の日／節目チェックの日／短期プログラムの直前
   if (s.stage === "体験中" && s.daysElapsed !== null && s.trialStart) {
-    const milestones = s.trialDays === TRIAL_DAYS_LONG ? MILESTONES_LONG : MILESTONES_SHORT;
+    const milestones = milestonesFor(s.trialDays);
+    const due = s.continuationOn ? s.continuationOn.slice(5) : "";
     if (s.daysElapsed === s.trialDays) {
-      a.push({ level: "red", label: `今日が継続確認の日（体験${s.trialDays}日目）`, weight: 92 });
+      const program = s.trialDays === TRIAL_DAYS_PROGRAM ? "短期プログラム・指導期間3週間・" : "";
+      a.push({
+        level: "red",
+        label: `今日が継続確認の日（${program}体験${s.trialDays}日目${due ? `・${due}` : ""}）`,
+        weight: 92,
+      });
+    } else if (s.trialDays === TRIAL_DAYS_PROGRAM) {
+      const left = s.trialDays - s.daysElapsed;
+      if (left >= 1 && left <= 3) {
+        a.push({
+          level: "orange",
+          label: `継続確認まであと${left}日（短期プログラム・指導期間3週間・${due}）`,
+          weight: 80,
+        });
+      } else if (milestones.includes(s.daysElapsed)) {
+        a.push({ level: "orange", label: `今日が節目チェック（体験${s.daysElapsed}日目）`, weight: 75 });
+      }
     } else if (milestones.includes(s.daysElapsed)) {
       a.push({ level: "orange", label: `今日が節目チェック（体験${s.daysElapsed}日目）`, weight: 75 });
     }
@@ -177,7 +259,23 @@ export function buildAlerts(s: Omit<Student, "alerts" | "score">, today: Date): 
 
   // 5. 体験中なのに体験開始日が入っていない＝勉強計画面談がまだ
   if (s.stage === "体験中" && !s.trialStart) {
-    a.push({ level: "orange", label: "体験開始日が未記録（勉強計画面談が未実施）", weight: 78 });
+    if (s.trialDays === TRIAL_DAYS_PROGRAM) {
+      if (s.continuationOn) {
+        a.push({
+          level: "orange",
+          label: `体験開始日が未記録。継続確認は最終面談日から仮計算（${s.continuationOn.slice(5)}）`,
+          weight: 78,
+        });
+      } else {
+        a.push({
+          level: "red",
+          label: "短期プログラムなのに指導開始日（体験開始日）が未記録。継続確認の起点がない",
+          weight: 93,
+        });
+      }
+    } else {
+      a.push({ level: "orange", label: "体験開始日が未記録（勉強計画面談が未実施）", weight: 78 });
+    }
   }
 
   // 6. 面談後検討中の放置
@@ -232,7 +330,8 @@ export function toCore(
   source: Student["source"],
   teacherNames: Map<string, string>,
   today: Date,
-  eikenTeacherDbAvailable: boolean
+  eikenTeacherDbAvailable: boolean,
+  campaignNamesById: Map<string, string> = new Map()
 ): StudentCore {
   const p = page.properties;
 
@@ -259,6 +358,11 @@ export function toCore(
   const lastInterview = dateStart(p["最終面談日"]);
   const base = trialStart ?? lastInterview;
   const bizId = relationIds(p["事業-年度"])[0];
+  const campaignIds = ["流入企画", "流入キャンペーン"].flatMap((k) => relationIds(p[k]));
+  const campaigns = Array.from(
+    new Set(campaignIds.map((id) => campaignNamesById.get(id)).filter((n): n is string => Boolean(n)))
+  );
+  const trialDays = trialDaysFor(courses, campaigns, status);
 
   const core: StudentCore = {
     id: page.id,
@@ -285,7 +389,9 @@ export function toCore(
     reportStatus: text(p["日報の状況"]).trim(),
     reportLastDate: dateStart(p["日報最終提出日"]),
     daysElapsed: base ? daysBetween(base, today) : null,
-    trialDays: trialDaysFor(courses),
+    trialDays,
+    campaigns,
+    continuationOn: continuationDate(trialStart, lastInterview, trialDays),
   };
 
   return core;
@@ -317,6 +423,7 @@ function mergeCore(primary: StudentCore, secondary: StudentCore): StudentCore {
     reportLastDate: pickDate(primary.reportLastDate, secondary.reportLastDate),
     business: primary.business !== "その他" ? primary.business : secondary.business,
     courses: Array.from(new Set([...primary.courses, ...secondary.courses])),
+    campaigns: Array.from(new Set([...primary.campaigns, ...secondary.campaigns])),
     teachers: Array.from(new Set([...primary.teachers, ...secondary.teachers])),
     teacherUnknown: primary.teacherUnknown && secondary.teacherUnknown,
   };
@@ -327,11 +434,12 @@ export function assembleStudents(
   jukusei: NotionPage[],
   teacherNames: Map<string, string>,
   today: Date,
-  eikenTeacherDbAvailable = true
+  eikenTeacherDbAvailable = true,
+  campaignNamesById: Map<string, string> = new Map()
 ): Student[] {
   const cores = [
-    ...taiken.map((p) => toCore(p, "面談・体験", teacherNames, today, eikenTeacherDbAvailable)),
-    ...jukusei.map((p) => toCore(p, "塾生", teacherNames, today, eikenTeacherDbAvailable)),
+    ...taiken.map((p) => toCore(p, "面談・体験", teacherNames, today, eikenTeacherDbAvailable, campaignNamesById)),
+    ...jukusei.map((p) => toCore(p, "塾生", teacherNames, today, eikenTeacherDbAvailable, campaignNamesById)),
   ];
 
   const byName = new Map<string, StudentCore>();
@@ -350,10 +458,16 @@ export function assembleStudents(
     byName.set(key, primaryIsNew ? mergeCore(c, prev) : mergeCore(prev, c));
   }
 
-  // 経過日数はマージ後の起点で数え直す
+  // 経過日数と体験日数はマージ後の起点・企画で数え直す
   const merged = Array.from(byName.values()).map((c): StudentCore => {
     const base = c.trialStart ?? c.lastInterview;
-    return { ...c, daysElapsed: base ? daysBetween(base, today) : null };
+    const trialDays = trialDaysFor(c.courses, c.campaigns, c.status);
+    return {
+      ...c,
+      daysElapsed: base ? daysBetween(base, today) : null,
+      trialDays,
+      continuationOn: continuationDate(c.trialStart, c.lastInterview, trialDays),
+    };
   });
 
   return merged

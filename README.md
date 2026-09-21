@@ -26,7 +26,7 @@ npm run dev
 
 - `/` — PL ダッシュボード（事業タブ、期間切替、KPI、月次推移、損益計算書テーブル）
 - `/status` — 入力状況モニター（事業×月のマトリクス、未提出判定）
-- `/students` — 生徒ダッシュボード（手を打つ理由の順に並ぶ。担当講師が未設定の生徒が最上段。講師の対応キャパも同じ画面）
+- `/students` — 生徒ダッシュボード（手を打つ理由の順に並ぶ。担当未設定、今日が継続確認・節目、短期プログラムの3週間継続確認が最上段。講師の対応キャパも同じ画面）
 
 ## 動作確認（devサーバーは起動しない）
 
@@ -34,6 +34,7 @@ Turbopackのdevサーバーはメモリを使い切って Mac が落ちるため
 
 ```bash
 npx tsc --noEmit                 # 型
+npx tsx scripts/trial-days.test.ts  # 短期プログラムの継続確認判定
 npx eslint src/lib/students.ts   # 書式
 npm run check:students           # 生徒ダッシュボードの中身（Notionから読むだけ）
 npm run check:students -- --all  # 全員表示

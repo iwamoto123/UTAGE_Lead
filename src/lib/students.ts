@@ -1,5 +1,5 @@
 import { unstable_cache } from "next/cache";
-import { notion } from "./notion";
+import { DS, notion } from "./notion";
 import {
   assembleStudents,
   attachTeacherAssignments,
@@ -26,6 +26,7 @@ export const STUDENT_DS = {
   teacherOnline: process.env.NOTION_DS_TEACHER_ONLINE ?? "2d649d91-8c94-4264-a516-5c031af05fdd",
   teacherLocalmedi: process.env.NOTION_DS_TEACHER_LOCALMEDI ?? "a6b57e73-5f9b-445c-9904-3fe37ddfed22",
   teacherEiken: process.env.NOTION_DS_TEACHER_EIKEN ?? "292ed607-f7f8-48e3-9dca-34b90ab8eb30",
+  campaign: process.env.NOTION_DS_CAMPAIGN ?? DS.campaign,
 };
 
 export async function queryAll(dataSourceId: string): Promise<NotionPage[]> {
@@ -82,6 +83,19 @@ export async function fetchTeachers(): Promise<{
   return { names, eikenAvailable, teachers };
 }
 
+export async function fetchCampaignNames(): Promise<Map<string, string>> {
+  const names = new Map<string, string>();
+  try {
+    for (const page of await queryAll(STUDENT_DS.campaign)) {
+      const name = text(page.properties["キャンペーン名"]);
+      if (name) names.set(page.id, name);
+    }
+  } catch {
+    // キャンペーンマスターが未接続でも生徒一覧は出す
+  }
+  return names;
+}
+
 export async function fetchTeacherNames(): Promise<{
   names: Map<string, string>;
   eikenAvailable: boolean;
@@ -93,12 +107,13 @@ export async function fetchTeacherNames(): Promise<{
 export type StudentsPageData = { students: Student[]; teachers: Teacher[]; eikenAvailable: boolean };
 
 async function _fetchStudentsPage(): Promise<StudentsPageData> {
-  const [pack, taiken, jukusei] = await Promise.all([
+  const [pack, taiken, jukusei, campaigns] = await Promise.all([
     fetchTeachers(),
     queryAll(STUDENT_DS.taiken),
     queryAll(STUDENT_DS.jukusei),
+    fetchCampaignNames(),
   ]);
-  const students = assembleStudents(taiken, jukusei, pack.names, new Date(), pack.eikenAvailable);
+  const students = assembleStudents(taiken, jukusei, pack.names, new Date(), pack.eikenAvailable, campaigns);
   return {
     students,
     teachers: attachTeacherAssignments(pack.teachers, students),
