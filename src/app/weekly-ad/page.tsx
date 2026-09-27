@@ -8,6 +8,10 @@ import {
 } from "@/lib/weekly-ad";
 import CampaignWeeklyTable from "@/components/weekly-ad/CampaignWeeklyTable";
 
+// Notionを読むページはビルド時に生成させない。Vercelでは NOTION_TOKEN が
+// Secret扱いでビルド中に見えず、そのときのエラーが静的ページに焼き付くため。
+export const dynamic = "force-dynamic";
+
 export default async function WeeklyAdPage() {
   const [reports, campaigns] = await Promise.all([
     getWeeklyAdReports(),

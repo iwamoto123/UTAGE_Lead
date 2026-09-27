@@ -29,7 +29,12 @@ export default function StudentsError({
           {error.digest ? `エラーID: ${error.digest}` : error.message}
         </p>
         <button
-          onClick={reset}
+          onClick={() => {
+            // reset() だけだと同じエラーが即座に再発して押しても何も起きない。
+            // ページごと読み直して、サーバー側を確実にやり直させる。
+            reset();
+            window.location.reload();
+          }}
           className="mt-3 rounded-md bg-[#458BC3] px-3 py-1.5 text-xs font-bold text-white"
         >
           もう一度読み込む

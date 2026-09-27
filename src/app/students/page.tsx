@@ -1,7 +1,9 @@
 import { getStudentsPageData } from "@/lib/students";
 import StudentsView from "@/components/students/StudentsView";
 
-export const revalidate = 600;
+// Notionを読むページはビルド時に生成させない。Vercelでは NOTION_TOKEN が
+// Secret扱いでビルド中に見えず、そのときのエラーが静的ページに焼き付くため。
+export const dynamic = "force-dynamic";
 // Notionから5つのDBを読むのに実測で5秒前後かかる。Vercelの既定(10秒)だと
 // 再生成が冷えた状態で走ったときに間に合わず、ページごと落ちることがある。
 export const maxDuration = 60;

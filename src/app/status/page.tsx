@@ -3,6 +3,10 @@ import { yearMonthJP } from "@/lib/format";
 import MissingCellButton from "@/components/MissingCellButton";
 import BoardAdSyncButton from "@/components/BoardAdSyncButton";
 
+// Notionを読むページはビルド時に生成させない。Vercelでは NOTION_TOKEN が
+// Secret扱いでビルド中に見えず、そのときのエラーが静的ページに焼き付くため。
+export const dynamic = "force-dynamic";
+
 type Status = "complete" | "partial" | "missing" | "future" | "grace" | "exempt";
 
 interface Cell {

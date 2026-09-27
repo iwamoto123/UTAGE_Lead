@@ -1,10 +1,29 @@
 import { Client } from "@notionhq/client";
 
-if (!process.env.NOTION_TOKEN) {
-  throw new Error("NOTION_TOKEN is required. Set it in .env.local");
+/**
+ * Notionクライアント。
+ *
+ * 読み込んだ時点では作らない。VercelのSecretな環境変数はビルド中には見えず、
+ * ここで例外を投げるとビルド時の静的生成にそのエラーが焼き付いて、
+ * 実行時にトークンがあっても直らなくなる（/students がこれで落ちていた）。
+ * 実際にNotionを呼ぶときに初めて作り、そのときに無ければ落とす。
+ */
+let client: Client | null = null;
+
+function getClient(): Client {
+  if (!client) {
+    const auth = process.env.NOTION_TOKEN;
+    if (!auth) throw new Error("NOTION_TOKEN が設定されていません（Vercelの環境変数を確認してください）");
+    client = new Client({ auth });
+  }
+  return client;
 }
 
-export const notion = new Client({ auth: process.env.NOTION_TOKEN });
+export const notion = new Proxy({} as Client, {
+  get(_t, prop, receiver) {
+    return Reflect.get(getClient() as object, prop, receiver);
+  },
+});
 
 export const DS = {
   monthlyPL: process.env.NOTION_DS_MONTHLY_PL ?? "b8ee1633-7341-4fb8-a926-c308d35f1674",

@@ -1,6 +1,10 @@
 import baitoData from "@/data/baito.json";
 import { yen, yearMonthJP } from "@/lib/format";
 
+// Notionを読むページはビルド時に生成させない。Vercelでは NOTION_TOKEN が
+// Secret扱いでビルド中に見えず、そのときのエラーが静的ページに焼き付くため。
+export const dynamic = "force-dynamic";
+
 interface BaitoRecord {
   name: string;
   ym: string;
