@@ -2,6 +2,9 @@ import { getStudentsPageData } from "@/lib/students";
 import StudentsView from "@/components/students/StudentsView";
 
 export const revalidate = 600;
+// Notionから5つのDBを読むのに実測で5秒前後かかる。Vercelの既定(10秒)だと
+// 再生成が冷えた状態で走ったときに間に合わず、ページごと落ちることがある。
+export const maxDuration = 60;
 
 /** 講師が見るLINE監視ダッシュボード。権限が分かれているので別アプリのまま残す */
 const LINE_MONITOR_URL =
