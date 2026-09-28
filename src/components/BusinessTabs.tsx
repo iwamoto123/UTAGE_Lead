@@ -5,6 +5,7 @@ const BUSINESSES = [
   { key: "宮崎教室", label: "宮崎教室", color: "border-pink-500" },
   { key: "白谷塾オンライン", label: "白谷塾オンライン", color: "border-[#458BC3]" },
   { key: "ローカルメディ", label: "ローカルメディ", color: "border-green-500" },
+  { key: "教材売上", label: "教材売上", color: "border-amber-500" },
 ];
 
 export default function BusinessTabs({
@@ -13,14 +14,18 @@ export default function BusinessTabs({
   from,
   to,
   basePath = "/",
+  kyozaiOff = false,
 }: {
   active: string;
   period: string;
   from?: string;
   to?: string;
   basePath?: string;
+  kyozaiOff?: boolean;
 }) {
-  const extra = period === "custom" && from && to ? `&from=${from}&to=${to}` : "";
+  const extra =
+    (period === "custom" && from && to ? `&from=${from}&to=${to}` : "") +
+    (kyozaiOff ? "&kyozai=off" : "");
   return (
     <div className="flex gap-1 flex-wrap border-b border-slate-200">
       {BUSINESSES.map((b) => {

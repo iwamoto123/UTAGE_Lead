@@ -13,18 +13,38 @@ import MiyazakiBaitoBreakdown from "@/components/MiyazakiBaitoBreakdown";
 import UnifiedFunnelDashboard from "@/components/UnifiedFunnelDashboard";
 import PieBreakdown from "@/components/PieBreakdown";
 import RevenueShareBar from "@/components/RevenueShareBar";
+import KyozaiToggle from "@/components/KyozaiToggle";
+import KyozaiSalesView from "@/components/KyozaiSalesView";
+import ShortProgramSales from "@/components/ShortProgramSales";
+import { getUtageSales, filterSales, groupSales, totalOf, byMonth as salesByMonth } from "@/lib/utage-sales";
 
-type SP = Promise<{ period?: string; business?: string; from?: string; to?: string }>;
+type SP = Promise<{ period?: string; business?: string; from?: string; to?: string; kyozai?: string }>;
 
 export default async function Page({ searchParams }: { searchParams: SP }) {
   const sp = await searchParams;
   const period = (sp.period as PeriodKey) ?? "current_year";
-  const business = (sp.business ?? "all") as "all" | "宮崎教室" | "白谷塾オンライン" | "ローカルメディ";
+  const businessParam = (sp.business ?? "all") as
+    "all" | "宮崎教室" | "白谷塾オンライン" | "ローカルメディ" | "教材売上";
+  // 教材売上は事業ではなくUTAGEの売上区分。PLの集計は白谷塾オンラインとして扱う
+  const isKyozaiTab = businessParam === "教材売上";
+  const business = (isKyozaiTab ? "白谷塾オンライン" : businessParam) as
+    "all" | "宮崎教室" | "白谷塾オンライン" | "ローカルメディ";
+  const includeKyozai = sp.kyozai !== "off";
 
   const all = await getMonthlyPL();
   const range = getPeriodRange(period, new Date(), sp.from, sp.to);
   const periodFiltered = filterByPeriod(all, range);
-  const filtered = filterByBusiness(periodFiltered, business);
+  const filteredRaw = filterByBusiness(periodFiltered, business);
+  // チェックを外したら教材売上を売上合計から抜く（PLの行そのものは触らない）
+  const filtered = includeKyozai ? filteredRaw : filteredRaw.map((r) => ({ ...r, kyozaiUriage: 0 }));
+
+  // UTAGEで決済された売上（教材・短期プログラム）の内訳
+  const utageSales = await getUtageSales();
+  const salesInRange = filterSales(utageSales, range.fromYM, range.toYM,
+    business === "all" ? undefined : business);
+  const kyozaiRows = salesInRange.filter((r) => r.kubun === "教材");
+  const tankiGroups = groupSales(salesInRange, "短期プログラム・企画");
+  const tankiTotal = totalOf(salesInRange, "短期プログラム・企画");
 
   // 期間内の月リスト & 各月のstatus判定
   const monthSet = new Set<string>();
@@ -77,7 +97,7 @@ export default async function Page({ searchParams }: { searchParams: SP }) {
   return (
     <div className="space-y-6">
       <div className="flex flex-col gap-3">
-        <BusinessTabs active={business} period={period} from={range.fromYM} to={range.toYM} />
+        <BusinessTabs active={businessParam} period={period} from={range.fromYM} to={range.toYM} kyozaiOff={!includeKyozai} />
         <div className="flex items-center justify-between gap-3 flex-wrap">
           <div className="flex items-center gap-2 flex-wrap">
             <PeriodTabs active={period} business={business} />
@@ -90,17 +110,37 @@ export default async function Page({ searchParams }: { searchParams: SP }) {
               active={period === "custom"}
             />
           </div>
-          <div className="text-sm text-slate-600">{range.label}</div>
+          <div className="flex items-center gap-4">
+            {!isKyozaiTab && (business === "白谷塾オンライン" || business === "all") && (
+              <KyozaiToggle
+                include={includeKyozai}
+                business={businessParam}
+                period={period}
+                from={range.fromYM}
+                to={range.toYM}
+              />
+            )}
+            <div className="text-sm text-slate-600">{range.label}</div>
+          </div>
         </div>
       </div>
 
-      {missingCount > 0 && (
+      {isKyozaiTab && (
+        <KyozaiSalesView
+          rows={kyozaiRows}
+          groups={groupSales(kyozaiRows)}
+          months={salesByMonth(kyozaiRows)}
+        />
+      )}
+
+      {!isKyozaiTab && missingCount > 0 && (
         <div className="bg-red-50 border border-red-200 rounded p-3 text-sm text-red-800 flex items-center justify-between">
           <span>⚠ この期間に <strong>未提出が {missingCount} ヶ月</strong> あります（PL表のヘッダー「未提出」バッジ参照）</span>
           <a href="/status" className="underline text-red-700 hover:text-red-900">入力状況を確認 →</a>
         </div>
       )}
 
+      {!isKyozaiTab && (<>
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-3">
         <KpiCard label="売上合計" value={summary.uriageGokei} color="blue" caption="提出済み月のみ集計" />
         <KpiCard label="販管費合計" value={summary.hankanhiGokei} color="orange" caption="提出済み月のみ集計" />
@@ -142,6 +182,10 @@ export default async function Page({ searchParams }: { searchParams: SP }) {
         <UnifiedFunnelDashboard summary={unifiedSummary} fromYM={funnelFromYM} toYM={range.toYM} seitoSuLatest={summary.seitoSuLatest} />
       )}
 
+      {business !== "宮崎教室" && (
+        <ShortProgramSales groups={tankiGroups} total={tankiTotal} />
+      )}
+
       {months.length > 0 && (
         <>
           <MonthlyTrendChart rows={filtered} months={months} />
@@ -160,6 +204,7 @@ export default async function Page({ searchParams }: { searchParams: SP }) {
           この期間・事業のデータがありません。Notionで該当レコードを作成してください。
         </div>
       )}
+      </>)}
     </div>
   );
 }
