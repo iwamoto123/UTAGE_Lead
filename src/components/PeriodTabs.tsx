@@ -1,4 +1,7 @@
+"use client";
+
 import Link from "next/link";
+import PendingDot from "@/components/PendingDot";
 import type { PeriodKey } from "@/lib/filter";
 
 const PERIODS: { key: PeriodKey; label: string }[] = [
@@ -9,16 +12,21 @@ const PERIODS: { key: PeriodKey; label: string }[] = [
   { key: "all", label: "全期間" },
 ];
 
-export default function PeriodTabs({ active, business, basePath = "/" }: { active: PeriodKey; business: string; basePath?: string }) {
+export default function PeriodTabs({
+  active, business, basePath = "/", kyozaiOff = false,
+}: { active: PeriodKey; business: string; basePath?: string; kyozaiOff?: boolean }) {
   return (
     <div className="flex gap-1 flex-wrap">
       {PERIODS.map((p) => {
         const isActive = active === p.key;
-        const href = `${basePath}?period=${p.key}&business=${encodeURIComponent(business)}`;
+        const href =
+          `${basePath}?period=${p.key}&business=${encodeURIComponent(business)}` +
+          (kyozaiOff ? "&kyozai=off" : "");
         return (
           <Link
             key={p.key}
             href={href}
+            prefetch={false}
             className={`px-3 py-1.5 text-sm rounded border ${
               isActive
                 ? "bg-[#458BC3] text-white border-[#458BC3]"
@@ -26,6 +34,7 @@ export default function PeriodTabs({ active, business, basePath = "/" }: { activ
             }`}
           >
             {p.label}
+            <PendingDot />
           </Link>
         );
       })}

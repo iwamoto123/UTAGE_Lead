@@ -1,4 +1,7 @@
+"use client";
+
 import Link from "next/link";
+import PendingDot from "@/components/PendingDot";
 
 const BUSINESSES = [
   { key: "all", label: "全事業合計", color: "border-slate-700" },
@@ -35,6 +38,7 @@ export default function BusinessTabs({
           <Link
             key={b.key}
             href={href}
+            prefetch={false}
             className={`px-4 py-2 text-sm border-b-2 -mb-px ${
               isActive
                 ? `${b.color} text-slate-900 font-bold`
@@ -42,6 +46,7 @@ export default function BusinessTabs({
             }`}
           >
             {b.label}
+            <PendingDot />
           </Link>
         );
       })}

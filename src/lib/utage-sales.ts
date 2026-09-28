@@ -146,6 +146,41 @@ export function totalOf(rows: DailySale[], kubun?: SalesKubun) {
   return { amount, count };
 }
 
+/** 月×商品の表。教材が月にそれぞれ何冊売れたかを出す */
+export function byMonthAndName(rows: DailySale[]): {
+  months: string[];
+  names: string[];
+  cell: (ym: string, name: string) => { amount: number; count: number } | undefined;
+  monthTotal: (ym: string) => { amount: number; count: number };
+  nameTotal: (name: string) => { amount: number; count: number };
+} {
+  const grid = new Map<string, { amount: number; count: number }>();
+  const months = new Set<string>();
+  const names = new Set<string>();
+  for (const r of rows) {
+    months.add(r.yearMonth);
+    names.add(r.name);
+    const key = `${r.yearMonth}|${r.name}`;
+    const cur = grid.get(key) ?? { amount: 0, count: 0 };
+    cur.amount += r.amount;
+    cur.count += r.count;
+    grid.set(key, cur);
+  }
+  const sum = (pred: (k: string) => boolean) => {
+    let amount = 0, count = 0;
+    for (const [k, v] of grid) if (pred(k)) { amount += v.amount; count += v.count; }
+    return { amount, count };
+  };
+  return {
+    months: [...months].sort(),
+    // 売れた金額が大きい商品から左に並べる
+    names: [...names].sort((a, b) => sum((k) => k.endsWith(`|${b}`)).amount - sum((k) => k.endsWith(`|${a}`)).amount),
+    cell: (ym, name) => grid.get(`${ym}|${name}`),
+    monthTotal: (ym) => sum((k) => k.startsWith(`${ym}|`)),
+    nameTotal: (name) => sum((k) => k.endsWith(`|${name}`)),
+  };
+}
+
 /** 月ごとの合計。グラフと月別表に使う */
 export function byMonth(rows: DailySale[], kubun?: SalesKubun): Map<string, { amount: number; count: number }> {
   const m = new Map<string, { amount: number; count: number }>();
