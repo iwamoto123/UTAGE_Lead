@@ -18,10 +18,11 @@ const MILESTONES_LONG = [1, 3, 7, 10, 14];
 const MILESTONES_PROGRAM = [1, 3, 7, 14, 21];
 
 /**
- * 短期プログラムの指導中を表すステータス（CLAUDE.md「ステータスと結果の読み方」）。
- * 2026-09にNotionの「体験中」から分離した。段階としては体験中と同じ扱いにする。
+ * 短期プログラムの指導中と、その後の継続確認待ちを表すステータス。
+ * 2026-09にNotionの「体験中」から分離し、2026-10に「継続確認中」を足した。
+ * 段階としてはどれも体験中と同じ扱いにする。
  */
-export const PROGRAM_STATUSES = ["9月のプログラム実施中", "残り100日プログラム実施中"] as const;
+export const PROGRAM_STATUSES = ["9月のプログラム実施中", "残り100日プログラム実施中", "継続確認中"] as const;
 
 export function isProgramStatus(status: string): boolean {
   return (PROGRAM_STATUSES as readonly string[]).includes(status);
@@ -82,7 +83,6 @@ export interface Student {
   source: "面談・体験" | "塾生";
   stage: Stage;
   status: string;
-  result: string | null;
   business: string;
   grade: string | null;
   courses: string[];
@@ -195,9 +195,8 @@ export function needsContinuationWatch(s: {
   return s.daysElapsed >= s.trialDays - 3;
 }
 
-export function stageOf(status: string, result: string | null, source: Student["source"]): Stage {
-  // 結果に入力があれば結果が正（CLAUDE.md「ステータスと結果の読み方」）
-  if (result) return result === "体験後入塾" ? "塾生" : "その他";
+export function stageOf(status: string, source: Student["source"]): Stage {
+  // ステータス1列で判定する（2026-10-07に「結果」「継続確認」を統合して廃止）
   if (status === "塾生") return "塾生";
   if (status === "体験中" || isProgramStatus(status)) return "体験中";
   if (status === "面談後検討中") return "検討中";
@@ -336,9 +335,8 @@ export function toCore(
   const p = page.properties;
 
   const status = selectName(p["ステータス"]) ?? "";
-  const result = selectName(p["結果"]);
   const courses = multiSelectNames(p["コース"]);
-  const stage = stageOf(status, result, source);
+  const stage = stageOf(status, source);
 
   const teacherKeys = ["担当講師（オンライン）", "担当講師（ローカルメディ）", "担当講師（英検）", "担当講師"];
   const teacherIds = teacherKeys.flatMap((k) => relationIds(p[k]));
@@ -371,7 +369,6 @@ export function toCore(
     source,
     stage,
     status,
-    result,
     business: bizId ? idToBusiness(bizId) : "その他",
     grade: selectName(p["学年"]) ?? selectName(p["現在の学年"]),
     courses,

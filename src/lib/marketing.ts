@@ -90,15 +90,18 @@ async function fetchConsultations(): Promise<ConsultationRow[]> {
     const bizYearRel = props["事業-年度"]?.relation ?? [];
     const business = bizYearRel.length > 0 ? idToBusiness(bizYearRel[0].id) : "その他";
     const status = props["ステータス"]?.select?.name ?? "";
-    const result = props["結果"]?.select?.name ?? "";
     const campaignRel = props["流入企画"]?.relation ?? [];
     const campaignName = campaignRel.length > 0
       ? (campaignMap.get(campaignRel[0].id)?.name ?? "")
       : "";
-    // 短期プログラム実施中も体験到達として数える（2026-09にステータスを分離した）
-    const trialStatuses = ["体験中", "塾生", "元塾生", "9月のプログラム実施中", "残り100日プログラム実施中"];
-    const trialResults = ["体験後入塾", "体験後お断り", "他の塾も体験後に最終決定"];
-    const resultIsTrial = trialStatuses.includes(status) || trialResults.includes(result);
+    // 体験に到達した人のステータス。2026-10に「結果」列をステータスへ統合したので、
+    // 体験後の確定（お断り・他塾検討・プログラム後終了）もここで数える
+    const trialStatuses = [
+      "体験中", "塾生", "元塾生",
+      "9月のプログラム実施中", "残り100日プログラム実施中", "継続確認中",
+      "体験後お断り", "プログラム後終了", "他の塾も体験後に最終決定",
+    ];
+    const resultIsTrial = trialStatuses.includes(status);
     return {
       id: p.id,
       name,
