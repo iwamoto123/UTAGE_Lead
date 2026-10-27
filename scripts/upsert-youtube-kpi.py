@@ -2,7 +2,7 @@
 """YouTube動画別KPI（再生数・サムネCTR・視聴者維持率）を Notion の
 「YouTube KPI」DBに流し込む。動画タイトル＋公開日で突き合わせて更新／新規作成する。
 
-  python3 scripts/upsert-youtube-kpi.py [--dry]
+  python3 scripts/upsert-youtube-kpi.py [--dry] [--since 2026-07-01] [--retention <期間>]
 
 入力:
   youtube-ctr/all_videos.json                     動画・再生数
@@ -13,14 +13,24 @@ LINE追加数と経路キーはここでは触らない。動画タイトルとU
 入れていたころ、数IAの行に数IIBCのラベルが入って同じ登録者を2本ぶん数えていた。
 いまは scripts/sync-youtube-line-adds.py が経路キーの完全一致で数え直す。
 """
+import datetime as dt
 import json, re, sys, urllib.request
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
 YC = ROOT / "youtube-ctr"
 DS = "4456ac78-5543-43a9-8078-a74f61705bed"
-MEASURED = "2026-08-31"
 DRY = "--dry" in sys.argv
+
+
+def _arg(name, default):
+    return sys.argv[sys.argv.index(name) + 1] if name in sys.argv else default
+
+
+SINCE = _arg("--since", "2026-07-01")          # この日以降に公開した動画を対象にする
+MEASURED = _arg("--measured", dt.date.today().isoformat())
+# 視聴者維持率のファイル。指定しなければ retention/ の中でいちばん新しいもの
+RETENTION = _arg("--retention", "")
 
 TOKEN = next((l.split("=", 1)[1].strip() for l in (ROOT / "pl-dashboard/.env.local").read_text().splitlines()
               if l.startswith("NOTION_TOKEN=")), None)
@@ -55,13 +65,16 @@ def sec(d):
 def build_rows():
     av = json.loads((YC / "all_videos.json").read_text())
     ctr = json.loads((YC / "ctr_summary.json").read_text())
-    ret = json.loads((YC / "retention/2026-07-01_2026-08-31.json").read_text())
+    path = (YC / f"retention/{RETENTION}.json") if RETENTION else max(
+        (YC / "retention").glob("*.json"), key=lambda f: f.name)
+    print(f"視聴者維持率: {path.name}")
+    ret = json.loads(path.read_text())
     retmap = {vid: d for ch in ret.values() for vid, d in ch["videos"].items()}
 
     rows, seen = [], set()
     for ch in av.values():
         for v in ch["videos"]:
-            if v["date"] < "2026-07-01" or v["privacy"] != "public" or sec(v["dur"]) < 80:
+            if v["date"] < SINCE or v["privacy"] != "public" or sec(v["dur"]) < 80:
                 continue
             key = (v["date"], v["title"])
             if key in seen:

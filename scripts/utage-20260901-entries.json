@@ -1,0 +1,18 @@
+[
+  {
+    "acc": "TZq4ob5n4GZ1",
+    "sce": "TZq4_HP_BLOG",
+    "label": "地方医学部/HPブログ",
+    "daily": {
+      "2026-08-31": 1
+    }
+  },
+  {
+    "acc": "TZq4ob5n4GZ1",
+    "sce": "TZq4_YT_VIDEO",
+    "label": "地方医学部/YouTube動画",
+    "daily": {
+      "2026-08-30": 2
+    }
+  }
+]

@@ -1,0 +1,26 @@
+[
+  {
+    "acc": "PjocL14v2u6j",
+    "sce": "yyog9fvedOtP",
+    "label": "再受験/メタ広告",
+    "daily": {
+      "2026-09-05": 1
+    }
+  },
+  {
+    "acc": "PjocL14v2u6j",
+    "sce": "V98BSMwhViZC",
+    "label": "再受験/面談予約",
+    "daily": {
+      "2026-09-06": 1
+    }
+  },
+  {
+    "acc": "TZq4ob5n4GZ1",
+    "sce": "TZq4_UNK",
+    "label": "地方医学部/公式LINE等(不明)",
+    "daily": {
+      "2026-09-06": 1
+    }
+  }
+]

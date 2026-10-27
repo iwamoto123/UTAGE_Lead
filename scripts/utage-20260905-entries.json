@@ -1,0 +1,34 @@
+[
+  {
+    "acc": "PjocL14v2u6j",
+    "sce": "yyog9fvedOtP",
+    "label": "再受験/メタ広告",
+    "daily": {
+      "2026-09-04": 2
+    }
+  },
+  {
+    "acc": "PjocL14v2u6j",
+    "sce": "V98BSMwhViZC",
+    "label": "再受験/面談予約",
+    "daily": {
+      "2026-09-04": 1
+    }
+  },
+  {
+    "acc": "TZq4ob5n4GZ1",
+    "sce": "TZq4_YT_VIDEO",
+    "label": "地方医学部/YouTube動画",
+    "daily": {
+      "2026-09-05": 1
+    }
+  },
+  {
+    "acc": "TZq4ob5n4GZ1",
+    "sce": "TZq4_META_REUSE",
+    "label": "地方医学部/メタ広告(合流)再受験",
+    "daily": {
+      "2026-09-04": 1
+    }
+  }
+]
