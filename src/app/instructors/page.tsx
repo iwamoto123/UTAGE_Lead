@@ -27,11 +27,13 @@ interface BusinessMonth {
 const records = baitoData.records as BaitoRecord[];
 const businessMonth = baitoData.businessMonth as BusinessMonth[];
 
-const BUSINESS_ORDER = ["白谷塾オンライン", "ローカルメディ", "宮崎教室"] as const;
+const BUSINESS_ORDER = ["白谷塾オンライン", "ローカルメディ", "宮崎教室", "宮崎教室スタッフ"] as const;
 const BUSINESS_COLOR: Record<string, string> = {
   白谷塾オンライン: "bg-blue-50 text-blue-700 border-blue-200",
   ローカルメディ: "bg-emerald-50 text-emerald-700 border-emerald-200",
   宮崎教室: "bg-amber-50 text-amber-700 border-amber-200",
+  // 編集・事務まわりの運営サポート。現地指導の時間給とは分けて見る
+  宮崎教室スタッフ: "bg-violet-50 text-violet-700 border-violet-200",
 };
 
 export default function InstructorsPage() {

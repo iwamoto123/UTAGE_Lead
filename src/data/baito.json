@@ -3709,6 +3709,594 @@
    "breakdownText": "担当費10000+4h5200。萩原宗義=英検→白谷"
   },
   {
+   "name": "林舞玲",
+   "ym": "2026-09",
+   "business": "白谷塾オンライン",
+   "total": 3600,
+   "online": 3600,
+   "genchi": 0,
+   "students": 1,
+   "allDone": true,
+   "hasIncomplete": false,
+   "breakdownText": "担当生徒数1人 オンライン作業時間3時間3600円 0"
+  },
+  {
+   "name": "佐野心音",
+   "ym": "2026-09",
+   "business": "白谷塾オンライン",
+   "total": 29500,
+   "online": 29500,
+   "genchi": 0,
+   "students": 1,
+   "allDone": true,
+   "hasIncomplete": false,
+   "breakdownText": "担当費ありの生徒数 1人 ０"
+  },
+  {
+   "name": "黒田蓮人",
+   "ym": "2026-09",
+   "business": "白谷塾オンライン",
+   "total": 28600,
+   "online": 28600,
+   "genchi": 0,
+   "students": 1,
+   "allDone": true,
+   "hasIncomplete": false,
+   "breakdownText": "担当の生徒1人 (体験中だった生徒1人) オンライン作業費6時間 7800円 その他(添削・授業準備等) 16時間 20800円 0"
+  },
+  {
+   "name": "尾薗圭亮",
+   "ym": "2026-09",
+   "business": "白谷塾オンライン",
+   "total": 14300,
+   "online": 14300,
+   "genchi": 0,
+   "students": 1,
+   "allDone": true,
+   "hasIncomplete": false,
+   "breakdownText": "担当生徒数 1人  - 体験中の担当生徒数 1人  - 担当日なしの生徒数 1人 オンライン作業時間 3.5時間 4550円 その他 4時間 4200円 現地バイト 3.5時間 4550円"
+  },
+  {
+   "name": "野邉暁勝",
+   "ym": "2026-09",
+   "business": "白谷塾オンライン",
+   "total": 4950,
+   "online": 4950,
+   "genchi": 0,
+   "students": 1,
+   "allDone": true,
+   "hasIncomplete": false,
+   "breakdownText": "担当生徒1人 -体験中の生徒1人 面談の謝礼　3000 酒井先生との面談　一時間 1300円 オンライン作業費　30分　650円 0"
+  },
+  {
+   "name": "山内碧泉",
+   "ym": "2026-09",
+   "business": "白谷塾オンライン",
+   "total": 45750,
+   "online": 45750,
+   "genchi": 0,
+   "students": 4,
+   "allDone": true,
+   "hasIncomplete": false,
+   "breakdownText": "担当生徒数 4人  - 体験中の担当生徒数 1人(担当費は0)  - 担当費ありの生徒数 1人  - 担当費なしの生徒数 2人 オンライン作業費 24.5時間 31850円 その他3時間3900円"
+  },
+  {
+   "name": "内田悠太",
+   "ym": "2026-09",
+   "business": "白谷塾オンライン",
+   "total": 20000,
+   "online": 20000,
+   "genchi": 0,
+   "students": 1,
+   "allDone": true,
+   "hasIncomplete": false,
+   "breakdownText": "担当生徒2人 担当費あり1人 担当費なし1人 オンライン個別指導 5時間 10000円  りんかさん 9/4 1h 21:00~22:00 9/14 1h 21:00~22:00 9/25 1h 21:00~22:00  あずささん 9/11 1h 21:00~22:00 9/25 1h 23:00~24:00 0"
+  },
+  {
+   "name": "帯刀勇人",
+   "ym": "2026-09",
+   "business": "白谷塾オンライン",
+   "total": 7800,
+   "online": 7800,
+   "genchi": 0,
+   "students": 1,
+   "allDone": true,
+   "hasIncomplete": false,
+   "breakdownText": "担当生徒　1人 　体験中の担当生徒1人　60分×5回　6500円 オンライン作業時間30分　650円 オンラインzoom面談30分　650円 0"
+  },
+  {
+   "name": "弓削カノン",
+   "ym": "2026-09",
+   "business": "白谷塾オンライン",
+   "total": 22100,
+   "online": 22100,
+   "genchi": 0,
+   "students": 2,
+   "allDone": true,
+   "hasIncomplete": false,
+   "breakdownText": "担当生徒２人 担当費なしの生徒数２人 オンライン添削　16時間　20800円 オンライン指導　1時間　1300円"
+  },
+  {
+   "name": "黒木ひかり",
+   "ym": "2026-09",
+   "business": "宮崎教室スタッフ",
+   "total": 3900,
+   "online": 0,
+   "genchi": 3900,
+   "students": 0,
+   "allDone": true,
+   "hasIncomplete": false,
+   "breakdownText": "0 チラシ作り 3時間 3900円"
+  },
+  {
+   "name": "松下飛海",
+   "ym": "2026-09",
+   "business": "白谷塾オンライン",
+   "total": 20400,
+   "online": 20400,
+   "genchi": 0,
+   "students": 2,
+   "allDone": true,
+   "hasIncomplete": false,
+   "breakdownText": "担当生徒数 2人  - 体験中の担当生徒数 1人(担当費は0)  - 担当費ありの生徒数 1人  - 担当費なしの生徒数 0人 オンラインバイト\t\t3\t時間\t3900\t円 その他（準備添削等）\t\t5\t時間\t6500\t円 0"
+  },
+  {
+   "name": "桑室泰享",
+   "ym": "2026-09",
+   "business": "ローカルメディ",
+   "total": 37000,
+   "online": 37000,
+   "genchi": 0,
+   "students": 4,
+   "allDone": true,
+   "hasIncomplete": false,
+   "breakdownText": "担当生徒数 4人  - 体験中の担当生徒数 0人  - 担当費ありの生徒数 1人  - 担当費なしの生徒数 3人 担当費　10,000円 面談対応(準備等含)　16時間　24,000円 生徒対応　1.5時間　2,250円 事務作業等　0.5時間　750円 0"
+  },
+  {
+   "name": "家根原宗佑",
+   "ym": "2026-09",
+   "business": "白谷塾オンライン",
+   "total": 59736,
+   "online": 59736,
+   "genchi": 0,
+   "students": 3,
+   "allDone": true,
+   "hasIncomplete": false,
+   "breakdownText": "担当生徒数　3人 担当費あり　1人 なし　2人 オンライン作業費　25.5時間　33150円 参考書　肘井英文法　1386円 　　　　やっておきたい英語長文700 1210円 　　　　東進レベル別問題集4 990円 現地バイト　10時間　13000円"
+  },
+  {
+   "name": "有川悠斗",
+   "ym": "2026-09",
+   "business": "宮崎教室",
+   "total": 3900,
+   "online": 0,
+   "genchi": 3900,
+   "students": 0,
+   "allDone": true,
+   "hasIncomplete": false,
+   "breakdownText": "0 現地バイト3時間3900円"
+  },
+  {
+   "name": "塩田英資",
+   "ym": "2026-09",
+   "business": "白谷塾オンライン",
+   "total": 41600,
+   "online": 41600,
+   "genchi": 0,
+   "students": 2,
+   "allDone": true,
+   "hasIncomplete": false,
+   "breakdownText": "担当生徒数　2名 担当費ありの生徒数　2名 オンライン作業費　16時間　21600円 0"
+  },
+  {
+   "name": "礒部未波",
+   "ym": "2026-09",
+   "business": "白谷塾オンライン",
+   "total": 11050,
+   "online": 11050,
+   "genchi": 0,
+   "students": 1,
+   "allDone": true,
+   "hasIncomplete": false,
+   "breakdownText": "担当生徒1名 オンライン作業費 332分 授業　88分+90分 0"
+  },
+  {
+   "name": "西村颯斗",
+   "ym": "2026-09",
+   "business": "白谷塾オンライン",
+   "total": 15100,
+   "online": 15100,
+   "genchi": 0,
+   "students": 0,
+   "allDone": true,
+   "hasIncomplete": false,
+   "breakdownText": "英検対策授業  集団授業　　　3時間　6000円 予習　　　　　4時間　5200円 授業資料準備　3時間　3900円 0"
+  },
+  {
+   "name": "村田裕紀",
+   "ym": "2026-09",
+   "business": "ローカルメディ",
+   "total": 42000,
+   "online": 42000,
+   "genchi": 0,
+   "students": 1,
+   "allDone": true,
+   "hasIncomplete": false,
+   "breakdownText": "担当生徒数1人 オンライン作業費4時間　6000円 その他24時間36000円 0"
+  },
+  {
+   "name": "原崇一朗",
+   "ym": "2026-09",
+   "business": "白谷塾オンライン",
+   "total": 48533,
+   "online": 48533,
+   "genchi": 0,
+   "students": 3,
+   "allDone": true,
+   "hasIncomplete": false,
+   "breakdownText": "3人 体験中の生徒:岡田さん 石倉さん・大石さんについては不明です オンライン作業時間　約37時間 (備考に内訳を記載しております) 0"
+  },
+  {
+   "name": "工藤仁一朗",
+   "ym": "2026-09",
+   "business": "白谷塾オンライン",
+   "total": 22490,
+   "online": 22490,
+   "genchi": 0,
+   "students": 3,
+   "allDone": true,
+   "hasIncomplete": false,
+   "breakdownText": "担当生徒３人 -担当費なし３人 オンライン作業費　11.7時間 15,210円 その他　5.6時間　7280円 0"
+  },
+  {
+   "name": "中野修治",
+   "ym": "2026-09",
+   "business": "ローカルメディ",
+   "total": 13000,
+   "online": 13000,
+   "genchi": 0,
+   "students": 2,
+   "allDone": true,
+   "hasIncomplete": false,
+   "breakdownText": "担当生徒数2人 質問対応 600分 0"
+  },
+  {
+   "name": "門脇孔明",
+   "ym": "2026-09",
+   "business": "白谷塾オンライン",
+   "total": 67950,
+   "online": 67950,
+   "genchi": 0,
+   "students": 2,
+   "allDone": true,
+   "hasIncomplete": false,
+   "breakdownText": "担当2人 20000円 オンライン授業10時間 13000円 自習会15回(3回分出れなかった)45時間 29250円 0"
+  },
+  {
+   "name": "山内朋枝",
+   "ym": "2026-09",
+   "business": "宮崎教室",
+   "total": 6800,
+   "online": 0,
+   "genchi": 6800,
+   "students": 0,
+   "allDone": true,
+   "hasIncomplete": false,
+   "breakdownText": "0 0"
+  },
+  {
+   "name": "蛯原里実",
+   "ym": "2026-09",
+   "business": "宮崎教室スタッフ",
+   "total": 6240,
+   "online": 0,
+   "genchi": 6240,
+   "students": 0,
+   "allDone": true,
+   "hasIncomplete": false,
+   "breakdownText": "0 0"
+  },
+  {
+   "name": "田代汀",
+   "ym": "2026-09",
+   "business": "宮崎教室",
+   "total": 93600,
+   "online": 0,
+   "genchi": 93600,
+   "students": 0,
+   "allDone": true,
+   "hasIncomplete": false,
+   "breakdownText": "0 現地バイト　66.5時間　86,450円 チラシ配り　3時間分　3900円 編集　2時間半　3250円"
+  },
+  {
+   "name": "川越毬捺",
+   "ym": "2026-09",
+   "business": "宮崎教室",
+   "total": 3900,
+   "online": 0,
+   "genchi": 3900,
+   "students": 0,
+   "allDone": true,
+   "hasIncomplete": false,
+   "breakdownText": "0 現地バイト３時間3,900円"
+  },
+  {
+   "name": "大許真菜",
+   "ym": "2026-09",
+   "business": "白谷塾オンライン",
+   "total": 70950,
+   "online": 70950,
+   "genchi": 0,
+   "students": 3,
+   "allDone": true,
+   "hasIncomplete": false,
+   "breakdownText": "担当生徒数3人 -担当費ありの生徒数3人 オンライン31時間半　40950円 0"
+  },
+  {
+   "name": "池内聖子",
+   "ym": "2026-09",
+   "business": "宮崎教室",
+   "total": 3575,
+   "online": 0,
+   "genchi": 3575,
+   "students": 0,
+   "allDone": true,
+   "hasIncomplete": false,
+   "breakdownText": "0 現地バイト　2.75時間　3575円"
+  },
+  {
+   "name": "那須寛大",
+   "ym": "2026-09",
+   "business": "宮崎教室",
+   "total": 3791,
+   "online": 0,
+   "genchi": 3791,
+   "students": 0,
+   "allDone": true,
+   "hasIncomplete": false,
+   "breakdownText": "0 現地バイト　2時間55分"
+  },
+  {
+   "name": "片岡駿晴",
+   "ym": "2026-09",
+   "business": "ローカルメディ",
+   "total": 7800,
+   "online": 7800,
+   "genchi": 0,
+   "students": 1,
+   "allDone": true,
+   "hasIncomplete": false,
+   "breakdownText": "担当生徒数1人 担当費なしの生徒1人 オンライン作業費　2時間　2600円 0"
+  },
+  {
+   "name": "横山未帆",
+   "ym": "2026-09",
+   "business": "宮崎教室",
+   "total": 5000,
+   "online": 0,
+   "genchi": 5000,
+   "students": 0,
+   "allDone": true,
+   "hasIncomplete": false,
+   "breakdownText": "0 0"
+  },
+  {
+   "name": "齊藤果穏",
+   "ym": "2026-09",
+   "business": "白谷塾オンライン",
+   "total": 29900,
+   "online": 29900,
+   "genchi": 0,
+   "students": 2,
+   "allDone": true,
+   "hasIncomplete": false,
+   "breakdownText": "体験中の生徒数2人 0"
+  },
+  {
+   "name": "清水省吾",
+   "ym": "2026-09",
+   "business": "白谷塾オンライン",
+   "total": 9425,
+   "online": 9425,
+   "genchi": 0,
+   "students": 3,
+   "allDone": true,
+   "hasIncomplete": false,
+   "breakdownText": "担当生徒3人 体験3人 オンライン作業7時15分 0"
+  },
+  {
+   "name": "梶加衣人",
+   "ym": "2026-09",
+   "business": "白谷塾オンライン",
+   "total": 39500,
+   "online": 39500,
+   "genchi": 0,
+   "students": 2,
+   "allDone": true,
+   "hasIncomplete": false,
+   "breakdownText": "担当生徒数2人 −担当費あり2人 オンライン作業費15時間19500円 0"
+  },
+  {
+   "name": "福元快青",
+   "ym": "2026-09",
+   "business": "宮崎教室",
+   "total": 15188,
+   "online": 0,
+   "genchi": 15188,
+   "students": 0,
+   "allDone": true,
+   "hasIncomplete": false,
+   "breakdownText": "0 現地バイト 11時間41分 15188円"
+  },
+  {
+   "name": "清水元貴",
+   "ym": "2026-09",
+   "business": "白谷塾オンライン",
+   "total": 5676,
+   "online": 5676,
+   "genchi": 0,
+   "students": 2,
+   "allDone": true,
+   "hasIncomplete": false,
+   "breakdownText": "担当生徒数2人 -体験中の担当生徒数１人 -担当費なしの生徒数１人 オンライン作業費　4時間26分 5676円 0"
+  },
+  {
+   "name": "竹内壮吾",
+   "ym": "2026-09",
+   "business": "白谷塾オンライン",
+   "total": 23000,
+   "online": 23000,
+   "genchi": 0,
+   "students": 1,
+   "allDone": true,
+   "hasIncomplete": false,
+   "breakdownText": "担当生徒一人 担当費ありの生徒一人 オンライン作業費10時間13000円 0"
+  },
+  {
+   "name": "水元心春",
+   "ym": "2026-09",
+   "business": "白谷塾オンライン",
+   "total": 7151,
+   "online": 7151,
+   "genchi": 0,
+   "students": 3,
+   "allDone": true,
+   "hasIncomplete": false,
+   "breakdownText": "体験担当生徒数3人(担当費は975円) オンライン作業費 80分 1734円 面談 130分 2817円 個別指導 75分 1625円 0"
+  },
+  {
+   "name": "中山みさ",
+   "ym": "2026-09",
+   "business": "宮崎教室スタッフ",
+   "total": 39650,
+   "online": 0,
+   "genchi": 39650,
+   "students": 0,
+   "allDone": true,
+   "hasIncomplete": false,
+   "breakdownText": "0 掃除・編集・チラシ配り等　39,650円"
+  },
+  {
+   "name": "善野真太郎",
+   "ym": "2026-09",
+   "business": "白谷塾オンライン",
+   "total": 12350,
+   "online": 12350,
+   "genchi": 0,
+   "students": 1,
+   "allDone": true,
+   "hasIncomplete": false,
+   "breakdownText": "1人(体験費) オンライン作業費9時間30分 0"
+  },
+  {
+   "name": "堤香代子",
+   "ym": "2026-09",
+   "business": "白谷塾オンライン",
+   "total": 42901,
+   "online": 42901,
+   "genchi": 0,
+   "students": 2,
+   "allDone": true,
+   "hasIncomplete": false,
+   "breakdownText": "担当生徒数 2人  - 体験中の担当生徒数 0人(担当費は0)  - 担当費ありの生徒数 2人  - 担当費なしの生徒数 0人 オンライン作業費 9.53時間 12,393円 過去問分析、英作文添削、予定表作成　8.03時間 10,508円 0"
+  },
+  {
+   "name": "藤本理功",
+   "ym": "2026-09",
+   "business": "白谷塾オンライン",
+   "total": 49900,
+   "online": 49900,
+   "genchi": 0,
+   "students": 3,
+   "allDone": true,
+   "hasIncomplete": false,
+   "breakdownText": "担当生徒数3人(1人は体験期間中) 担当費ありの生徒数2人 担当費なしの生徒数1人(体験期間中) オンライン作業費、その他含めて　23時間29990円 0"
+  },
+  {
+   "name": "柳沼寿明",
+   "ym": "2026-09",
+   "business": "白谷塾オンライン",
+   "total": 33173,
+   "online": 33173,
+   "genchi": 0,
+   "students": 2,
+   "allDone": true,
+   "hasIncomplete": false,
+   "breakdownText": "担当生徒数2人 担当費ありの生徒数　2人 オンライン作業費　10時間8分　13173円 0"
+  },
+  {
+   "name": "徳永陽向子",
+   "ym": "2026-09",
+   "business": "宮崎教室",
+   "total": 17875,
+   "online": 0,
+   "genchi": 17875,
+   "students": 0,
+   "allDone": true,
+   "hasIncomplete": false,
+   "breakdownText": "0 現地指導、掃除等 8/29 18:00~21:00 8/30 20:00~21:00 9/1 20:00~23:00 9/3 20:00~23:00 9/720:00~23:00 9/8 19:00~19:45"
+  },
+  {
+   "name": "矢田部勘介",
+   "ym": "2026-09",
+   "business": "ローカルメディ",
+   "total": 21000,
+   "online": 21000,
+   "genchi": 0,
+   "students": 1,
+   "allDone": true,
+   "hasIncomplete": false,
+   "breakdownText": "担当費ありの生徒数1人 担当費なしの生徒数1人 0"
+  },
+  {
+   "name": "湯淺祥平",
+   "ym": "2026-09",
+   "business": "白谷塾オンライン",
+   "total": 23650,
+   "online": 23650,
+   "genchi": 0,
+   "students": 1,
+   "allDone": true,
+   "hasIncomplete": false,
+   "breakdownText": "担当生徒数　1人 担当費ありの生徒数　1人 オンライン作業費　10時間30分　13,650円 0"
+  },
+  {
+   "name": "首藤顕心",
+   "ym": "2026-09",
+   "business": "白谷塾オンライン",
+   "total": 4333,
+   "online": 4333,
+   "genchi": 0,
+   "students": 1,
+   "allDone": true,
+   "hasIncomplete": false,
+   "breakdownText": "担当生徒数 1人  - 体験中の担当生徒数 1人 0"
+  },
+  {
+   "name": "トラウト征爾",
+   "ym": "2026-09",
+   "business": "白谷塾オンライン",
+   "total": 33250,
+   "online": 33250,
+   "genchi": 0,
+   "students": 2,
+   "allDone": true,
+   "hasIncomplete": false,
+   "breakdownText": "担当人数2 体験中の生徒数1人 担当費ありの生徒数1人 オンライン作業時間5時間6550円 0"
+  },
+  {
+   "name": "藤山航",
+   "ym": "2026-09",
+   "business": "ローカルメディ",
+   "total": 44375,
+   "online": 44375,
+   "genchi": 0,
+   "students": 1,
+   "allDone": true,
+   "hasIncomplete": false,
+   "breakdownText": "担当生徒 2人　オンライン作業費16.25時間　24375円 0"
+  },
+  {
    "name": "野邉暁勝",
    "ym": "2026-10",
    "business": "白谷塾オンライン",
@@ -3718,7 +4306,7 @@
    "students": 2,
    "allDone": true,
    "hasIncomplete": false,
-   "breakdownText": "担当人数2人 体験中の担当生徒2人 面談費　10時間　13000円 オンライン作業費　3.25時間　4225円"
+   "breakdownText": "担当人数2人 体験中の担当生徒2人 面談費　10時間　13000円 オンライン作業費　3.25時間　4225円 0"
   },
   {
    "name": "塩田英資",
@@ -3730,7 +4318,7 @@
    "students": 1,
    "allDone": true,
    "hasIncomplete": false,
-   "breakdownText": "担当費ありの生徒数　1人 オンライン作業費　6時間40分　8666円"
+   "breakdownText": "担当費ありの生徒数　1人 オンライン作業費　6時間40分　8666円 0"
   },
   {
    "name": "帯刀勇人",
@@ -3742,7 +4330,7 @@
    "students": 1,
    "allDone": true,
    "hasIncomplete": false,
-   "breakdownText": "担当生徒数1人(60分個別指導×4回) 　担当費あり1人(10,000円) 　オンライン作業費　1.5時間(1,950円)"
+   "breakdownText": "担当生徒数1人(60分個別指導×4回) 　担当費あり1人(10,000円) 　オンライン作業費　1.5時間(1,950円) 0"
   },
   {
    "name": "佐野心音",
@@ -3754,7 +4342,7 @@
    "students": 1,
    "allDone": true,
    "hasIncomplete": false,
-   "breakdownText": "担当費ありの生徒1人"
+   "breakdownText": "担当費ありの生徒1人 ０"
   },
   {
    "name": "黒田蓮人",
@@ -3766,7 +4354,7 @@
    "students": 1,
    "allDone": true,
    "hasIncomplete": false,
-   "breakdownText": "担当生徒数1人 オンライン作業費10時間 13000円"
+   "breakdownText": "担当生徒数1人 オンライン作業費10時間 13000円 0"
   },
   {
    "name": "家根原宗佑",
@@ -3778,7 +4366,7 @@
    "students": 4,
    "allDone": true,
    "hasIncomplete": false,
-   "breakdownText": "担当生徒数 4人 担当費あり　2人 担当費なし　2人 オンライン作業費　27時間　35100円 教材費　大阪大学への数学　2640円 / 現地バイト　8時間　10400円"
+   "breakdownText": "担当生徒数 4人 担当費あり　2人 担当費なし　2人 オンライン作業費　27時間　35100円 教材費　大阪大学への数学　2640円 現地バイト　8時間　10400円"
   },
   {
    "name": "田川綾乃",
@@ -3790,7 +4378,7 @@
    "students": 2,
    "allDone": true,
    "hasIncomplete": false,
-   "breakdownText": "担当生徒数 2人  - 体験中の担当生徒数 2人(担当費は0) オンライン作業費 5時間 6500円 その他 3時間 3900円"
+   "breakdownText": "担当生徒数 2人  - 体験中の担当生徒数 2人(担当費は0) オンライン作業費 5時間 6500円 その他 3時間 3900円 0"
   },
   {
    "name": "桑室泰享",
@@ -3802,7 +4390,7 @@
    "students": 4,
    "allDone": true,
    "hasIncomplete": false,
-   "breakdownText": "担当生徒数 4人  - 体験中の担当生徒数 0人  - 担当費ありの生徒数 1人  - 担当費なしの生徒数 3人 担当費　10,000円 面談対応(準備等含)　11時間　16,500円 生徒対応　3時間　4,500円 事務作業等(セミナースライド制作含む)　6時間　9,000円"
+   "breakdownText": "担当生徒数 4人  - 体験中の担当生徒数 0人  - 担当費ありの生徒数 1人  - 担当費なしの生徒数 3人 担当費　10,000円 面談対応(準備等含)　11時間　16,500円 生徒対応　3時間　4,500円 事務作業等(セミナースライド制作含む)　6時間　9,000円 0"
   },
   {
    "name": "真下遥斗",
@@ -3814,7 +4402,7 @@
    "students": 1,
    "allDone": true,
    "hasIncomplete": false,
-   "breakdownText": "担当生徒数 1人  - 体験中の担当生徒数 1人(担当費は0)  - 担当費ありの生徒数 0人  - 担当費なしの生徒数 1人 オンライン作業費 2.5時間 3,250円 コメント 0.5時間 750円 授業準備2時間2,600円"
+   "breakdownText": "担当生徒数 1人  - 体験中の担当生徒数 1人(担当費は0)  - 担当費ありの生徒数 0人  - 担当費なしの生徒数 1人 オンライン作業費 2.5時間 3,250円 コメント 0.5時間 750円 授業準備2時間2,600円 0"
   },
   {
    "name": "村山敦郎",
@@ -3826,7 +4414,7 @@
    "students": 2,
    "allDone": true,
    "hasIncomplete": false,
-   "breakdownText": "担当生徒数 2人  - 体験中の担当生徒数 2人  オンライン授業　60分×1コマ 勉強計画面談　60分×2名 使用ツール説明　45分 授業前準備•質問対応　60分 日報　5分×15通  1300円/時間×6時間＝7800円"
+   "breakdownText": "担当生徒数 2人  - 体験中の担当生徒数 2人  オンライン授業　60分×1コマ 勉強計画面談　60分×2名 使用ツール説明　45分 授業前準備•質問対応　60分 日報　5分×15通  1300円/時間×6時間＝7800円 0"
   },
   {
    "name": "甲斐康成",
@@ -3838,7 +4426,7 @@
    "students": 3,
    "allDone": true,
    "hasIncomplete": false,
-   "breakdownText": "担当生徒数 3人 体験中の担当生徒数   2人 担当費ありの生徒数  1人 担当費無しの生徒数  ０人 オンライン作業費      7時間30分   9750円 その他 授業準備 添削   6時間  15分  8125円 オンライン面談      30分       650円 / 現地指導   6時間  7800円"
+   "breakdownText": "担当生徒数 3人 体験中の担当生徒数   2人 担当費ありの生徒数  1人 担当費無しの生徒数  ０人 オンライン作業費      7時間30分   9750円 その他 授業準備 添削   6時間  15分  8125円 オンライン面談      30分       650円 現地指導   6時間  7800円"
   },
   {
    "name": "齊藤果穏",
@@ -3850,7 +4438,7 @@
    "students": 1,
    "allDone": true,
    "hasIncomplete": false,
-   "breakdownText": "体験中の担当生徒4人 担当費ありの生徒数1人"
+   "breakdownText": "体験中の担当生徒4人 担当費ありの生徒数1人 0"
   },
   {
    "name": "村田裕紀",
@@ -3862,7 +4450,7 @@
    "students": 1,
    "allDone": true,
    "hasIncomplete": false,
-   "breakdownText": "担当生徒数１人 担当費ありの生徒数１人 オンライン作業4時間　6000円 その他24時間　　　　36000円"
+   "breakdownText": "担当生徒数１人 担当費ありの生徒数１人 オンライン作業4時間　6000円 その他24時間　　　　36000円 ０"
   },
   {
    "name": "高松恭子",
@@ -3874,7 +4462,7 @@
    "students": 3,
    "allDone": true,
    "hasIncomplete": false,
-   "breakdownText": "担当生徒数3人  - 体験中の担当生徒数 3人　担当費0円  - 担当費ありの生徒数 0人  - 担当費なしの生徒数 0人 オンライン作業費　10時間　13,000円 その他（添削、授業準備）　9.5時間　12350円"
+   "breakdownText": "担当生徒数3人  - 体験中の担当生徒数 3人　担当費0円  - 担当費ありの生徒数 0人  - 担当費なしの生徒数 0人 オンライン作業費　10時間　13,000円 その他（添削、授業準備）　9.5時間　12350円 0"
   },
   {
    "name": "堤香代子",
@@ -3886,7 +4474,7 @@
    "students": 3,
    "allDone": true,
    "hasIncomplete": false,
-   "breakdownText": "担当生徒数 3人  - 体験中の担当生徒数 1人(担当費は0)  - 担当費ありの生徒数 2人  - 担当費なしの生徒数 1人 オンライン作業費 16.23時間 21,103円 その他 13.03時間 16,943円"
+   "breakdownText": "担当生徒数 3人  - 体験中の担当生徒数 1人(担当費は0)  - 担当費ありの生徒数 2人  - 担当費なしの生徒数 1人 オンライン作業費 16.23時間 21,103円 その他 13.03時間 16,943円 0"
   },
   {
    "name": "加藤碧",
@@ -3898,7 +4486,7 @@
    "students": 0,
    "allDone": true,
    "hasIncomplete": false,
-   "breakdownText": ""
+   "breakdownText": "0 0"
   },
   {
    "name": "二神陽香",
@@ -3910,7 +4498,7 @@
    "students": 0,
    "allDone": true,
    "hasIncomplete": false,
-   "breakdownText": ""
+   "breakdownText": "0 0"
   },
   {
    "name": "中尾友喜",
@@ -3922,7 +4510,7 @@
    "students": 0,
    "allDone": true,
    "hasIncomplete": false,
-   "breakdownText": "オンライン授業(進研模試) 90×6=9時間　18000円 オンライン授業(英検2級ライティング) 60×2=2時間 4000円 授業準備・添削　1時間 1300円"
+   "breakdownText": "オンライン授業(進研模試) 90×6=9時間　18000円 オンライン授業(英検2級ライティング) 60×2=2時間 4000円 授業準備・添削　1時間 1300円 0"
   },
   {
    "name": "手島正博",
@@ -3934,19 +4522,19 @@
    "students": 1,
    "allDone": true,
    "hasIncomplete": false,
-   "breakdownText": "オンライン集団授業  リスニング英検2級(木)、同準2級 （火） オンライン作業費2時間"
+   "breakdownText": "オンライン集団授業  リスニング英検2級(木)、同準2級 （火） オンライン作業費2時間 0"
   },
   {
    "name": "中山みさ",
    "ym": "2026-10",
-   "business": "宮崎教室",
+   "business": "宮崎教室スタッフ",
    "total": 63700,
    "online": 0,
    "genchi": 63700,
    "students": 0,
    "allDone": true,
    "hasIncomplete": false,
-   "breakdownText": "編集・事務作業・掃除 等　63,700円 計 63,700円"
+   "breakdownText": "0 編集・事務作業・掃除 等　63,700円 計 63,700円"
   },
   {
    "name": "神田眞喜子",
@@ -3958,7 +4546,7 @@
    "students": 0,
    "allDone": true,
    "hasIncomplete": false,
-   "breakdownText": "オンライン集団授業　２時間　4000円 打ち合わせ　　　　　２時間　2600円 授業準備　　　　　　５時間　6500円 連絡　　　　　　１時間30分　1950円"
+   "breakdownText": "オンライン集団授業　２時間　4000円 打ち合わせ　　　　　２時間　2600円 授業準備　　　　　　５時間　6500円 連絡　　　　　　１時間30分　1950円 0"
   },
   {
    "name": "有川悠斗",
@@ -3970,7 +4558,7 @@
    "students": 0,
    "allDone": true,
    "hasIncomplete": false,
-   "breakdownText": "現地バイト4時間5200円"
+   "breakdownText": "0 現地バイト4時間5200円"
   },
   {
    "name": "松本大洋",
@@ -3982,7 +4570,7 @@
    "students": 0,
    "allDone": true,
    "hasIncomplete": false,
-   "breakdownText": "オンラインチューターのための初面談 1時間 スマホ撮影スタンド 2999円"
+   "breakdownText": "オンラインチューターのための初面談 1時間 スマホ撮影スタンド 2999円 0"
   },
   {
    "name": "藤本理功",
@@ -3994,7 +4582,7 @@
    "students": 4,
    "allDone": true,
    "hasIncomplete": false,
-   "breakdownText": "担当生徒数4人 担当費ありの生徒数3人 担当費なしの生徒数1人 オンライン作業費とその他(授業準備、添削等)総じて30時間　39000円"
+   "breakdownText": "担当生徒数4人 担当費ありの生徒数3人 担当費なしの生徒数1人 オンライン作業費とその他(授業準備、添削等)総じて30時間　39000円 0"
   },
   {
    "name": "山内朋枝",
@@ -4004,9 +4592,9 @@
    "online": 0,
    "genchi": 20000,
    "students": 0,
-   "allDone": false,
-   "hasIncomplete": true,
-   "breakdownText": "現地バイト　15時間19分 20,000円"
+   "allDone": true,
+   "hasIncomplete": false,
+   "breakdownText": "0 現地バイト　15時間19分 20,000円"
   },
   {
    "name": "福元快青",
@@ -4016,9 +4604,9 @@
    "online": 0,
    "genchi": 39129,
    "students": 0,
-   "allDone": false,
-   "hasIncomplete": true,
-   "breakdownText": "現地バイト 34時間41分 45,087円"
+   "allDone": true,
+   "hasIncomplete": false,
+   "breakdownText": "0 現地バイト 30時間06分 39,129円"
   },
   {
    "name": "中村純作",
@@ -4030,7 +4618,7 @@
    "students": 1,
    "allDone": true,
    "hasIncomplete": false,
-   "breakdownText": "担当生徒数１人 １時間1300円"
+   "breakdownText": "担当生徒数１人 １時間1300円 0"
   },
   {
    "name": "清水省吾",
@@ -4042,7 +4630,7 @@
    "students": 1,
    "allDone": true,
    "hasIncomplete": false,
-   "breakdownText": "担当生徒5人 体験4人 担当費あり1人 オンライン作業36時間　46,800円 担当費　10,000円"
+   "breakdownText": "担当生徒5人 体験4人 担当費あり1人 オンライン作業36時間　46,800円 担当費　10,000円 0"
   },
   {
    "name": "宇田壮汰",
@@ -4054,7 +4642,7 @@
    "students": 1,
    "allDone": true,
    "hasIncomplete": false,
-   "breakdownText": "オンライン作業費4時間30分5850円"
+   "breakdownText": "オンライン作業費4時間30分5850円 0"
   },
   {
    "name": "栗山大貴",
@@ -4064,9 +4652,9 @@
    "online": 0,
    "genchi": 36898,
    "students": 0,
-   "allDone": false,
-   "hasIncomplete": true,
-   "breakdownText": ""
+   "allDone": true,
+   "hasIncomplete": false,
+   "breakdownText": "0 0"
   },
   {
    "name": "内田悠太",
@@ -4088,9 +4676,9 @@
    "online": 0,
    "genchi": 19392,
    "students": 0,
-   "allDone": false,
-   "hasIncomplete": true,
-   "breakdownText": "14時間55分　19392円"
+   "allDone": true,
+   "hasIncomplete": false,
+   "breakdownText": "0 14時間55分　19392円"
   },
   {
    "name": "松田花恋",
@@ -4100,12 +4688,12 @@
    "online": 0,
    "genchi": 12892,
    "students": 0,
-   "allDone": false,
-   "hasIncomplete": true,
-   "breakdownText": "現地バイト　9時間55分　12,892円"
+   "allDone": true,
+   "hasIncomplete": false,
+   "breakdownText": "0 現地バイト　9時間55分　12,892円"
   },
   {
-   "name": "本間勝則(ホンマカツノリ)",
+   "name": "本間勝則",
    "ym": "2026-10",
    "business": "白谷塾オンライン",
    "total": 18125,
@@ -4114,7 +4702,7 @@
    "students": 15,
    "allDone": true,
    "hasIncomplete": false,
-   "breakdownText": "準2級英文法クラス ２級文法クラス 集団授業　担当生徒15人 オンライン作業費 5時間ｘ2000円＝10,000円 その他x6時間15分ｘ1,300円＝8,125円"
+   "breakdownText": "準2級英文法クラス ２級文法クラス 集団授業　担当生徒15人 オンライン作業費 5時間ｘ2000円＝10,000円 その他x6時間15分ｘ1,300円＝8,125円 0"
   },
   {
    "name": "山本大地",
@@ -4126,7 +4714,7 @@
    "students": 3,
    "allDone": true,
    "hasIncomplete": false,
-   "breakdownText": "担当生徒数 3人 - 体験中の担当生徒数 0人  - 担当費ありの生徒数 0人  - 担当費なしの生徒数 3人 オンライン作業費 1時間 1300円 その他（準備）30分     650円"
+   "breakdownText": "担当生徒数 3人 - 体験中の担当生徒数 0人  - 担当費ありの生徒数 0人  - 担当費なしの生徒数 3人 オンライン作業費 1時間 1300円 その他（準備）30分     650円 0"
   },
   {
    "name": "尾薗圭亮",
@@ -4138,7 +4726,7 @@
    "students": 3,
    "allDone": true,
    "hasIncomplete": false,
-   "breakdownText": "担当生徒数 3人  - 体験中の担当生徒数 2人(担当費は0)  - 担当費ありの生徒数 0人  - 担当費なしの生徒数 1人 オンライン作業費 16.333時間 21233円 その他 0時間 0円"
+   "breakdownText": "担当生徒数 3人  - 体験中の担当生徒数 2人(担当費は0)  - 担当費ありの生徒数 0人  - 担当費なしの生徒数 1人 オンライン作業費 16.333時間 21233円 その他 0時間 0円 0"
   },
   {
    "name": "野口裕理",
@@ -4148,33 +4736,33 @@
    "online": 0,
    "genchi": 12567,
    "students": 0,
-   "allDone": false,
-   "hasIncomplete": true,
-   "breakdownText": "現地バイト　9時間40分　12567円"
+   "allDone": true,
+   "hasIncomplete": false,
+   "breakdownText": "0 現地バイト　9時間40分　12567円"
   },
   {
    "name": "黒木ひかり",
    "ym": "2026-10",
-   "business": "宮崎教室",
+   "business": "宮崎教室スタッフ",
    "total": 975,
    "online": 0,
    "genchi": 975,
    "students": 0,
    "allDone": true,
    "hasIncomplete": false,
-   "breakdownText": "住所書き 45分 975円"
+   "breakdownText": "0 住所書き 45分 975円"
   },
   {
-   "name": "蛯原里実(えびはらさとみ)",
+   "name": "蛯原里実",
    "ym": "2026-10",
-   "business": "宮崎教室",
+   "business": "宮崎教室スタッフ",
    "total": 5850,
    "online": 0,
    "genchi": 5850,
    "students": 0,
-   "allDone": false,
-   "hasIncomplete": true,
-   "breakdownText": "在宅作業　2時間30分 現地作業　2時間　  4.5✖️1300＝5850 / 在宅作業　2時間30分 現地作業　2時間　  4.5✖️1300＝5850"
+   "allDone": true,
+   "hasIncomplete": false,
+   "breakdownText": "在宅作業　2時間30分 現地作業　2時間　  4.5✖️1300＝5850 在宅作業　2時間30分 現地作業　2時間　  4.5✖️1300＝5850"
   },
   {
    "name": "水元心春",
@@ -4186,7 +4774,7 @@
    "students": 4,
    "allDone": true,
    "hasIncomplete": false,
-   "breakdownText": "担当生徒数 4人 体験中3人 担当費あり1人 オンライン作業費➕LINE返信18,293 日本史一問一答代 1,320"
+   "breakdownText": "担当生徒数 4人 体験中3人 担当費あり1人 オンライン作業費➕LINE返信18,293 日本史一問一答代 1,320 0"
   },
   {
    "name": "中野修治",
@@ -4198,7 +4786,7 @@
    "students": 2,
    "allDone": true,
    "hasIncomplete": false,
-   "breakdownText": "担当人数2人 オンライン作業費(解説作成) 660分"
+   "breakdownText": "担当人数2人 オンライン作業費(解説作成) 660分 0"
   },
   {
    "name": "善野真太郎",
@@ -4210,7 +4798,7 @@
    "students": 1,
    "allDone": true,
    "hasIncomplete": false,
-   "breakdownText": "担当1人 オンライン作業8450円 参考書費用1210円"
+   "breakdownText": "担当1人 オンライン作業8450円 参考書費用1210円 0"
   },
   {
    "name": "門脇孔明",
@@ -4222,7 +4810,7 @@
    "students": 2,
    "allDone": true,
    "hasIncomplete": false,
-   "breakdownText": "担当2人20000万 オンライン作業費11時間14300円"
+   "breakdownText": "担当2人20000万 オンライン作業費11時間14300円 0"
   },
   {
    "name": "矢田部勘介",
@@ -4234,7 +4822,7 @@
    "students": 2,
    "allDone": true,
    "hasIncomplete": false,
-   "breakdownText": "担当生徒数2人 -担当費ありの生徒数1人 -担当費なしの生徒数1人"
+   "breakdownText": "担当生徒数2人 -担当費ありの生徒数1人 -担当費なしの生徒数1人 0"
   },
   {
    "name": "池内聖子",
@@ -4244,9 +4832,9 @@
    "online": 0,
    "genchi": 7475,
    "students": 0,
-   "allDone": false,
-   "hasIncomplete": true,
-   "breakdownText": "現地バイト　5時間45分　7,475円"
+   "allDone": true,
+   "hasIncomplete": false,
+   "breakdownText": "0 現地バイト　5時間45分　7,475円"
   },
   {
    "name": "藤山航",
@@ -4258,7 +4846,7 @@
    "students": 2,
    "allDone": true,
    "hasIncomplete": false,
-   "breakdownText": "担当生徒数2人　  - 体験中の担当生徒数 0人(担当費は0)  - 担当費ありの生徒数 2人  - 担当費なしの生徒数 0人 オンライン作業費 13.5時間 20250円 その他 0時間 0円"
+   "breakdownText": "担当生徒数2人　  - 体験中の担当生徒数 0人(担当費は0)  - 担当費ありの生徒数 2人  - 担当費なしの生徒数 0人 オンライン作業費 13.5時間 20250円 その他 0時間 0円 0"
   },
   {
    "name": "首藤顕心",
@@ -4270,7 +4858,7 @@
    "students": 1,
    "allDone": true,
    "hasIncomplete": false,
-   "breakdownText": "担当生徒数　1人 　　うち担当費ありの生徒　1人"
+   "breakdownText": "担当生徒数　1人 　　うち担当費ありの生徒　1人 0"
   },
   {
    "name": "片岡駿晴",
@@ -4282,7 +4870,7 @@
    "students": 1,
    "allDone": true,
    "hasIncomplete": false,
-   "breakdownText": "担当生徒数1人 担当費なしの生徒1人 オンライン作業費　3時間　3900円"
+   "breakdownText": "担当生徒数1人 担当費なしの生徒1人 オンライン作業費　3時間　3900円 0"
   },
   {
    "name": "原崇一朗",
@@ -4294,7 +4882,7 @@
    "students": 3,
    "allDone": true,
    "hasIncomplete": false,
-   "breakdownText": "担当生徒　4人 担当費あり　3人 担当費なし　1人 オンライン作業費　3425分　74208円"
+   "breakdownText": "担当生徒　4人 担当費あり　3人 担当費なし　1人 オンライン作業費　3425分　74208円 0"
   },
   {
    "name": "酒井未羽",
@@ -4306,7 +4894,7 @@
    "students": 2,
    "allDone": true,
    "hasIncomplete": false,
-   "breakdownText": "体験中の担当生徒数　2人 オンライン作業費　50時間　1300円"
+   "breakdownText": "体験中の担当生徒数　2人 オンライン作業費　50時間　1300円 0"
   },
   {
    "name": "竹内壮吾",
@@ -4318,7 +4906,7 @@
    "students": 1,
    "allDone": true,
    "hasIncomplete": false,
-   "breakdownText": "担当費ありの生徒数 1人 オンラインバイト時間 5時間6500円"
+   "breakdownText": "担当費ありの生徒数 1人 オンラインバイト時間 5時間6500円 0"
   },
   {
    "name": "トラウト征爾",
@@ -4330,7 +4918,7 @@
    "students": 2,
    "allDone": true,
    "hasIncomplete": false,
-   "breakdownText": "担当生徒2人 担当費ありの生徒2人"
+   "breakdownText": "担当生徒2人 担当費ありの生徒2人 0"
   },
   {
    "name": "伊地知隼",
@@ -4342,7 +4930,7 @@
    "students": 3,
    "allDone": true,
    "hasIncomplete": false,
-   "breakdownText": "担当生徒数 3人  - 体験中の担当生徒数 0人(担当費は0)  - 担当費ありの生徒数 3人  - 担当費なしの生徒数 0人 オンライン作業費 12時間 15,600円（9月） オンライン作業費 13時間 16,900円（10月） / 現地バイト　3時間　3,900円（10月）"
+   "breakdownText": "担当生徒数 3人  - 体験中の担当生徒数 0人(担当費は0)  - 担当費ありの生徒数 3人  - 担当費なしの生徒数 0人 オンライン作業費 12時間 15,600円（9月） オンライン作業費 13時間 16,900円（10月） 現地バイト　3時間　3,900円（10月）"
   },
   {
    "name": "髙橋奏絵",
@@ -4354,7 +4942,7 @@
    "students": 0,
    "allDone": true,
    "hasIncomplete": false,
-   "breakdownText": "オンライン作業費　2時間30分　3250円"
+   "breakdownText": "オンライン作業費　2時間30分　3250円 0"
   },
   {
    "name": "梶加衣人",
@@ -4366,7 +4954,7 @@
    "students": 6,
    "allDone": true,
    "hasIncomplete": false,
-   "breakdownText": "担当生徒数6人 ・体験中3人 ・担当日あり2人 ・担当日なし1人 オンライン作業費44.3時間57590円"
+   "breakdownText": "担当生徒数6人 ・体験中3人 ・担当日あり2人 ・担当日なし1人 オンライン作業費44.3時間57590円 0"
   },
   {
    "name": "工藤仁一朗",
@@ -4378,7 +4966,7 @@
    "students": 3,
    "allDone": true,
    "hasIncomplete": false,
-   "breakdownText": "担当生徒数３人 -体験中の担当生徒数2人 -担当費ありの生徒数1人 オンライン作業費　26h 33,800円"
+   "breakdownText": "担当生徒数３人 -体験中の担当生徒数2人 -担当費ありの生徒数1人 オンライン作業費　26h 33,800円 0"
   },
   {
    "name": "大許真菜",
@@ -4390,7 +4978,7 @@
    "students": 3,
    "allDone": true,
    "hasIncomplete": false,
-   "breakdownText": "担当生徒数3人 -担当費ありの生徒数3人 -担当費なしの生徒数1人 オンライン40時間半"
+   "breakdownText": "担当生徒数3人 -担当費ありの生徒数3人 -担当費なしの生徒数1人 オンライン40時間半 0"
   },
   {
    "name": "本間友梨香",
@@ -4402,7 +4990,7 @@
    "students": 1,
    "allDone": true,
    "hasIncomplete": false,
-   "breakdownText": "担当生徒数1人 体験中の担当生徒数 1人 オンライン作業費と質問対応　2時間30分　3250円 生徒との初回面談と二回目の面談　2時間15分　2925円"
+   "breakdownText": "担当生徒数1人 体験中の担当生徒数 1人 オンライン作業費と質問対応　2時間30分　3250円 生徒との初回面談と二回目の面談　2時間15分　2925円 0"
   },
   {
    "name": "福元快青",
@@ -4412,9 +5000,9 @@
    "online": 0,
    "genchi": 45087,
    "students": 0,
-   "allDone": false,
-   "hasIncomplete": true,
-   "breakdownText": "現地バイト 34時間41分 45,087円"
+   "allDone": true,
+   "hasIncomplete": false,
+   "breakdownText": "0 現地バイト 34時間41分 45,087円"
   },
   {
    "name": "山内碧泉",
@@ -4426,7 +5014,7 @@
    "students": 5,
    "allDone": true,
    "hasIncomplete": false,
-   "breakdownText": "担当生徒数 5人  - 体験中の担当生徒数 3人(担当費は0)  - 担当費ありの生徒数 1人  - 担当費なしの生徒数 1人 オンライン作業費 28時間 36400円 その他 3時間 3900円 / 現地バイト 0時間 0円 その他 0時間 0円"
+   "breakdownText": "担当生徒数 5人  - 体験中の担当生徒数 3人(担当費は0)  - 担当費ありの生徒数 1人  - 担当費なしの生徒数 1人 オンライン作業費 28時間 36400円 その他 3時間 3900円 現地バイト 0時間 0円 その他 0時間 0円"
   },
   {
    "name": "松下飛海",
@@ -4438,7 +5026,7 @@
    "students": 5,
    "allDone": true,
    "hasIncomplete": false,
-   "breakdownText": "担当生徒数\t\t5\t人 体験中の担当生徒数 3人 担当費ありの生徒数 2人\t\t 担当費\t\t20000\t円\t\t 現地バイト\t\t0\t時間\t0\t円 オンラインバイト\t\t20.5\t時間\t26650\t円 その他（準備添削等）\t\t15\t時間\t19500\t円 その他（教材費）\t\t\t\t0\t円"
+   "breakdownText": "担当生徒数\t\t5\t人 体験中の担当生徒数 3人 担当費ありの生徒数 2人\t\t 担当費\t\t20000\t円\t\t 現地バイト\t\t0\t時間\t0\t円 オンラインバイト\t\t20.5\t時間\t26650\t円 その他（準備添削等）\t\t15\t時間\t19500\t円 その他（教材費）\t\t\t\t0\t円 0"
   },
   {
    "name": "川越陽子",
@@ -4448,9 +5036,9 @@
    "online": 0,
    "genchi": 4225,
    "students": 0,
-   "allDone": false,
-   "hasIncomplete": true,
-   "breakdownText": "現地バイト　3時間15分　4,225円"
+   "allDone": true,
+   "hasIncomplete": false,
+   "breakdownText": "0 現地バイト　3時間15分　4,225円"
   },
   {
    "name": "柳沼寿明",
@@ -4462,7 +5050,7 @@
    "students": 1,
    "allDone": true,
    "hasIncomplete": false,
-   "breakdownText": "担当生徒数1人  - 担当費ありの生徒数 1人 オンライン作業費 2時間33分　3315円 紹介料 2人　6000円"
+   "breakdownText": "担当生徒数1人  - 担当費ありの生徒数 1人 オンライン作業費 2時間33分　3315円 紹介料 2人　6000円 0"
   },
   {
    "name": "清水元貴",
@@ -4474,7 +5062,7 @@
    "students": 1,
    "allDone": true,
    "hasIncomplete": false,
-   "breakdownText": "担当生徒数１人 -担当費なしの生徒数１人 オンライン作業費約1.6時間（97分）2101円  書籍代（早覚え速答法パーフェクト版）1540円"
+   "breakdownText": "担当生徒数１人 -担当費なしの生徒数１人 オンライン作業費約1.6時間（97分）2101円  書籍代（早覚え速答法パーフェクト版）1540円 0"
   },
   {
    "name": "礒部未波",
@@ -4486,7 +5074,7 @@
    "students": 1,
    "allDone": true,
    "hasIncomplete": false,
-   "breakdownText": "担当生徒数 1人  - 体験中の担当生徒数 1人(担当費は0)  - 担当費ありの生徒数 0人  - 担当費なしの生徒数 0人 オンライン作業費 時間 2058円 その他 1時間(授業) 1300円"
+   "breakdownText": "担当生徒数 1人  - 体験中の担当生徒数 1人(担当費は0)  - 担当費ありの生徒数 0人  - 担当費なしの生徒数 0人 オンライン作業費 時間 2058円 その他 1時間(授業) 1300円 0"
   },
   {
    "name": "黒光盾",
@@ -4498,7 +5086,7 @@
    "students": 1,
    "allDone": true,
    "hasIncomplete": false,
-   "breakdownText": "体験中の生徒数　二人 オンライン作業費　6.833時間　8883円"
+   "breakdownText": "体験中の生徒数　二人 オンライン作業費　6.833時間　8883円 0"
   },
   {
    "name": "那須寛大",
@@ -4508,9 +5096,9 @@
    "online": 0,
    "genchi": 23140,
    "students": 0,
-   "allDone": false,
-   "hasIncomplete": true,
-   "breakdownText": "現地バイト　17時間48分"
+   "allDone": true,
+   "hasIncomplete": false,
+   "breakdownText": "0 現地バイト　17時間48分"
   }
  ],
  "businessMonth": [
@@ -4706,18 +5294,43 @@
   },
   {
    "business": "白谷塾オンライン",
+   "ym": "2026-09",
+   "total": 822929
+  },
+  {
+   "business": "ローカルメディ",
+   "ym": "2026-09",
+   "total": 190864
+  },
+  {
+   "business": "宮崎教室スタッフ",
+   "ym": "2026-09",
+   "total": 56940
+  },
+  {
+   "business": "宮崎教室",
+   "ym": "2026-09",
+   "total": 146479
+  },
+  {
+   "business": "白谷塾オンライン",
    "ym": "2026-10",
-   "total": 1311943
+   "total": 1313237
   },
   {
    "business": "ローカルメディ",
    "ym": "2026-10",
-   "total": 249114
+   "total": 247820
   },
   {
    "business": "宮崎教室",
    "ym": "2026-10",
-   "total": 299130
+   "total": 228605
+  },
+  {
+   "business": "宮崎教室スタッフ",
+   "ym": "2026-10",
+   "total": 70525
   }
  ],
  "skipped": [
