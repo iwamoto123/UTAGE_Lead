@@ -2,7 +2,7 @@
 
 import { useMemo, useState } from "react";
 import type { Student, AlertLevel, Teacher } from "@/lib/students-core";
-import { needsContinuationWatch, TRIAL_DAYS_PROGRAM } from "@/lib/students-core";
+import { needsContinuationWatch } from "@/lib/students-core";
 
 /**
  * 絞り込みはブラウザ側だけで行う。
@@ -116,8 +116,10 @@ function Row({ s }: { s: Student }) {
               {c}
             </Chip>
           ))}
-          {s.trialDays === TRIAL_DAYS_PROGRAM && (
-            <Chip className="border-[#DF8D33] bg-orange-50 text-[#b86a14]">短期プログラム・指導3週間</Chip>
+          {s.programWeeks && (
+            <Chip className="border-[#DF8D33] bg-orange-50 text-[#b86a14]">
+              短期プログラム・指導{s.programWeeks}週間
+            </Chip>
           )}
         </div>
       </td>
@@ -158,11 +160,11 @@ function Row({ s }: { s: Student }) {
               : "—"}
         </div>
         <div className="text-xs text-slate-400">{s.daysElapsed !== null ? `${s.daysElapsed}日経過` : "日付なし"}</div>
-        {s.trialDays === TRIAL_DAYS_PROGRAM && (
+        {s.programWeeks && (
           <div className={`mt-0.5 text-xs ${needsContinuationWatch(s) ? "font-semibold text-rose-700" : "text-[#b86a14]"}`}>
             {s.continuationOn
-              ? `指導期間 3週間 ／ 継続確認 ${s.continuationOn.slice(5)}`
-              : "指導期間 3週間 ／ 継続確認の起点なし"}
+              ? `指導期間 ${s.programWeeks}週間 ／ 継続確認 ${s.continuationOn.slice(5)}`
+              : `指導期間 ${s.programWeeks}週間 ／ 継続確認の起点なし`}
             {s.trialStart && s.daysElapsed !== null && s.daysElapsed < s.trialDays
               ? ` あと${s.trialDays - s.daysElapsed}日`
               : ""}
@@ -411,7 +413,7 @@ export default function StudentsView({
       {continuation.length > 0 && (
         <div className="rounded border border-rose-200 bg-rose-50 px-4 py-3">
           <div className="text-sm font-semibold text-rose-800">
-            短期プログラムの継続確認が必要です（指導開始日から3週間）
+            短期プログラムの継続確認が必要です（指導開始日から2〜3週間）
           </div>
           <div className="mt-1.5 flex flex-wrap gap-2">
             {continuation.map((s) => {
@@ -435,13 +437,15 @@ export default function StudentsView({
                   className="rounded border border-rose-300 bg-white px-2 py-1 text-sm text-rose-700 hover:bg-rose-100"
                 >
                   {s.name}
-                  <span className="ml-1 text-xs text-rose-400">{when}</span>
+                  <span className="ml-1 text-xs text-rose-400">
+                    {s.programWeeks}週間・{when}
+                  </span>
                 </a>
               );
             })}
           </div>
           <p className="mt-2 text-xs text-rose-700">
-            短期プログラム（9月・共テ残り100日）は、指導開始日（体験開始日）から3週間が指導期間です。その日に継続を確認し、結果が入るまで赤のまま残ります。
+            短期プログラム（9月・共テ残り100日・11月模試対策）は指導開始日（体験開始日）から3週間、共テ残り50日だけは2週間が指導期間です。その日に継続を確認し、結果が入るまで赤のまま残ります。
           </p>
         </div>
       )}

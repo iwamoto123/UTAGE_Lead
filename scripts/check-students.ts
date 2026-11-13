@@ -69,8 +69,8 @@ async function main() {
   for (const s of students.slice(0, limit)) {
     const teacher = s.teachers.length ? s.teachers.join("・") : s.teacherUnknown ? "確認できません" : "未設定";
     const days = s.daysElapsed !== null ? `${s.daysElapsed}日` : "—";
-    const program = s.trialDays === 21 && s.continuationOn ? `  継続確認:${s.continuationOn}` : s.trialDays === 21 ? "  継続確認:起点なし" : "";
-    const tanki = s.trialDays === 21 ? "  短期3週間" : "";
+    const program = s.programWeeks ? (s.continuationOn ? `  継続確認:${s.continuationOn}` : "  継続確認:起点なし") : "";
+    const tanki = s.programWeeks ? `  短期${s.programWeeks}週間` : "";
     console.log(`${s.name.padEnd(8, "　")} ${s.stage.padEnd(4)} ${days.padStart(5)}  担当:${teacher}${tanki}${program}`);
     for (const a of s.alerts) {
       console.log(`    ${COLOR[a.level]}● ${a.label}${RESET}`);

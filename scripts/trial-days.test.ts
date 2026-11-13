@@ -33,6 +33,9 @@ async function main() {
     stageOf,
     trialDaysFor,
     TRIAL_DAYS_PROGRAM,
+    TRIAL_DAYS_PROGRAM_2W,
+    campaignIsTwoWeekProgram,
+    programWeeksFor,
   } = await import("../src/lib/students-core.ts");
 
 function core(over: Record<string, unknown>) {
@@ -61,6 +64,7 @@ function core(over: Record<string, unknown>) {
     reportLastDate: null,
     daysElapsed: 0,
     trialDays: TRIAL_DAYS_PROGRAM,
+    programWeeks: 3,
     campaigns: ["R8 共テ残り100日 塾に通っていない生徒向け"],
     continuationOn: "2026-10-08",
     ...over,
@@ -119,11 +123,58 @@ assert.equal(needsContinuationWatch(noDates), true);
 
 const regular = core({
   trialDays: 7,
+  programWeeks: null,
   campaigns: [],
   continuationOn: "2026-09-24",
   daysElapsed: 3,
 });
 assert.equal(needsContinuationWatch(regular), false);
+
+// 共テ残り50日プログラムは2週間。3週間の判定に吸われていないか
+assert.equal(campaignIsTwoWeekProgram("共通テストまで残り50日プログラム 保護者向け R8"), true);
+assert.equal(campaignIsTwoWeekProgram("共テ残り100日プログラム"), false);
+assert.equal(trialDaysFor([], [], "残り50日プログラム実施中"), TRIAL_DAYS_PROGRAM_2W);
+assert.equal(trialDaysFor(["残り50日プログラム"], [], ""), TRIAL_DAYS_PROGRAM_2W);
+assert.equal(trialDaysFor([], ["共通テストまで残り50日プログラム"], ""), TRIAL_DAYS_PROGRAM_2W);
+assert.equal(trialDaysFor([], [], "残り100日プログラム実施中"), TRIAL_DAYS_PROGRAM);
+assert.equal(isProgramStatus("残り50日プログラム実施中"), true);
+
+// 短期プログラムかどうかは週数で見分ける。再受験・編入も14日なので日数では区別できない
+assert.equal(programWeeksFor([], [], "残り50日プログラム実施中"), 2);
+assert.equal(programWeeksFor([], [], "残り100日プログラム実施中"), 3);
+assert.equal(programWeeksFor(["再受験コース"], [], ""), null);
+assert.equal(trialDaysFor(["再受験コース"], [], ""), TRIAL_DAYS_PROGRAM_2W);
+assert.equal(programWeeksFor(["白谷塾オンライン"], [], "体験中"), null);
+
+// 残り50日プログラムが継続確認の対象から落ちていないか（2026-11に落ちていた）
+const fifty = core({
+  status: "残り50日プログラム実施中",
+  courses: ["残り50日プログラム"],
+  campaigns: ["R8 共テ残り50日 塾に通わせていない保護者向け"],
+  trialDays: TRIAL_DAYS_PROGRAM_2W,
+  programWeeks: 2,
+  trialStart: "2026-09-25",
+  lastInterview: "2026-09-25",
+  continuationOn: "2026-10-09",
+  daysElapsed: 12,
+});
+assert.equal(needsContinuationWatch(fifty), true);
+assert.ok(buildAlerts(fifty, today).some((a) => a.label.includes("指導期間2週間")));
+
+// 指導開始日が未記録なら、2週間プログラムでも起点なしの赤を出す
+const fiftyNoStart = core({
+  status: "残り50日プログラム実施中",
+  courses: ["残り50日プログラム"],
+  campaigns: ["R8 共テ残り50日 塾に通わせていない保護者向け"],
+  trialDays: TRIAL_DAYS_PROGRAM_2W,
+  programWeeks: 2,
+  trialStart: null,
+  lastInterview: null,
+  continuationOn: null,
+  daysElapsed: null,
+});
+assert.ok(buildAlerts(fiftyNoStart, today).some((a) => a.label.includes("起点がない")));
+assert.equal(needsContinuationWatch(fiftyNoStart), true);
 
 console.log("trial-days.test.ts ok");
 }
